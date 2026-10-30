@@ -1,0 +1,799 @@
+<title>Haven Crest Homes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap">
+<style>
+/* Layout: white ground, bold black headlines, bright-blue diagonal shapes from the business card; blue reserved for actions and accents. Content expands through accordions; motion is subtle reveal + drifting hero shapes. */
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --tint:#eaf1fd;
+  --ink:#0d0f14;
+  --muted:#4d5666;
+  --line:#d9e2f0;
+  --blue:#1a6ff0;
+  --blue-dark:#0f52c9;
+  --blue-light:#8fb7f8;
+  --on-blue:#ffffff;
+  --shadow:0 10px 30px rgba(13,15,20,.08);
+  --display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Nunito Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1420;--surface:#151d2c;--tint:#172238;--ink:#f1f4fa;--muted:#aab4c6;--line:#27344b;
+    --blue:#3b84f5;--blue-dark:#2f6fd6;--blue-light:#5f9bf5;--on-blue:#ffffff;--shadow:0 10px 30px rgba(0,0,0,.4);color-scheme:dark}
+}
+:root[data-theme="dark"]{
+  --bg:#0e1420;--surface:#151d2c;--tint:#172238;--ink:#f1f4fa;--muted:#aab4c6;--line:#27344b;
+  --blue:#3b84f5;--blue-dark:#2f6fd6;--blue-light:#5f9bf5;--on-blue:#ffffff;--shadow:0 10px 30px rgba(0,0,0,.4);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0;font-weight:800;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,6vw,4rem)}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+h3{font-size:1.15rem}
+h4{font-size:1rem}
+p{margin:0}
+a{color:inherit}
+a.text{color:var(--blue);font-weight:700;text-decoration:none;border-bottom:2px solid transparent}
+a.text:hover{border-bottom-color:var(--blue)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:clamp(3rem,7vw,5.5rem);position:relative;scroll-margin-top:72px}
+.band.tint{background:var(--tint)}
+.eyebrow{font-family:var(--display);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:800;margin-bottom:.8rem}
+.lede{font-size:1.2rem;color:var(--muted);max-width:40rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:800;font-size:.98rem;padding:.85rem 1.4rem;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1}
+.btn.primary{background:var(--blue);color:var(--on-blue)}
+.btn.primary:hover{background:var(--blue-dark)}
+.btn.ghost{border-color:var(--blue);color:var(--blue);background:transparent}
+.btn.ghost:hover{background:var(--tint)}
+.btn:focus-visible{outline:3px solid var(--blue-light);outline-offset:2px}
+.jump{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.jump a{font-family:var(--display);font-weight:800;font-size:.85rem;padding:.5rem .95rem;border-radius:999px;border:2px solid var(--line);text-decoration:none;color:var(--muted)}
+.jump a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* header */
+header{background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:5;border-bottom:1px solid var(--line);transition:box-shadow .25s}
+header.scrolled{box-shadow:var(--shadow)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.logo{font-family:var(--display);font-weight:800;font-size:1.1rem;text-decoration:none;display:flex;align-items:center;gap:.6rem;letter-spacing:.02em}
+.logo svg{width:30px;height:30px;flex:none}
+.logo small{display:block;font-size:.6rem;letter-spacing:.14em;color:var(--blue);font-weight:600;text-transform:uppercase}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.1rem;align-items:center;font-size:.92rem;font-weight:700}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--blue)}
+nav .btn{padding:.6rem 1.1rem;font-size:.88rem}
+.menu{display:none;background:none;border:2px solid var(--line);border-radius:10px;padding:.45rem .6rem;cursor:pointer;color:var(--ink)}
+.menu svg{width:22px;height:22px;display:block}
+@media (max-width:900px){
+  nav{flex-wrap:wrap}
+  .menu{display:block}
+  nav ul{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding-block:.5rem}
+  nav ul.open{display:flex}
+  nav ul li a{display:block;padding:.7rem 0;border-top:1px solid var(--line)}
+  nav ul li .btn{display:inline-flex;margin-top:.6rem}
+}
+
+/* hero with drifting diagonal shapes */
+.hero{padding-block:clamp(3.5rem,9vw,7rem);overflow:hidden;position:relative}
+.shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.shapes i{position:absolute;display:block;border-radius:18px;will-change:transform}
+.shapes .a{width:38vw;height:38vw;max-width:520px;max-height:520px;right:-12vw;top:-18vw;background:var(--blue);transform:rotate(45deg)}
+.shapes .b{width:30vw;height:30vw;max-width:420px;max-height:420px;right:6vw;top:10vw;background:var(--blue-light);transform:rotate(45deg);opacity:.9}
+.shapes .c{width:14vw;height:14vw;max-width:200px;max-height:200px;right:-4vw;bottom:-6vw;background:var(--blue-dark);transform:rotate(45deg)}
+.shapes .d{width:12vw;height:12vw;max-width:160px;max-height:160px;left:-6vw;bottom:-4vw;background:var(--tint);transform:rotate(45deg)}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes driftA{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(-14px,18px)}}
+  @keyframes driftB{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(16px,-12px)}}
+  @keyframes driftC{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(-10px,-10px)}}
+  .shapes .a{animation:driftA 14s ease-in-out infinite}
+  .shapes .b{animation:driftB 11s ease-in-out infinite}
+  .shapes .c{animation:driftC 9s ease-in-out infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .hero .inner>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero .inner>:nth-child(2){animation-delay:.08s}
+  .hero .inner>:nth-child(3){animation-delay:.16s}
+  .hero .inner>:nth-child(4){animation-delay:.24s}
+  .hero .inner>:nth-child(5){animation-delay:.32s}
+  .hero .inner>:nth-child(6){animation-delay:.4s}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .btn{transition:transform .15s ease,background .15s ease,box-shadow .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .card,.pay{transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover,.pay:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+}
+.hero .wrap{position:relative}
+.hero .inner{max-width:40rem}
+.hero .sub{font-family:var(--display);color:var(--blue);font-weight:600;font-size:clamp(1.1rem,2.2vw,1.45rem);margin-top:.6rem}
+.hero .lede{margin-top:1.2rem}
+.hero .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.contactline{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:2rem;font-weight:700;font-size:1rem}
+.contactline span{display:inline-flex;align-items:center;gap:.5rem}
+.contactline svg{width:22px;height:22px;flex:none}
+
+/* trust strip */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
+.strip div{border-left:3px solid var(--blue);padding-left:1rem;min-width:0}
+.strip strong{display:block;font-family:var(--display);font-weight:800}
+.strip span{color:var(--muted);font-size:.95rem}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem;display:grid;gap:.6rem;min-width:0;align-content:start}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--tint);display:grid;place-items:center;color:var(--blue)}
+.card .ic svg{width:24px;height:24px}
+.card ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+.card li{margin:.25rem 0}
+
+/* accordion */
+.acc{display:grid;gap:.6rem;margin-top:1.6rem}
+.acc details{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;font-family:var(--display);font-weight:800;font-size:1.02rem}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"";width:10px;height:10px;border-right:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(45deg);transition:transform .25s;flex:none;margin-right:.3rem}
+.acc details[open] summary::after{transform:rotate(225deg)}
+.acc summary:hover{color:var(--blue)}
+.acc summary:focus-visible{outline:3px solid var(--blue-light);outline-offset:-3px}
+.acc .body{padding:0 1.25rem 1.2rem;color:var(--muted);display:grid;gap:.6rem}
+.acc .body ul{margin:0;padding-left:1.1rem}
+.acc .body li{margin:.2rem 0}
+.tint .acc details{background:var(--surface)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;counter-reset:step}
+.step{min-width:0;display:grid;gap:.5rem;align-content:start}
+.step::before{counter-increment:step;content:"Step " counter(step);font-family:var(--display);font-weight:800;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+
+/* pay */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.pay{display:grid;gap:.7rem;padding:1.6rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);min-width:0;align-content:start}
+.pay h3{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.pill{font-family:var(--display);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:var(--blue);color:var(--on-blue);padding:.25rem .6rem;border-radius:999px;font-weight:800}
+.mcos{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.mcos span{border:1px solid var(--line);background:var(--tint);border-radius:8px;padding:.35rem .8rem;font-weight:700;font-size:.92rem}
+
+/* area */
+.area{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-top:2rem}
+.towns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.towns span{border:1px solid var(--line);border-radius:999px;padding:.3rem .85rem;font-size:.95rem;background:var(--surface);font-weight:600}
+
+/* referral + contact */
+.refgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:2rem;margin-top:2rem}
+.detail{display:grid;gap:.25rem;padding-block:1rem;border-top:1px solid var(--line)}
+.detail:last-of-type{border-bottom:1px solid var(--line)}
+.detail small{color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-family:var(--display);font-weight:800;font-size:.7rem}
+.detail .val{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;font-size:1.2rem;font-family:var(--display);font-weight:800;user-select:all;word-break:break-word}
+.copy{font-size:.78rem;font-family:var(--body);font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.25rem .7rem;cursor:pointer}
+.copy:focus-visible{outline:3px solid var(--blue-light)}
+.checklist{list-style:none;margin:.4rem 0 0;padding:0;display:grid;gap:.45rem}
+.checklist li{padding-left:1.7rem;position:relative}
+.checklist li::before{content:"";position:absolute;left:0;top:.42em;width:14px;height:8px;border-left:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(-45deg)}
+form{display:grid;gap:.9rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem;min-width:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+label{display:grid;gap:.3rem;font-weight:700;font-size:.92rem}
+input,select,textarea{font:inherit;padding:.65rem .75rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--blue-light);outline-offset:1px}
+.note{font-size:.9rem;color:var(--muted)}
+#refOut,#formOut{display:grid;gap:.6rem}
+#refOut textarea{min-height:12rem;font-size:.92rem}
+
+/* closing cta */
+.cta{background:var(--blue);color:var(--on-blue);padding-block:clamp(3rem,6vw,4.5rem);position:relative;overflow:hidden}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;position:relative}
+.cta h2{color:var(--on-blue)}
+.cta p{opacity:.9;max-width:34rem;margin-top:.5rem}
+.cta .btn.primary{background:var(--on-blue);color:var(--blue)}
+.cta .btn.primary:hover{background:#eaf1fd}
+.cta i{position:absolute;right:-6vw;top:-10vw;width:26vw;height:26vw;max-width:360px;max-height:360px;background:rgba(255,255,255,.12);border-radius:18px;transform:rotate(45deg)}
+
+footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line);background:var(--bg)}
+.fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+.fcols h4{color:var(--ink);margin-bottom:.6rem}
+.fcols ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
+.fcols a{text-decoration:none}
+.fcols a:hover{color:var(--blue)}
+.fine{margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line);display:grid;gap:.5rem;max-width:64rem}
+.res{display:grid;gap:.5rem;margin-top:1.2rem}
+.res a{display:inline-flex;gap:.5rem;align-items:center}
+
+/* payer / program marquee */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);padding-block:1.4rem;overflow:hidden}
+.marquee .wrap{text-align:center}
+.marquee .eyebrow{margin-bottom:.9rem}
+.track{display:flex;gap:2.5rem;width:max-content;will-change:transform}
+.tile{display:inline-flex;align-items:center;gap:.7rem;padding:.7rem 1.4rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);white-space:nowrap;font-family:var(--display);font-weight:800;font-size:1.05rem;color:var(--ink)}
+.tile small{display:block;font-family:var(--body);font-weight:600;font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.tile .dot{width:10px;height:10px;border-radius:50%;background:var(--blue);flex:none}
+.tile img{height:34px;width:auto;display:block}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .track{animation:slide 32s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+}
+@media (prefers-reduced-motion:reduce){.track{flex-wrap:wrap;width:auto;justify-content:center}.track .dup{display:none}}
+
+/* horizontal expanding services */
+.svc-row{display:flex;gap:.9rem;margin-top:2rem;min-height:380px}
+.svc{flex:1 1 0;min-width:0;position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;padding:1.5rem;border-radius:16px;background:var(--tint);border:1px solid var(--line);text-decoration:none;color:var(--ink);overflow:hidden}
+.svc .ic{width:48px;height:48px;border-radius:12px;background:var(--surface);display:grid;place-items:center;color:var(--blue);margin-bottom:auto}
+.svc .ic svg{width:26px;height:26px}
+.svc h3{font-size:1.15rem}
+.svc .more{color:var(--muted);font-size:.95rem;max-height:0;opacity:0;overflow:hidden}
+.svc .more ul{margin:.3rem 0 0;padding-left:1.1rem}
+.svc .go{font-family:var(--display);font-weight:800;color:var(--blue);font-size:.9rem;display:inline-flex;gap:.4rem;align-items:center}
+.svc::after{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;background:var(--blue);opacity:.08;transform:rotate(45deg);border-radius:14px}
+@media (hover:hover) and (min-width:801px){
+  .svc{transition:flex .45s cubic-bezier(.2,.7,.2,1),background .3s,box-shadow .3s}
+  .svc .more{transition:max-height .45s ease,opacity .35s ease .1s}
+  .svc:hover,.svc:focus-visible{flex:2.4 1 0;background:var(--surface);box-shadow:var(--shadow)}
+  .svc:hover .more,.svc:focus-visible .more{max-height:260px;opacity:1}
+}
+@media (hover:none),(max-width:800px){
+  .svc-row{flex-direction:column;min-height:0}
+  .svc .more{max-height:none;opacity:1}
+}
+.svc:focus-visible{outline:3px solid var(--blue-light)}
+
+@media (max-width:800px){
+  .strip,.cards,.steps,.two,.area,.refgrid,.row2,.fcols{grid-template-columns:1fr}
+  .shapes .a{right:-30vw;top:-30vw;width:60vw;height:60vw}
+  .shapes .b{right:-10vw;top:0;width:40vw;height:40vw;opacity:.6}
+  .shapes .c{display:none}
+}
+</style>
+
+<header id="hdr">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top" aria-label="Haven Crest Homes home">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 17 16 6l12 11" stroke="#1a6ff0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 15v11h16V15" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M16 22.5s-4-2.4-4-5a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.6-4 5-4 5z" fill="#1a6ff0"/></svg>
+        <span>Haven Crest Homes<small>Care you can count on</small></span>
+      </a>
+      <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navList" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <ul id="navList">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pay">Programs &amp; coverage</a></li>
+        <li><a href="#refer">For care managers</a></li>
+        <li><a href="#families">For families</a></li>
+        <li><a href="#area">Service area</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn primary" href="#refer">Submit a referral</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="shapes" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="eyebrow">In-home support · Northwest &amp; Western Wisconsin</div>
+      <h1>Helping you live well at home.</h1>
+      <p class="sub">Care you can count on. Peace of mind at home.</p>
+      <p class="lede">Dependable, person-centered in-home support for older adults and adults with disabilities. Help with the daily tasks that have gotten harder, from trained professionals who respect that your home is your home.</p>
+      <div class="actions">
+        <a class="btn primary" href="#contact">Request a call</a>
+        <a class="btn ghost" href="#refer">Refer a member</a>
+      </div>
+      <div class="contactline">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="#1a6ff0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>715-338-2315</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="#1a6ff0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>compliance@havencresthome.com</span>
+      </div>
+    </div>
+    <div class="strip reveal">
+      <div><strong>Enrolled Wisconsin Medicaid provider</strong><span>Serving Family Care and IRIS participants, plus private-pay families</span></div>
+      <div><strong>Trained Direct Support Professionals</strong><span>Background-checked, trained before the first visit, supervised throughout</span></div>
+      <div><strong>Your home, your choices</strong><span>Support follows a written plan built around your routines and goals</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="marquee" aria-label="Programs and payers we serve">
+  <div class="wrap"><div class="eyebrow">Programs and payers we serve</div></div>
+  <div class="track" id="track">
+    <span class="tile"><span class="dot"></span><span>Wisconsin Medicaid<small>ForwardHealth enrolled</small></span></span>
+    <span class="tile"><span class="dot"></span><span>Family Care<small>Managed long-term care</small></span></span>
+    <span class="tile"><span class="dot"></span><span>Inclusa<small>Family Care MCO</small></span></span>
+    <span class="tile"><span class="dot"></span><span>My Choice Wisconsin<small>Family Care MCO</small></span></span>
+    <span class="tile"><span class="dot"></span><span>IRIS<small>Self-directed supports</small></span></span>
+    <span class="tile"><span class="dot"></span><span>Private Pay<small>Families &amp; individuals</small></span></span>
+    <span class="tile dup" aria-hidden="true"><span class="dot"></span><span>Wisconsin Medicaid<small>ForwardHealth enrolled</small></span></span>
+    <span class="tile dup" aria-hidden="true"><span class="dot"></span><span>Family Care<small>Managed long-term care</small></span></span>
+    <span class="tile dup" aria-hidden="true"><span class="dot"></span><span>Inclusa<small>Family Care MCO</small></span></span>
+    <span class="tile dup" aria-hidden="true"><span class="dot"></span><span>My Choice Wisconsin<small>Family Care MCO</small></span></span>
+    <span class="tile dup" aria-hidden="true"><span class="dot"></span><span>IRIS<small>Self-directed supports</small></span></span>
+    <span class="tile dup" aria-hidden="true"><span class="dot"></span><span>Private Pay<small>Families &amp; individuals</small></span></span>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What we help with</div>
+      <h2>Practical support with the parts of the day that have gotten harder.</h2>
+      <p class="lede" style="margin-top:.8rem">Our Direct Support Professionals (DSPs) help with activities of daily living and keep the household running, so you can stay independent and your family can breathe. Hover a service to see more; click to open its page.</p>
+    </div>
+    <div class="svc-row reveal">
+      <a class="svc" href="personal-care.html" id="svc-personal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></div>
+        <h3>Personal care</h3>
+        <p>Bathing, dressing, toileting, meals and mobility.</p>
+        <div class="more"><ul><li>Bathing, showering, skin and hair care, oral care</li><li>Dressing and grooming</li><li>Toileting and incontinence care with privacy</li><li>Eating, hydration and mealtime setup</li><li>Safe transfers, walking alongside, fall-risk awareness</li><li>Routine and medication reminders where authorized</li></ul></div>
+        <span class="go">Open personal care →</span>
+      </a>
+      <a class="svc" href="around-the-house.html" id="svc-home">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+        <h3>Around the house</h3>
+        <p>Meals, housekeeping, laundry and organization.</p>
+        <div class="more"><ul><li>Meal planning and preparation to your tastes and diet</li><li>Light housekeeping: kitchen, bathroom, floors, trash</li><li>Laundry, folding, changing linens</li><li>Mail, organization and home-safety checks</li><li>Pet care support such as feeding and letting the dog out</li></ul></div>
+        <span class="go">Open around the house →</span>
+      </a>
+      <a class="svc" href="community.html" id="svc-community">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M14 20a4.5 4.5 0 0 1 7-3.7"/></svg></div>
+        <h3>Community &amp; connection</h3>
+        <p>Errands, appointments, outings and staying connected.</p>
+        <div class="more"><ul><li>Errands, shopping and pharmacy runs</li><li>Accompanying you to appointments</li><li>Clubs, faith communities, classes and outings</li><li>Routine and skill building toward independence</li><li>Wellness observation reported to your care team</li></ul></div>
+        <span class="go">Open community →</span>
+      </a>
+      <a class="svc" href="respite-transitions.html" id="svc-respite">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></div>
+        <h3>Respite &amp; transition home</h3>
+        <p>Relief for caregivers. Extra hands after a hospital stay.</p>
+        <div class="more"><ul><li>Scheduled respite so family caregivers can rest</li><li>Home setup before discharge</li><li>Increased hours during the first two weeks home</li><li>Coordination with the care manager and physician</li><li>Step-down to a sustainable long-term plan</li></ul></div>
+        <span class="go">Open respite &amp; transitions →</span>
+      </a>
+    </div>
+
+    <div class="acc reveal">
+      <details id="boundaries">
+        <summary>What our DSPs do not do</summary>
+        <div class="body">
+          <p>Clear boundaries protect you and keep us honest. Haven Crest Homes provides non-medical support only.</p>
+          <ul>
+            <li>No nursing or medical care, wound care, injections, or clinical assessments</li>
+            <li>No medication administration beyond reminders and assistance allowed by your program and plan</li>
+            <li>No overnight awake staffing unless specifically authorized and staffed</li>
+            <li>No financial management, no handling of your money or accounts</li>
+          </ul>
+          <p>Our DSPs observe and report. If something changes, your care manager, family or physician hears about it promptly.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="how">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">How it works</div>
+      <h2>From first call to a confirmed plan.</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <h3>A conversation</h3>
+        <p>Call or send a request. We ask what a typical day looks like, what has become difficult, and who else is on your care team. Every inquiry gets a response within one business day.</p>
+      </div>
+      <div class="step">
+        <h3>A home visit and a written plan</h3>
+        <p>We meet you at home, learn your routines and preferences, and write a Service Plan with you. If you have a care manager or IRIS consultant, we coordinate with them on authorized hours.</p>
+      </div>
+      <div class="step">
+        <h3>Consistent support</h3>
+        <p>You're matched with a DSP trained on your plan. A supervisor checks in regularly, and you and your family always know who to call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="pay">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Programs and coverage</div>
+      <h2>Most of our members don't pay out of pocket.</h2>
+      <p class="lede" style="margin-top:.8rem">In-home support like ours is covered for many Wisconsin residents through Medicaid long-term care programs. Not sure where you stand? Call us and we'll walk through it together.</p>
+    </div>
+    <div class="two reveal">
+      <div class="pay">
+        <h3>Family Care <span class="pill">Medicaid</span></h3>
+        <p>Family Care is Wisconsin's managed long-term care program for frail elders and adults with disabilities. A care manager at your managed care organization (MCO) authorizes the services in your plan. Ask them to authorize Haven Crest Homes.</p>
+        <p class="note">Family Care MCOs serving Douglas and St. Croix counties:</p>
+        <div class="mcos"><span>Inclusa</span><span>My Choice Wisconsin</span></div>
+      </div>
+      <div class="pay">
+        <h3>IRIS <span class="pill">Self-directed</span></h3>
+        <p>IRIS (Include, Respect, I Self-Direct) lets you manage your own budget and choose your providers. Your IRIS consultant can help add Haven Crest Homes to your plan.</p>
+      </div>
+      <div class="pay">
+        <h3>Private pay <span class="pill">Families</span></h3>
+        <p>For families who want support now, or need hours beyond what a program covers, we offer hourly private-pay care with the same trained staff, the same written plan and the same supervision. Ask about respite and short-term transition-home packages.</p>
+      </div>
+      <div class="pay">
+        <h3>Not enrolled yet? <span class="pill">Start here</span></h3>
+        <p>Your county Aging &amp; Disability Resource Center (ADRC) does the eligibility screen at no cost and explains your options. We're glad to help you make that first call.</p>
+        <div class="res">
+          <a class="text" href="https://www.dhs.wisconsin.gov/adrc/index.htm" target="_blank" rel="noopener">Find your ADRC →</a>
+          <a class="text" href="https://www.dhs.wisconsin.gov/familycare/index.htm" target="_blank" rel="noopener">About Family Care (Wisconsin DHS) →</a>
+          <a class="text" href="https://www.dhs.wisconsin.gov/iris/index.htm" target="_blank" rel="noopener">About IRIS (Wisconsin DHS) →</a>
+        </div>
+      </div>
+    </div>
+    <div class="acc reveal">
+      <details>
+        <summary>I have Medicare or a Medicare Advantage plan. Am I covered?</summary>
+        <div class="body"><p>Generally no. Medicare and Medicare Advantage plans do not cover ongoing non-medical in-home support. If that's the only coverage you have, call us anyway. Many people qualify for Medicaid long-term care without knowing it, and we'll point you to the right office.</p></div>
+      </details>
+      <details>
+        <summary>Can a family member be paid to provide my care?</summary>
+        <div class="body"><p>In some situations, yes. Family Care and IRIS allow certain family members to be hired as paid caregivers through an agency, subject to program rules and MCO approval. Haven Crest Homes can employ, train and supervise a family caregiver so the support stays reliable and compliant. Ask your care manager, then ask us.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="refer">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">For care managers, IRIS consultants and discharge planners</div>
+      <h2>Refer a member in under five minutes.</h2>
+      <p class="lede" style="margin-top:.8rem">We acknowledge every referral within one business day and can usually complete the home visit and begin services within a week of authorization.</p>
+      <div class="jump"><a href="#ref-before">Before you refer</a><a href="#ref-checklist">Referral checklist</a><a href="#ref-form">Referral builder</a><a href="#faq">FAQ</a></div>
+    </div>
+    <div class="refgrid">
+      <div class="reveal">
+        <div class="detail" id="ref-before">
+          <small>Before you refer</small>
+          <p class="note">Service, authorization, schedule and staffing are confirmed together with you. Please confirm the member's county is in our <a class="text" href="#area">service area</a>, and that the requested support fits non-medical in-home care.</p>
+        </div>
+        <div class="detail" id="ref-checklist">
+          <small>Referral checklist</small>
+          <ul class="checklist">
+            <li>Member name, date of birth and county</li>
+            <li>Program (Family Care or IRIS) and MCO or ICA</li>
+            <li>Requested services, hours per week and preferred schedule</li>
+            <li>Requested start date</li>
+            <li>Relevant safety information (mobility, pets, home access)</li>
+            <li>Your name, organization and best contact</li>
+          </ul>
+          <p class="note" style="margin-top:.6rem">Send protected health information only through your organization's secure email.</p>
+        </div>
+        <div class="detail">
+          <small>Referral form</small>
+          <p><a class="btn primary" id="refLink" href="#ref-form" data-pending="1">Submit a referral online</a></p>
+          <p class="note">Online form coming soon. Use the referral builder or email us directly.</p>
+        </div>
+        <div class="detail">
+          <small>Send referrals to</small>
+          <div class="val"><span id="email">compliance@havencresthome.com</span><button class="copy" data-copy="email" type="button">Copy</button></div>
+        </div>
+        <div class="detail">
+          <small>Questions</small>
+          <div class="val"><span id="phone">715-338-2315</span><button class="copy" data-copy="phone" type="button">Copy</button></div>
+          <p class="note">Monday to Friday, 8 am to 6 pm.</p>
+        </div>
+      </div>
+      <form id="refForm" class="reveal" novalidate>
+        <h3 id="ref-form">Referral builder</h3>
+        <p class="note">Builds a referral you can paste into a secure email. Nothing is stored on this page.</p>
+        <div class="row2">
+          <label>Your name <input id="rName" name="rname" autocomplete="name" required></label>
+          <label>Organization <input id="rOrg" name="rorg" placeholder="e.g. Inclusa, ADRC, hospital"></label>
+        </div>
+        <div class="row2">
+          <label>Your phone <input id="rPhone" name="rphone" type="tel" required></label>
+          <label>Your email <input id="rEmail" name="remail" type="email"></label>
+        </div>
+        <div class="row2">
+          <label>Member name <input id="mName" name="mname" placeholder="First and last name"></label>
+          <label>Member county <input id="mCounty" name="mcounty" placeholder="e.g. Douglas"></label>
+        </div>
+        <div class="row2">
+          <label>Program
+            <select id="mProg" name="mprog">
+              <option>Family Care</option>
+              <option>IRIS</option>
+              <option>Private pay</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label>Requested hours per week <input id="mHours" name="mhours" placeholder="e.g. 20"></label>
+        </div>
+        <label>Services requested <textarea id="mNeed" name="mneed" rows="3" placeholder="e.g. morning personal care, meal prep, housekeeping, community outings"></textarea></label>
+        <label>Requested start date <input id="mStart" name="mstart" type="date"></label>
+        <button class="btn primary" type="submit">Build referral</button>
+        <div id="refOut" hidden>
+          <p class="note">Copy this into an email to <strong>compliance@havencresthome.com</strong>. Attach the authorization if you have it.</p>
+          <textarea id="refText" readonly aria-label="Your referral text"></textarea>
+          <button class="btn ghost" type="button" id="copyRef">Copy referral</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="families">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">For families</div>
+      <h2>You don't have to figure this out alone.</h2>
+      <p class="lede" style="margin-top:.8rem">Most families call us at a hard moment: a fall, a hospital discharge, a parent who insists they're fine. Here's what we tell them.</p>
+    </div>
+    <div class="acc reveal">
+      <details>
+        <summary>How do I know it's time for in-home support?</summary>
+        <div class="body"><p>Common signs: missed meals or medications, a decline in hygiene, unopened mail, a recent fall, a caregiver who is exhausted, or a doctor or discharge planner recommending help at home. Support can start small, a few mornings a week, and grow only if needed. Our goal is to keep someone independent, not to take over.</p></div>
+      </details>
+      <details>
+        <summary>What does the first visit look like?</summary>
+        <div class="body"><p>A supervisor comes to the home for about an hour. We walk through a typical day, look at the home together for safety, talk about preferences (how coffee is taken matters), and write a Service Plan. Family is welcome in the conversation when the member wants them there.</p></div>
+      </details>
+      <details>
+        <summary>Will it be the same person every time?</summary>
+        <div class="body"><p>That's the goal, and it's why we invest in keeping our DSPs. You'll have a primary DSP trained on the plan and a named backup who has also met the member, so a sick day doesn't mean a stranger at the door.</p></div>
+      </details>
+      <details>
+        <summary>How will I know how things are going?</summary>
+        <div class="body"><p>Every visit is documented. With the member's permission, we share updates with family on the schedule you prefer: a quick text after visits, a weekly summary, or a call when something changes. If a DSP notices a change in health, mobility or mood, you and the care team hear about it the same day.</p></div>
+      </details>
+      <details>
+        <summary>My parent is in the hospital or rehab and coming home soon.</summary>
+        <div class="body"><p>Call us before discharge, not after. We can meet the discharge planner's timeline, set up the home, and provide extra hours during the first two weeks when the risk of a return trip is highest. Ask the discharge planner to send us a referral; the checklist above tells them what we need.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="area">
+  <div class="wrap">
+    <div class="area reveal">
+      <div>
+        <div class="eyebrow">Service area</div>
+        <h2>Based in Superior. Serving Northwest and Western Wisconsin.</h2>
+        <p style="margin-top:.8rem;color:var(--muted)">We keep our service area deliberate. Shorter drives mean DSPs arrive on time, stay the full visit and can cover for one another when life happens. We add communities as we add staff.</p>
+      </div>
+      <div>
+        <h3>Communities we serve</h3>
+        <div class="towns">
+          <span>Superior</span><span>South Range</span><span>Lake Nebagamon</span><span>Solon Springs</span><span>Poplar</span><span>Maple</span><span>Brule</span><span>Douglas County</span><span>Hudson</span><span>St. Croix County</span>
+        </div>
+        <p class="note" style="margin-top:1rem">Outside this list? Ask anyway. We'll tell you plainly whether we can staff your home reliably.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Frequently asked questions</div>
+      <h2>Straight answers.</h2>
+    </div>
+    <div class="acc reveal">
+      <details>
+        <summary>Are your caregivers employees or contractors?</summary>
+        <div class="body"><p>Employees. Every DSP passes a Wisconsin caregiver background check before hire, completes competency-based training before the first visit, and is supervised by a Haven Crest Homes supervisor. We carry the insurance and the responsibility.</p></div>
+      </details>
+      <details>
+        <summary>Is there a minimum number of hours?</summary>
+        <div class="body"><p>For program members, we follow the hours authorized in your plan. For private-pay families, visits are typically a minimum of two hours so a DSP has time to do the work well. We'll be upfront if a schedule isn't one we can staff reliably.</p></div>
+      </details>
+      <details>
+        <summary>What happens if my DSP is sick?</summary>
+        <div class="body"><p>You're told as early as possible and offered the named backup who has already met you. We track missed and late visits as a core quality measure because reliability is the whole point.</p></div>
+      </details>
+      <details>
+        <summary>How quickly can services start?</summary>
+        <div class="body"><p>For program members, usually within a week of authorization. For private pay, often within a few days of the home visit. Hospital discharges can move faster when the discharge planner contacts us early.</p></div>
+      </details>
+      <details>
+        <summary>Do you serve adults with developmental disabilities?</summary>
+        <div class="body"><p>Yes. Much of our work is with adults with intellectual and developmental disabilities who want to live in their own homes with support that respects their choices and builds skills rather than dependence.</p></div>
+      </details>
+      <details>
+        <summary>Are you hiring?</summary>
+        <div class="body"><p>We're always looking for dependable, compassionate DSPs in Douglas and St. Croix counties, including family caregivers who want to be employed, trained and supported. Email <strong>compliance@havencresthome.com</strong> with "DSP" in the subject line.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">About Haven Crest Homes</div>
+      <h2>Built around one idea: the member's home is the member's home.</h2>
+    </div>
+    <div class="two reveal">
+      <p>Haven Crest Homes LLC is a Wisconsin-owned in-home support agency based in Superior. Our Direct Support Professionals enter your home as trained professionals whose job is to support your choices, your privacy, your safety and your independence, and to follow the plan you helped write.</p>
+      <p>We invest in our DSPs because reliability depends on it: caregiver background checks before hire, competency-based training before the first visit, a supervisor who knows every member, and a real career path so the person you trust stays with you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's talk about what you need.</h2>
+      <p class="lede" style="margin-top:.8rem">Members, families and referral partners are all welcome. We return every inquiry within one business day.</p>
+    </div>
+    <div class="refgrid">
+      <div class="reveal">
+        <div class="detail">
+          <small>Phone</small>
+          <div class="val"><span id="phone2">715-338-2315</span><button class="copy" data-copy="phone2" type="button">Copy</button></div>
+          <p class="note">Monday to Friday, 8 am to 6 pm. Leave a message after hours and we'll call back the next business morning.</p>
+        </div>
+        <div class="detail">
+          <small>Email</small>
+          <div class="val"><span id="email2">compliance@havencresthome.com</span><button class="copy" data-copy="email2" type="button">Copy</button></div>
+        </div>
+        <div class="detail">
+          <small>Office</small>
+          <div class="val" style="font-size:1.05rem"><span id="addr">1507 Tower Ave, Suite 333<br>Superior, WI 54880</span></div>
+          <p class="note">By appointment. Most of our work happens in members' homes.</p>
+        </div>
+        <div class="detail">
+          <small>Web</small>
+          <div class="val" style="font-size:1.05rem"><span>havencresthome.com</span></div>
+        </div>
+      </div>
+      <form id="reqForm" class="reveal" novalidate>
+        <h3>Request a call</h3>
+        <p class="note">Fill this in and we'll prepare a message you can send us by phone or email. Please don't include medical details here.</p>
+        <label>Your name <input id="fName" name="name" autocomplete="name" required></label>
+        <label>Best phone number <input id="fPhone" name="phone" type="tel" autocomplete="tel" required></label>
+        <label>I'm reaching out as
+          <select id="fRole" name="role">
+            <option>The person who needs support</option>
+            <option>A family member</option>
+            <option>A care manager or case worker</option>
+            <option>A discharge planner or facility</option>
+          </select>
+        </label>
+        <label>City or town <input id="fCity" name="city"></label>
+        <label>What would be most helpful? <textarea id="fNeed" name="need" rows="3" placeholder="For example: help in the mornings a few days a week"></textarea></label>
+        <button class="btn primary" type="submit">Prepare my message</button>
+        <div id="formOut" hidden>
+          <p class="note">Here's your message. Copy it and email it to <strong>compliance@havencresthome.com</strong>, or read it to us when you call.</p>
+          <textarea id="outText" readonly aria-label="Your prepared message" style="min-height:9rem"></textarea>
+          <button class="btn ghost" type="button" id="copyOut">Copy message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <i aria-hidden="true"></i>
+  <div class="wrap">
+    <div>
+      <h2>Talk through the next step.</h2>
+      <p>Whether you're a member, a family member or a care manager, one call is enough to find out whether Haven Crest Homes is the right fit.</p>
+    </div>
+    <a class="btn primary" href="#contact">Request a call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <strong style="font-family:var(--display);color:var(--ink);font-size:1.05rem">Haven Crest Homes LLC</strong>
+        <p style="margin-top:.5rem">Care you can count on. Peace of mind at home.</p>
+        <p style="margin-top:.8rem">1507 Tower Ave, Suite 333<br>Superior, WI 54880</p>
+        <p style="margin-top:.5rem">715-338-2315<br>compliance@havencresthome.com</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul><li><a href="personal-care.html">Personal care</a></li><li><a href="around-the-house.html">Around the house</a></li><li><a href="community.html">Community &amp; connection</a></li><li><a href="respite-transitions.html">Respite &amp; transitions</a></li></ul>
+      </div>
+      <div>
+        <h4>Programs</h4>
+        <ul><li><a href="#pay">Family Care</a></li><li><a href="#pay">IRIS</a></li><li><a href="#pay">Private pay</a></li><li><a href="#refer">Submit a referral</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#about">About</a></li><li><a href="#area">Service area</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="fine">
+      <p>Enrolled Wisconsin Medicaid provider. Haven Crest Homes provides non-medical in-home support. We do not discriminate on the basis of race, color, national origin, age, disability, sex, religion or source of payment. Services are subject to program eligibility, authorization and staffing availability. Program names are the property of their respective organizations.</p>
+      <p>© 2021–2026 Haven Crest Homes LLC</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Header shadow on scroll
+  var hdr=document.getElementById('hdr');
+  function onScroll(){hdr.classList.toggle('scrolled',window.scrollY>8)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Mobile menu
+  var mb=document.getElementById('menuBtn'),nl=document.getElementById('navList');
+  mb.addEventListener('click',function(){var o=nl.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+  nl.addEventListener('click',function(e){if(e.target.tagName==='A'){nl.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+
+  // Reveal on scroll: only elements below the first screen are hidden, so the page is complete at rest
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in')})}
+  else{
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in')}else{io.observe(el)}
+    });
+  }
+
+  // Open accordion when its anchor is targeted
+  function openTarget(){
+    var id=location.hash.slice(1);if(!id)return;
+    var t=document.getElementById(id);if(!t)return;
+    var d=t.tagName==='DETAILS'?t:t.closest('details');
+    if(d){d.open=true}
+  }
+  window.addEventListener('hashchange',openTarget);openTarget();
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var t=document.getElementById(a.getAttribute('href').slice(1));
+      if(t&&t.tagName==='DETAILS'){t.open=true}
+    });
+  });
+
+  function copyText(text, btn){
+    var done=function(){var old=btn.textContent;btn.textContent='Copied';setTimeout(function(){btn.textContent=old},1500)};
+    function fallback(){
+      var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');done()}catch(e){}
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+  }
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){copyText(document.getElementById(b.dataset.copy).textContent,b)});
+  });
+  function v(id){return document.getElementById(id).value.trim()}
+
+  document.getElementById('refForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!v('rName')||!v('rPhone')){document.getElementById('rName').reportValidity();document.getElementById('rPhone').reportValidity();return}
+    var lines=['REFERRAL — Haven Crest Homes','',
+      'Referred by: '+v('rName')+(v('rOrg')?' ('+v('rOrg')+')':''),
+      'Phone: '+v('rPhone')+(v('rEmail')?'   Email: '+v('rEmail'):''),
+      '',
+      'Member: '+(v('mName')||'(see secure attachment)'),
+      'County: '+(v('mCounty')||'—'),
+      'Program: '+v('mProg'),
+      'Requested hours/week: '+(v('mHours')||'—'),
+      'Requested start: '+(v('mStart')||'as soon as possible'),
+      'Services requested: '+(v('mNeed')||'—'),
+      '',
+      'Please contact me to confirm receipt and next steps.'];
+    document.getElementById('refText').value=lines.join('\n');
+    document.getElementById('refOut').hidden=false;
+    document.getElementById('refText').focus();
+  });
+  document.getElementById('copyRef').addEventListener('click',function(){copyText(document.getElementById('refText').value,this)});
+
+  document.getElementById('reqForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!v('fName')||!v('fPhone')){document.getElementById('fName').reportValidity();document.getElementById('fPhone').reportValidity();return}
+    var msg='Hello Haven Crest Homes,\n\nMy name is '+v('fName')+'. I am reaching out as: '+v('fRole').toLowerCase()+'.'+
+      (v('fCity')?'\nLocation: '+v('fCity'):'')+(v('fNeed')?'\nWhat would help most: '+v('fNeed'):'')+
+      '\n\nThe best number to reach me is '+v('fPhone')+'.\n\nThank you.';
+    document.getElementById('outText').value=msg;
+    document.getElementById('formOut').hidden=false;
+    document.getElementById('outText').focus();
+  });
+  document.getElementById('copyOut').addEventListener('click',function(){copyText(document.getElementById('outText').value,this)});
+
+  var rl=document.getElementById('refLink');
+  rl.addEventListener('click',function(e){if(rl.dataset.pending){e.preventDefault();document.getElementById('rName').focus()}});
+})();
+</script>
