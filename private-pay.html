@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Private Pay · Haven Crest Homes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap">
+<style>
+/* Layout: white ground, bold black headlines, bright-blue diagonal shapes from the business card; blue reserved for actions and accents. Content expands through accordions; motion is subtle reveal + drifting hero shapes. */
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --tint:#eaf1fd;
+  --ink:#0d0f14;
+  --muted:#4d5666;
+  --line:#d9e2f0;
+  --blue:#1a6ff0;
+  --blue-dark:#0f52c9;
+  --blue-light:#8fb7f8;
+  --on-blue:#ffffff;
+  --shadow:0 10px 30px rgba(13,15,20,.08);
+  --warm:#e8a33d;        /* second accent: warmth, used sparingly */
+  --warm-soft:#fff3df;
+  --display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Nunito Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1420;--surface:#151d2c;--tint:#172238;--ink:#f1f4fa;--muted:#aab4c6;--line:#27344b;
+    --blue:#3b84f5;--blue-dark:#2f6fd6;--blue-light:#5f9bf5;--on-blue:#ffffff;--shadow:0 10px 30px rgba(0,0,0,.4);--warm:#f0b25a;--warm-soft:#2b2416;color-scheme:dark}
+}
+:root[data-theme="dark"]{
+  --bg:#0e1420;--surface:#151d2c;--tint:#172238;--ink:#f1f4fa;--muted:#aab4c6;--line:#27344b;
+  --blue:#3b84f5;--blue-dark:#2f6fd6;--blue-light:#5f9bf5;--on-blue:#ffffff;--shadow:0 10px 30px rgba(0,0,0,.4);--warm:#f0b25a;--warm-soft:#2b2416;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0;font-weight:800;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,6vw,4rem)}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+h3{font-size:1.15rem}
+h4{font-size:1rem}
+p{margin:0}
+a{color:inherit}
+a.text{color:var(--blue);font-weight:700;text-decoration:none;border-bottom:2px solid transparent}
+a.text:hover{border-bottom-color:var(--blue)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:clamp(3rem,7vw,5.5rem);position:relative;scroll-margin-top:72px}
+.band.tint{background:var(--tint)}
+.eyebrow{font-family:var(--display);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:800;margin-bottom:.8rem}
+.lede{font-size:1.2rem;color:var(--muted);max-width:40rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:800;font-size:.98rem;padding:.85rem 1.4rem;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1}
+.btn.primary{background:var(--blue);color:var(--on-blue)}
+.btn.primary:hover{background:var(--blue-dark)}
+.btn.ghost{border-color:var(--blue);color:var(--blue);background:transparent}
+.btn.ghost:hover{background:var(--tint)}
+.btn:focus-visible{outline:3px solid var(--blue-light);outline-offset:2px}
+.jump{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.jump a{font-family:var(--display);font-weight:800;font-size:.85rem;padding:.5rem .95rem;border-radius:999px;border:2px solid var(--line);text-decoration:none;color:var(--muted)}
+.jump a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* header */
+header{background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:5;border-bottom:1px solid var(--line);transition:box-shadow .25s}
+header.scrolled{box-shadow:var(--shadow)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.logo{font-family:var(--display);font-weight:800;font-size:1.1rem;text-decoration:none;display:flex;align-items:center;gap:.6rem;letter-spacing:.02em;white-space:nowrap}
+.logo svg{width:30px;height:30px;flex:none}
+.logo small{display:block;font-size:.6rem;letter-spacing:.14em;color:var(--blue);font-weight:600;text-transform:uppercase}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center;font-size:.9rem;font-weight:700;white-space:nowrap}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--blue)}
+nav .btn{padding:.6rem 1.1rem;font-size:.88rem}
+.menu{display:none;background:none;border:2px solid var(--line);border-radius:10px;padding:.45rem .6rem;cursor:pointer;color:var(--ink)}
+.menu svg{width:22px;height:22px;display:block}
+@media (max-width:900px){
+  nav{flex-wrap:wrap}
+  .menu{display:block}
+  nav ul{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding-block:.5rem}
+  nav ul.open{display:flex}
+  nav ul li a{display:block;padding:.7rem 0;border-top:1px solid var(--line)}
+  nav ul li .btn{display:inline-flex;margin-top:.6rem}
+}
+
+/* hero with drifting diagonal shapes */
+.hero{padding-block:clamp(3.5rem,9vw,7rem);overflow:hidden;position:relative}
+.shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.shapes i{position:absolute;display:block;border-radius:18px;will-change:transform}
+.shapes .a{width:38vw;height:38vw;max-width:520px;max-height:520px;right:-12vw;top:-18vw;background:var(--blue);transform:rotate(45deg)}
+.shapes .b{width:30vw;height:30vw;max-width:420px;max-height:420px;right:6vw;top:10vw;background:var(--blue-light);transform:rotate(45deg);opacity:.9}
+.shapes .c{width:14vw;height:14vw;max-width:200px;max-height:200px;right:-4vw;bottom:-6vw;background:var(--blue-dark);transform:rotate(45deg)}
+.shapes .d{width:12vw;height:12vw;max-width:160px;max-height:160px;left:-6vw;bottom:-4vw;background:var(--tint);transform:rotate(45deg)}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes driftA{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(-14px,18px)}}
+  @keyframes driftB{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(16px,-12px)}}
+  @keyframes driftC{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(-10px,-10px)}}
+  .shapes .a{animation:driftA 14s ease-in-out infinite}
+  .shapes .b{animation:driftB 11s ease-in-out infinite}
+  .shapes .c{animation:driftC 9s ease-in-out infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .hero .inner>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero .inner>:nth-child(2){animation-delay:.08s}
+  .hero .inner>:nth-child(3){animation-delay:.16s}
+  .hero .inner>:nth-child(4){animation-delay:.24s}
+  .hero .inner>:nth-child(5){animation-delay:.32s}
+  .hero .inner>:nth-child(6){animation-delay:.4s}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .btn{transition:transform .15s ease,background .15s ease,box-shadow .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .card,.pay{transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover,.pay:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+}
+.hero .wrap{position:relative}
+.hero .inner{max-width:40rem}
+.hero .sub{font-family:var(--display);color:var(--blue);font-weight:600;font-size:clamp(1.1rem,2.2vw,1.45rem);margin-top:.6rem}
+.hero .lede{margin-top:1.2rem}
+.hero .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.contactline{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:2rem;font-weight:700;font-size:1rem}
+.contactline span,.contactline a{display:inline-flex;align-items:center;gap:.5rem;color:inherit}
+.contactline svg{width:22px;height:22px;flex:none}
+
+/* hero illustration */
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+.hero .strip{grid-column:1/-1}
+.scene{position:relative;width:100%;max-width:520px;margin:0 auto;aspect-ratio:1/.86}
+.scene svg{width:100%;height:100%;display:block}
+.sc-house{fill:var(--surface);stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+.sc-roof{fill:var(--blue);stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+.sc-door{fill:var(--warm);stroke:var(--ink);stroke-width:2.5}
+.sc-win{fill:var(--tint);stroke:var(--ink);stroke-width:2.5}
+.sc-glow{fill:var(--warm);opacity:.9}
+.sc-ground{fill:var(--tint)}
+.sc-path{fill:none;stroke:var(--warm);stroke-width:4;stroke-dasharray:1 12;stroke-linecap:round}
+.sc-tree{fill:var(--blue-light)}
+.sc-trunk{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.sc-skin{fill:var(--surface);stroke:var(--ink);stroke-width:2.5}
+.sc-body{fill:var(--blue);stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+.sc-body2{fill:var(--warm);stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+.sc-line{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.sc-heart{fill:var(--warm);stroke:var(--ink);stroke-width:2}
+.sc-sun{fill:var(--warm-soft);stroke:var(--warm);stroke-width:2.5}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .sc-float{animation:bob 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+  .sc-heart{animation:pulse 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+}
+
+/* commitments band */
+.commit{background:var(--ink);color:var(--bg);padding-block:clamp(2.5rem,5vw,4rem)}
+.commit .eyebrow{color:var(--warm)}
+.commit h2{color:var(--bg)}
+.commit .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:1.8rem}
+.commit .c{border-top:3px solid var(--warm);padding-top:1rem;min-width:0}
+.commit .big{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1;color:var(--bg)}
+.commit .c p{opacity:.8;margin-top:.5rem;font-size:.97rem}
+
+/* day timeline */
+.day{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.2rem;position:relative}
+.day::before{content:"";position:absolute;left:8%;right:8%;top:30px;height:3px;background:var(--line);border-radius:3px}
+.slot{position:relative;padding:0 1.2rem;min-width:0;display:grid;gap:.5rem;align-content:start;justify-items:center;text-align:center}
+.slot .dot{width:60px;height:60px;border-radius:50%;background:var(--surface);border:3px solid var(--blue);display:grid;place-items:center;color:var(--blue);position:relative;z-index:1}
+.slot:nth-child(2) .dot{border-color:var(--warm);color:var(--warm)}
+.slot .dot svg{width:28px;height:28px}
+.slot h3{margin-top:.5rem}
+.slot .t{font-family:var(--display);font-weight:800;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.slot p{color:var(--muted);font-size:.97rem;max-width:22rem}
+
+/* trust strip */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
+.strip div{border-left:3px solid var(--blue);padding-left:1rem;min-width:0}
+.strip strong{display:block;font-family:var(--display);font-weight:800}
+.strip span{color:var(--muted);font-size:.95rem}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem;display:grid;gap:.6rem;min-width:0;align-content:start}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--tint);display:grid;place-items:center;color:var(--blue)}
+.card .ic svg{width:24px;height:24px}
+.card ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+.card li{margin:.25rem 0}
+
+/* accordion */
+.acc{display:grid;gap:.6rem;margin-top:1.6rem}
+.acc details{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;font-family:var(--display);font-weight:800;font-size:1.02rem}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"";width:10px;height:10px;border-right:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(45deg);transition:transform .25s;flex:none;margin-right:.3rem}
+.acc details[open] summary::after{transform:rotate(225deg)}
+.acc summary:hover{color:var(--blue)}
+.acc summary:focus-visible{outline:3px solid var(--blue-light);outline-offset:-3px}
+.acc .body{padding:0 1.25rem 1.2rem;color:var(--muted);display:grid;gap:.6rem}
+.acc .body ul{margin:0;padding-left:1.1rem}
+.acc .body li{margin:.2rem 0}
+.tint .acc details{background:var(--surface)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;counter-reset:step}
+.after{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.after div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.3rem;min-width:0}
+.after strong{display:block;font-family:var(--display);font-weight:800;margin-bottom:.3rem}
+.after span{color:var(--muted);font-size:.97rem}
+
+/* map */
+.map{max-width:420px;width:100%;margin:0 auto}
+.map svg{width:100%;height:auto;display:block}
+.county{fill:var(--blue-light);stroke:var(--bg);stroke-width:1;opacity:.75}
+.county.served{fill:var(--blue);opacity:1}
+.state{fill:none;stroke:var(--ink);stroke-width:1.4}
+.pin{fill:var(--ink)}
+.label{font:700 15px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.city{fill:#c98a2b;stroke:var(--bg);stroke-width:1.5}
+.legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.8rem;font-size:.9rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+/* preferred caregiver */
+.byoc{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;margin-top:2rem;align-items:start}
+.byoc ol{margin:1rem 0 0;padding-left:1.2rem;display:grid;gap:.6rem}
+.byoc ol li::marker{font-family:var(--display);font-weight:800;color:var(--blue)}
+.byoc .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem;display:grid;gap:.6rem;min-width:0}
+.step{min-width:0;display:grid;gap:.5rem;align-content:start}
+.step::before{counter-increment:step;content:"Step " counter(step);font-family:var(--display);font-weight:800;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+
+/* pay */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.pay{display:grid;gap:.7rem;padding:1.6rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);min-width:0;align-content:start}
+.pay h3{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.pill{font-family:var(--display);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:var(--blue);color:var(--on-blue);padding:.25rem .6rem;border-radius:999px;font-weight:800}
+.mcos{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.mcos span{border:1px solid var(--line);background:var(--tint);border-radius:8px;padding:.35rem .8rem;font-weight:700;font-size:.92rem}
+
+/* area */
+.area{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-top:2rem}
+.towns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.towns span{border:1px solid var(--line);border-radius:999px;padding:.3rem .85rem;font-size:.95rem;background:var(--surface);font-weight:600}
+
+/* referral + contact */
+.refgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:2rem;margin-top:2rem}
+.detail{display:grid;gap:.25rem;padding-block:1rem;border-top:1px solid var(--line)}
+.detail:last-of-type{border-bottom:1px solid var(--line)}
+.detail small{color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-family:var(--display);font-weight:800;font-size:.7rem}
+.detail .val{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;font-size:1.2rem;font-family:var(--display);font-weight:800;user-select:all;word-break:break-word}
+.copy{font-size:.78rem;font-family:var(--body);font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.25rem .7rem;cursor:pointer}
+.copy:focus-visible{outline:3px solid var(--blue-light)}
+.checklist{list-style:none;margin:.4rem 0 0;padding:0;display:grid;gap:.45rem}
+.checklist li{padding-left:1.7rem;position:relative}
+.checklist li::before{content:"";position:absolute;left:0;top:.42em;width:14px;height:8px;border-left:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(-45deg)}
+form{display:grid;gap:.9rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem;min-width:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+label{display:grid;gap:.3rem;font-weight:700;font-size:.92rem}
+input,select,textarea{font:inherit;padding:.65rem .75rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--blue-light);outline-offset:1px}
+.note{font-size:.9rem;color:var(--muted)}
+#refOut,#formOut{display:grid;gap:.6rem}
+#refOut textarea{min-height:12rem;font-size:.92rem}
+
+/* closing cta */
+.cta{background:var(--blue);color:var(--on-blue);padding-block:clamp(3rem,6vw,4.5rem);position:relative;overflow:hidden}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;position:relative}
+.cta h2{color:var(--on-blue)}
+.cta p{opacity:.9;max-width:34rem;margin-top:.5rem}
+.cta .btn.primary{background:var(--on-blue);color:var(--blue)}
+.cta .btn.primary:hover{background:#eaf1fd}
+.cta i{position:absolute;right:-6vw;top:-10vw;width:26vw;height:26vw;max-width:360px;max-height:360px;background:rgba(255,255,255,.12);border-radius:18px;transform:rotate(45deg)}
+
+footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line);background:var(--bg)}
+.fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+.fcols h4{color:var(--ink);margin-bottom:.6rem}
+.fcols ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
+.fcols a{text-decoration:none}
+.fcols a:hover{color:var(--blue)}
+.fine{margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line);display:grid;gap:.5rem;max-width:64rem}
+.res{display:grid;gap:.5rem;margin-top:1.2rem}
+.res a{display:inline-flex;gap:.5rem;align-items:center}
+
+/* payer / program marquee */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);padding-block:1.4rem;overflow:hidden}
+.marquee .wrap{text-align:center}
+.marquee .eyebrow{margin-bottom:.9rem}
+.track{display:flex;gap:2.5rem;width:max-content;will-change:transform}
+.tile{display:inline-flex;align-items:center;gap:.7rem;padding:.7rem 1.4rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);white-space:nowrap;font-family:var(--display);font-weight:800;font-size:1.05rem;color:var(--ink)}
+.tile small{display:block;font-family:var(--body);font-weight:600;font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.tile .dot{width:10px;height:10px;border-radius:50%;background:var(--blue);flex:none}
+.tile img{height:34px;width:auto;display:block}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .track{animation:slide 32s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+}
+@media (prefers-reduced-motion:reduce){.track{flex-wrap:wrap;width:auto;justify-content:center}.track .dup{display:none}}
+
+/* horizontal expanding services */
+.svc-row{display:flex;gap:.9rem;margin-top:2rem;min-height:380px}
+.svc{flex:1 1 0;min-width:0;position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;padding:1.5rem;border-radius:16px;background:var(--tint);border:1px solid var(--line);text-decoration:none;color:var(--ink);overflow:hidden}
+.svc .ic{width:48px;height:48px;border-radius:12px;background:var(--surface);display:grid;place-items:center;color:var(--blue);margin-bottom:auto}
+.svc .ic svg{width:26px;height:26px}
+.svc h3{font-size:1.15rem}
+.svc .more{color:var(--muted);font-size:.95rem;max-height:0;opacity:0;overflow:hidden}
+.svc .more ul{margin:.3rem 0 0;padding-left:1.1rem}
+.svc .go{font-family:var(--display);font-weight:800;color:var(--blue);font-size:.9rem;display:inline-flex;gap:.4rem;align-items:center}
+.svc::after{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;background:var(--blue);opacity:.08;transform:rotate(45deg);border-radius:14px}
+@media (hover:hover) and (min-width:801px){
+  .svc{transition:flex .45s cubic-bezier(.2,.7,.2,1),background .3s,box-shadow .3s}
+  .svc .more{transition:max-height .45s ease,opacity .35s ease .1s}
+  .svc:hover,.svc:focus-visible{flex:2.4 1 0;background:var(--surface);box-shadow:var(--shadow)}
+  .svc:hover .more,.svc:focus-visible .more{max-height:260px;opacity:1}
+}
+@media (hover:none),(max-width:800px){
+  .svc-row{flex-direction:column;min-height:0}
+  .svc .more{max-height:none;opacity:1}
+}
+.svc:focus-visible{outline:3px solid var(--blue-light)}
+
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:1000px){.commit .grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:800px){
+  .strip,.cards,.steps,.two,.area,.refgrid,.row2,.fcols,.after,.byoc,.commit .grid,.day{grid-template-columns:1fr}
+  .hero .wrap{grid-template-columns:1fr}
+  .scene{max-width:360px}
+  .day::before{display:none}
+  .day{gap:2rem}
+  .shapes .a{right:-30vw;top:-30vw;width:60vw;height:60vw}
+  .shapes .b{right:-10vw;top:0;width:40vw;height:40vw;opacity:.6}
+  .shapes .c{display:none}
+}
+</style>
+<style>
+.pp-hero{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.pp-hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:start}
+.pk{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:2rem}
+.pk div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;min-width:0;display:grid;gap:.4rem;align-content:start}
+.pk h3{display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
+.pk small{font-family:var(--display);font-weight:800;color:var(--blue);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.pk p{color:var(--muted);font-size:.98rem}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+.why div{border-top:3px solid var(--warm);padding-top:.8rem;min-width:0}
+.why strong{display:block;font-family:var(--display);font-weight:800}
+.why span{color:var(--muted);font-size:.97rem}
+.tel{font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--blue);text-decoration:none}
+.sticky{position:sticky;top:90px}
+.chk{list-style:none;padding:0;margin:.8rem 0 0;display:grid;gap:.4rem;color:var(--muted)}
+.chk li{padding-left:1.6rem;position:relative}
+.chk li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:7px;border-left:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(-45deg)}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+@media (max-width:860px){.pp-hero .wrap,.pk,.why{grid-template-columns:1fr}.sticky{position:static}}
+</style></head><body>
+<header id="hdr">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html" aria-label="Haven Crest Homes home">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 17 16 6l12 11" stroke="#1a6ff0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 15v11h16V15" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M16 22.5s-4-2.4-4-5a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.6-4 5-4 5z" fill="#1a6ff0"/></svg>
+        <span>Haven Crest Homes<small>Care you can count on</small></span>
+      </a>
+      <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navList" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <ul id="navList">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pay">Coverage</a></li>
+        <li><a href="private-pay.html">Private pay</a></li>
+        <li><a href="index.html#caregiver">Caregivers</a></li>
+        <li><a href="index.html#refer">Referrals</a></li>
+        <li><a href="index.html#families">Families</a></li>
+        <li><a href="index.html#area">Service area</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a class="btn primary" href="index.html#refer">Submit a referral</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section class="hero pp-hero">
+  <div class="shapes" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="eyebrow">Private pay · Families and individuals</div>
+      <h1>Help at home, starting this week.</h1>
+      <p class="lede">No program enrollment, no waiting for an authorization. If your family needs dependable support now, Haven Crest Homes can meet you at home within days, write a plan with you, and start.</p>
+      <ul class="chk">
+        <li>Free in-home consultation, no obligation</li>
+        <li>Hourly care with a 2-hour minimum, no long-term contract</li>
+        <li>The same trained, background-checked DSPs and supervision our program members get</li>
+        <li>Family updates on the schedule you choose</li>
+      </ul>
+      <p style="margin-top:1.4rem"><a class="tel" href="tel:+17153382315">Call 715-338-2315</a><br><span class="note">Monday to Friday, 8 am to 6 pm. A person answers.</span></p>
+    </div>
+    <form id="ppForm" class="sticky" action="https://formsubmit.co/compliance@havencresthome.com" method="POST">
+      <h3>Request a free in-home consultation</h3>
+      <p class="note">We'll call you within one business day to set it up. Please don't include medical details here.</p>
+      <input type="hidden" name="_subject" value="New private-pay consultation request (havencresthome.com)">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://havencresthome.com/thank-you.html">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label>Your name <input id="pName" name="Your name" autocomplete="name" required></label>
+      <label>Best phone number <input id="pPhone" name="Phone" type="tel" autocomplete="tel" required></label>
+      <label>Email (optional) <input id="pEmail" name="Email" type="email" autocomplete="email"></label>
+      <label>Who needs support?
+        <select id="pWho" name="Support is for">
+          <option>Myself</option>
+          <option>My parent</option>
+          <option>My spouse or partner</option>
+          <option>Another family member or friend</option>
+        </select>
+      </label>
+      <label>City or town <input id="pCity" name="City" placeholder="e.g. Superior"></label>
+      <label>When would you like to start?
+        <select id="pWhen" name="Start timing">
+          <option>As soon as possible</option>
+          <option>Within the next 2 weeks</option>
+          <option>Within the next month</option>
+          <option>Just gathering information</option>
+        </select>
+      </label>
+      <label>What would help most? <textarea id="pNeed" name="What would help most" rows="3" placeholder="For example: mornings a few days a week, help after a hospital stay, a break for me as caregiver"></textarea></label>
+      <button class="btn primary" type="submit">Request my consultation</button>
+      <p class="note">Prefer to talk? Call 715-338-2315.</p>
+      <div id="ppOut" hidden><p class="note"><strong>Preview mode:</strong> on the live site this sends your request to Haven Crest Homes.</p></div>
+    </form>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">How families use private-pay care</div>
+    <h2>Start with what the week needs. Adjust as life changes.</h2>
+    <div class="pk">
+      <div><h3>Mornings <small>2–3 hrs · 3–7 days/wk</small></h3><p>Up, washed, dressed, breakfast, medications reminded, the day set up. The most common place to start.</p></div>
+      <div><h3>Daily support <small>4–8 hrs/day</small></h3><p>Personal care plus meals, the house, errands and company. For someone who shouldn't be alone most of the day.</p></div>
+      <div><h3>Caregiver relief <small>Scheduled blocks</small></h3><p>A standing afternoon, a full day each week, or a week's vacation. For the spouse or daughter who has been doing it all.</p></div>
+      <div><h3>Coming home <small>2–4 weeks, then step-down</small></h3><p>Extra hours after a hospital, rehab or nursing-home stay, when a return trip is most likely. We set up before discharge.</p></div>
+    </div>
+    <p class="note" style="margin-top:1.4rem;max-width:62rem">Every arrangement is hourly with a 2-hour visit minimum. We quote after the free in-home consultation, in writing, with no long-term contract and no fee to change or stop. Ask about overnight and 24-hour arrangements.</p>
+  </div>
+</section>
+
+<section class="band tint">
+  <div class="wrap">
+    <div class="eyebrow">Why families choose us</div>
+    <h2>The same care our program members get, with one phone call.</h2>
+    <div class="why">
+      <div><strong>A written plan, not a checklist</strong><span>We learn routines and preferences first, then write the plan with you. Your DSP is trained on it before the first visit.</span></div>
+      <div><strong>Consistency</strong><span>A primary DSP and a named backup who has met you. A supervisor home visit within 30 days and a check-in every month.</span></div>
+      <div><strong>You'll always know</strong><span>Every visit documented. Family updates after visits, weekly, or whenever something changes. Changes in health reported the same day.</span></div>
+    </div>
+    <p style="margin-top:1.6rem;max-width:62rem;color:var(--muted)">Paying privately today doesn't close the door on coverage later. If we think you may qualify for Family Care or IRIS, we'll say so and help you call the ADRC. Many families start with private pay and move to a covered plan.</p>
+  </div>
+</section>
+
+<section class="cta"><i aria-hidden="true"></i><div class="wrap">
+  <div><h2>Talk it through with a person.</h2><p>Fifteen minutes on the phone is usually enough to know whether we're the right fit.</p></div>
+  <a class="btn primary" href="tel:+17153382315">Call 715-338-2315</a>
+</div></section>
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <strong style="font-family:var(--display);color:var(--ink);font-size:1.05rem">Haven Crest Homes LLC</strong>
+        <p style="margin-top:.5rem">Care you can count on. Peace of mind at home.</p>
+        <p style="margin-top:.8rem">1507 Tower Ave, Suite 333<br>Superior, WI 54880</p>
+        <p style="margin-top:.5rem">715-338-2315<br>compliance@havencresthome.com</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul><li><a href="personal-care.html">Personal care</a></li><li><a href="around-the-house.html">Around the house</a></li><li><a href="community.html">Community &amp; connection</a></li><li><a href="respite-transitions.html">Respite &amp; transitions</a></li></ul>
+      </div>
+      <div>
+        <h4>Programs</h4>
+        <ul><li><a href="index.html#pay">Family Care</a></li><li><a href="index.html#pay">IRIS</a></li><li><a href="private-pay.html">Private pay</a></li><li><a href="index.html#caregiver">Preferred caregiver</a></li><li><a href="index.html#refer">Submit a referral</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="index.html#about">About</a></li><li><a href="index.html#area">Service area</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="fine">
+      <p>Enrolled Wisconsin Medicaid provider. Haven Crest Homes provides non-medical in-home support. We do not discriminate on the basis of race, color, national origin, age, disability, sex, religion or source of payment. Services are subject to program eligibility, authorization and staffing availability. Program names are the property of their respective organizations.</p>
+      <p>© 2021–2026 Haven Crest Homes LLC</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){var hdr=document.getElementById('hdr');function s(){hdr.classList.toggle('scrolled',window.scrollY>8)}window.addEventListener('scroll',s,{passive:true});s();
+var mb=document.getElementById('menuBtn'),nl=document.getElementById('navList');mb.addEventListener('click',function(){var o=nl.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+var f=document.getElementById('ppForm');if(f){f.addEventListener('submit',function(e){
+  if(/claude\.ai$/.test(location.hostname)){e.preventDefault();document.getElementById('ppOut').hidden=false;return}
+  var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='Sending…';});}
+})();
+</script>
+</body></html>

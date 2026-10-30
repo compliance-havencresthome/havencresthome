@@ -114,7 +114,7 @@ nav .btn{padding:.6rem 1.1rem;font-size:.88rem}
 .hero .lede{margin-top:1.2rem}
 .hero .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
 .contactline{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:2rem;font-weight:700;font-size:1rem}
-.contactline span{display:inline-flex;align-items:center;gap:.5rem}
+.contactline span,.contactline a{display:inline-flex;align-items:center;gap:.5rem;color:inherit}
 .contactline svg{width:22px;height:22px;flex:none}
 
 /* hero illustration */
@@ -335,6 +335,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       <ul id="navList">
         <li><a href="#services">Services</a></li>
         <li><a href="#pay">Coverage</a></li>
+        <li><a href="private-pay.html">Private pay</a></li>
         <li><a href="#caregiver">Caregivers</a></li>
         <li><a href="#refer">Referrals</a></li>
         <li><a href="#families">Families</a></li>
@@ -357,10 +358,10 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       <p class="lede">Dependable, person-centered in-home support for older adults and adults with disabilities. Help with the daily tasks that have gotten harder, from trained professionals who respect that your home is your home.</p>
       <div class="actions">
         <a class="btn primary" href="#contact">Request a call</a>
-        <a class="btn ghost" href="#refer">Refer a member</a>
+        <a class="btn ghost" href="tel:+17153382315">Call 715-338-2315</a>
       </div>
       <div class="contactline">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="#1a6ff0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>715-338-2315</span>
+        <a href="tel:+17153382315" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="#1a6ff0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>715-338-2315</a>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="#1a6ff0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>compliance@havencresthome.com</span>
       </div>
     </div>
@@ -643,7 +644,8 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       </div>
       <div class="pay">
         <h3>Private pay <span class="pill">Families</span></h3>
-        <p>For families who want support now, or need hours beyond what a program covers, we offer hourly private-pay care with the same trained staff, the same written plan and the same supervision. Ask about respite and short-term transition-home packages.</p>
+        <p>For families who want support now, or need hours beyond what a program covers, we offer hourly private-pay care with the same trained staff, the same written plan and the same supervision.</p>
+        <a class="text" href="private-pay.html">Private-pay options and free consultation →</a>
       </div>
       <div class="pay">
         <h3>Not enrolled yet? <span class="pill">Start here</span></h3>
@@ -722,7 +724,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
         <div class="detail">
           <small>Referral form</small>
           <p><a class="btn primary" id="refLink" href="#ref-form" data-pending="1">Submit a referral online</a></p>
-          <p class="note">Online form coming soon. Use the referral builder or email us directly.</p>
+          <p class="note">Goes straight to our intake inbox. We acknowledge within one business day.</p>
         </div>
         <div class="detail">
           <small>Send referrals to</small>
@@ -734,39 +736,44 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
           <p class="note">Monday to Friday, 8 am to 6 pm.</p>
         </div>
       </div>
-      <form id="refForm" class="reveal" novalidate>
-        <h3 id="ref-form">Referral builder</h3>
-        <p class="note">Builds a referral you can paste into a secure email. Nothing is stored on this page.</p>
+      <form id="refForm" class="reveal" action="https://formsubmit.co/compliance@havencresthome.com" method="POST">
+        <input type="hidden" name="_subject" value="New REFERRAL (havencresthome.com)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://havencresthome.com/thank-you.html">
+        <input type="text" name="_honey" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <h3 id="ref-form">Online referral</h3>
+        <p class="note">Sends a referral notice to our intake team right away. Use the member's initials here; send full member details by your organization's secure email after we acknowledge.</p>
         <div class="row2">
-          <label>Your name <input id="rName" name="rname" autocomplete="name" required></label>
-          <label>Organization <input id="rOrg" name="rorg" placeholder="e.g. Inclusa, ADRC, hospital"></label>
+          <label>Your name <input id="rName" name="Referrer name" autocomplete="name" required></label>
+          <label>Organization <input id="rOrg" name="Organization" placeholder="e.g. Inclusa, ADRC, hospital"></label>
         </div>
         <div class="row2">
-          <label>Your phone <input id="rPhone" name="rphone" type="tel" required></label>
-          <label>Your email <input id="rEmail" name="remail" type="email"></label>
+          <label>Your phone <input id="rPhone" name="Referrer phone" type="tel" required></label>
+          <label>Your email <input id="rEmail" name="Referrer email" type="email"></label>
         </div>
         <div class="row2">
-          <label>Member name <input id="mName" name="mname" placeholder="First and last name"></label>
-          <label>Member county <input id="mCounty" name="mcounty" placeholder="e.g. Douglas"></label>
+          <label>Member initials <input id="mName" name="Member initials" placeholder="e.g. R.Z." maxlength="8"></label>
+          <label>Member county <input id="mCounty" name="Member county" placeholder="e.g. Douglas"></label>
         </div>
         <div class="row2">
           <label>Program
-            <select id="mProg" name="mprog">
+            <select id="mProg" name="Program">
               <option>Family Care</option>
               <option>IRIS</option>
               <option>Private pay</option>
               <option>Not sure yet</option>
             </select>
           </label>
-          <label>Requested hours per week <input id="mHours" name="mhours" placeholder="e.g. 20"></label>
+          <label>Requested hours per week <input id="mHours" name="Hours per week" placeholder="e.g. 20"></label>
         </div>
-        <label>Services requested <textarea id="mNeed" name="mneed" rows="3" placeholder="e.g. morning personal care, meal prep, housekeeping, community outings"></textarea></label>
-        <label>Requested start date <input id="mStart" name="mstart" type="date"></label>
-        <button class="btn primary" type="submit">Build referral</button>
+        <label>Services requested <textarea id="mNeed" name="Services requested" rows="3" placeholder="e.g. morning personal care, meal prep, housekeeping, community outings"></textarea></label>
+        <label>Requested start date <input id="mStart" name="Requested start" type="date"></label>
+        <button class="btn primary" type="submit">Send referral</button>
         <div id="refOut" hidden>
-          <p class="note">Copy this into an email to <strong>compliance@havencresthome.com</strong>. Attach the authorization if you have it.</p>
+          <p class="note"><strong>Preview mode.</strong> On the live site this sends immediately. Here is the text it would send:</p>
           <textarea id="refText" readonly aria-label="Your referral text"></textarea>
-          <button class="btn ghost" type="button" id="copyRef">Copy referral</button>
+          <button class="btn ghost" type="button" id="copyRef">Copy text</button>
         </div>
       </form>
     </div>
@@ -903,24 +910,29 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
           <div class="val" style="font-size:1.05rem"><span>havencresthome.com</span></div>
         </div>
       </div>
-      <form id="reqForm" class="reveal" novalidate>
+      <form id="reqForm" class="reveal" action="https://formsubmit.co/compliance@havencresthome.com" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry: request a call (havencresthome.com)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://havencresthome.com/thank-you.html">
+        <input type="text" name="_honey" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="off" aria-hidden="true">
         <h3>Request a call</h3>
-        <p class="note">Fill this in and we'll prepare a message you can send us by phone or email. Please don't include medical details here.</p>
-        <label>Your name <input id="fName" name="name" autocomplete="name" required></label>
-        <label>Best phone number <input id="fPhone" name="phone" type="tel" autocomplete="tel" required></label>
+        <p class="note">We'll call you back within one business day. Please don't include medical details here.</p>
+        <label>Your name <input id="fName" name="Name" autocomplete="name" required></label>
+        <label>Best phone number <input id="fPhone" name="Phone" type="tel" autocomplete="tel" required></label>
         <label>I'm reaching out as
-          <select id="fRole" name="role">
+          <select id="fRole" name="Reaching out as">
             <option>The person who needs support</option>
             <option>A family member</option>
             <option>A care manager or case worker</option>
             <option>A discharge planner or facility</option>
           </select>
         </label>
-        <label>City or town <input id="fCity" name="city"></label>
-        <label>What would be most helpful? <textarea id="fNeed" name="need" rows="3" placeholder="For example: help in the mornings a few days a week"></textarea></label>
-        <button class="btn primary" type="submit">Prepare my message</button>
+        <label>City or town <input id="fCity" name="City"></label>
+        <label>What would be most helpful? <textarea id="fNeed" name="What would help" rows="3" placeholder="For example: help in the mornings a few days a week"></textarea></label>
+        <button class="btn primary" type="submit">Request a call</button>
         <div id="formOut" hidden>
-          <p class="note">Here's your message. Copy it and email it to <strong>compliance@havencresthome.com</strong>, or read it to us when you call.</p>
+          <p class="note"><strong>Preview mode.</strong> On the live site this sends immediately. Here is what it would send:</p>
           <textarea id="outText" readonly aria-label="Your prepared message" style="min-height:9rem"></textarea>
           <button class="btn ghost" type="button" id="copyOut">Copy message</button>
         </div>
@@ -955,7 +967,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       </div>
       <div>
         <h4>Programs</h4>
-        <ul><li><a href="#pay">Family Care</a></li><li><a href="#pay">IRIS</a></li><li><a href="#pay">Private pay</a></li><li><a href="#caregiver">Preferred caregiver</a></li><li><a href="#refer">Submit a referral</a></li></ul>
+        <ul><li><a href="#pay">Family Care</a></li><li><a href="#pay">IRIS</a></li><li><a href="private-pay.html">Private pay</a></li><li><a href="#caregiver">Preferred caregiver</a></li><li><a href="#refer">Submit a referral</a></li></ul>
       </div>
       <div>
         <h4>Company</h4>
@@ -1021,14 +1033,17 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
   });
   function v(id){return document.getElementById(id).value.trim()}
 
+  var PREVIEW=/claude\.ai$/.test(location.hostname);
+  function lock(f){var b=f.querySelector('button[type=submit]');if(b){b.disabled=true;b.textContent='Sending…'}}
   document.getElementById('refForm').addEventListener('submit',function(e){
+    if(!PREVIEW){if(!v('rName')||!v('rPhone')){return}lock(this);return}
     e.preventDefault();
     if(!v('rName')||!v('rPhone')){document.getElementById('rName').reportValidity();document.getElementById('rPhone').reportValidity();return}
     var lines=['REFERRAL — Haven Crest Homes','',
       'Referred by: '+v('rName')+(v('rOrg')?' ('+v('rOrg')+')':''),
       'Phone: '+v('rPhone')+(v('rEmail')?'   Email: '+v('rEmail'):''),
       '',
-      'Member: '+(v('mName')||'(see secure attachment)'),
+      'Member initials: '+(v('mName')||'—'),
       'County: '+(v('mCounty')||'—'),
       'Program: '+v('mProg'),
       'Requested hours/week: '+(v('mHours')||'—'),
@@ -1043,6 +1058,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
   document.getElementById('copyRef').addEventListener('click',function(){copyText(document.getElementById('refText').value,this)});
 
   document.getElementById('reqForm').addEventListener('submit',function(e){
+    if(!PREVIEW){if(!v('fName')||!v('fPhone')){return}lock(this);return}
     e.preventDefault();
     if(!v('fName')||!v('fPhone')){document.getElementById('fName').reportValidity();document.getElementById('fPhone').reportValidity();return}
     var msg='Hello Haven Crest Homes,\n\nMy name is '+v('fName')+'. I am reaching out as: '+v('fRole').toLowerCase()+'.'+
