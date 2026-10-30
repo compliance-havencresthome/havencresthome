@@ -204,12 +204,12 @@ nav .btn{padding:.6rem 1.1rem;font-size:.88rem}
 /* map */
 .map{max-width:420px;width:100%;margin:0 auto}
 .map svg{width:100%;height:auto;display:block}
-.county{fill:var(--blue-light);stroke:var(--bg);stroke-width:1;opacity:.75}
-.county.served{fill:var(--blue);opacity:1}
+.county{fill:var(--blue);stroke:var(--bg);stroke-width:1;opacity:.92}
+.county.served{fill:var(--blue-dark);opacity:1}
 .state{fill:none;stroke:var(--ink);stroke-width:1.4}
 .pin{fill:var(--ink)}
-.label{font:700 15px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
-.city{fill:#c98a2b;stroke:var(--bg);stroke-width:1.5}
+.label{font:700 15px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:5px;stroke-linejoin:round}
+.city{fill:#f0a35a;stroke:var(--bg);stroke-width:2}
 .legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.8rem;font-size:.9rem;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:.4rem}
 .legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
@@ -487,8 +487,8 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
     <div class="area reveal">
       <div>
         <div class="eyebrow">Service area</div>
-        <h2>Serving all of Wisconsin, from our home base in Superior.</h2>
-        <p style="margin-top:.8rem;color:var(--muted)">Haven Crest Homes is a Wisconsin Medicaid-enrolled provider available to Family Care members, IRIS participants and private-pay families across all 72 counties. Our teams are rooted in Douglas County and St. Croix County, and we build local DSP teams wherever members need us.</p>
+        <h2>We cover all of Wisconsin.</h2>
+        <p style="margin-top:.8rem;color:var(--muted)">Haven Crest Homes is a Wisconsin Medicaid-enrolled provider serving Family Care members, IRIS participants and private-pay families in all 72 counties. Our home base is Superior, with teams rooted in Douglas and St. Croix counties, and we build local DSP teams wherever members need us, including your own preferred caregiver.</p>
         <h3 style="margin-top:1.4rem">Home bases</h3>
         <div class="towns"><span>Superior · Douglas County</span><span>Hudson · St. Croix County</span></div>
         <h3 style="margin-top:1.2rem">Statewide</h3>
@@ -579,7 +579,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
 <circle class="city" cx="62.1" cy="43.2" r="3.5"/>
 <circle class="city" cx="18.5" cy="205.8" r="3.5"/>
 </svg></div>
-        <div class="legend"><span><i style="background:var(--blue-light)"></i>Statewide service</span><span><i style="background:var(--blue)"></i>Home-base counties</span><span><i style="background:#c98a2b;border-radius:50%"></i>Superior and Hudson</span></div>
+        <div class="legend"><span><i style="background:var(--blue)"></i>All 72 counties served</span><span><i style="background:var(--blue-dark)"></i>Home-base counties</span><span><i style="background:#f0a35a;border-radius:50%"></i>Superior and Hudson</span></div>
       </div>
     </div>
   </div>
