@@ -144,7 +144,30 @@ nav .btn{padding:.6rem 1.1rem;font-size:.88rem}
 .tint .acc details{background:var(--surface)}
 
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;counter-reset:step}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;counter-reset:step}
+.after{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.after div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.3rem;min-width:0}
+.after strong{display:block;font-family:var(--display);font-weight:800;margin-bottom:.3rem}
+.after span{color:var(--muted);font-size:.97rem}
+
+/* map */
+.map{max-width:420px;width:100%;margin:0 auto}
+.map svg{width:100%;height:auto;display:block}
+.county{fill:var(--tint);stroke:var(--bg);stroke-width:1}
+.county.served{fill:var(--blue)}
+.state{fill:none;stroke:var(--ink);stroke-width:1.4}
+.pin{fill:var(--ink)}
+.label{font:700 15px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.city{fill:#c98a2b;stroke:var(--bg);stroke-width:1.5}
+.legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.8rem;font-size:.9rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+/* preferred caregiver */
+.byoc{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;margin-top:2rem;align-items:start}
+.byoc ol{margin:1rem 0 0;padding-left:1.2rem;display:grid;gap:.6rem}
+.byoc ol li::marker{font-family:var(--display);font-weight:800;color:var(--blue)}
+.byoc .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem;display:grid;gap:.6rem;min-width:0}
 .step{min-width:0;display:grid;gap:.5rem;align-content:start}
 .step::before{counter-increment:step;content:"Step " counter(step);font-family:var(--display);font-weight:800;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
 
@@ -238,8 +261,9 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
 }
 .svc:focus-visible{outline:3px solid var(--blue-light)}
 
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:800px){
-  .strip,.cards,.steps,.two,.area,.refgrid,.row2,.fcols{grid-template-columns:1fr}
+  .strip,.cards,.steps,.two,.area,.refgrid,.row2,.fcols,.after,.byoc{grid-template-columns:1fr}
   .shapes .a{right:-30vw;top:-30vw;width:60vw;height:60vw}
   .shapes .b{right:-10vw;top:0;width:40vw;height:40vw;opacity:.6}
   .shapes .c{display:none}
@@ -257,6 +281,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       <ul id="navList">
         <li><a href="#services">Services</a></li>
         <li><a href="#pay">Programs &amp; coverage</a></li>
+        <li><a href="#caregiver">Preferred caregiver</a></li>
         <li><a href="#refer">For care managers</a></li>
         <li><a href="#families">For families</a></li>
         <li><a href="#area">Service area</a></li>
@@ -375,20 +400,28 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
     </div>
     <div class="steps reveal">
       <div class="step">
-        <h3>A conversation</h3>
-        <p>Call or send a request. We ask what a typical day looks like, what has become difficult, and who else is on your care team. Every inquiry gets a response within one business day.</p>
+        <h3>A conversation, by phone or video</h3>
+        <p>Call or send a request. We set up a short virtual meeting with you, and family or your care manager if you'd like them there, to learn what a typical day looks like and what has become difficult.</p>
       </div>
       <div class="step">
-        <h3>A home visit and a written plan</h3>
-        <p>We meet you at home, learn your routines and preferences, and write a Service Plan with you. If you have a care manager or IRIS consultant, we coordinate with them on authorized hours.</p>
+        <h3>A written plan</h3>
+        <p>We write a Service Plan with you: which tasks, which days, which preferences. If you have a care manager or IRIS consultant, we coordinate authorized hours with them before anything starts.</p>
       </div>
       <div class="step">
-        <h3>Consistent support</h3>
-        <p>You're matched with a DSP trained on your plan. A supervisor checks in regularly, and you and your family always know who to call.</p>
+        <h3>Services begin</h3>
+        <p>You're matched with a DSP trained on your plan, or with your own preferred caregiver whom we've hired and trained. Every visit is documented.</p>
+      </div>
+      <div class="step">
+        <h3>We check in, in person</h3>
+        <p>A Haven Crest supervisor visits your home within the first 10 days of service to confirm the support is right, then keeps checking in on a regular schedule.</p>
       </div>
     </div>
-  </div>
-</section>
+    <div class="after reveal">
+      <div><strong>Within 10 days</strong><span>In-person visit from a supervisor to confirm the plan is working and adjust it if it isn't.</span></div>
+      <div><strong>At least every 30 days</strong><span>Supervisor check-in with you and, with your permission, your family and care team.</span></div>
+      <div><strong>Every 90 days and whenever needs change</strong><span>Full Service Plan review so the support keeps matching the person, not the paperwork.</span></div>
+    </div>
+  </section>
 
 <section class="band" id="pay">
   <div class="wrap">
@@ -429,8 +462,33 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       </details>
       <details>
         <summary>Can a family member be paid to provide my care?</summary>
-        <div class="body"><p>In some situations, yes. Family Care and IRIS allow certain family members to be hired as paid caregivers through an agency, subject to program rules and MCO approval. Haven Crest Homes can employ, train and supervise a family caregiver so the support stays reliable and compliant. Ask your care manager, then ask us.</p></div>
+        <div class="body"><p>In some situations, yes. Family Care and IRIS allow certain family members to be hired as paid caregivers through an agency, subject to program rules and MCO approval. Haven Crest Homes can employ, train and supervise a family caregiver so the support stays reliable and compliant. <a class="text" href="#caregiver">See our preferred caregiver program</a>, then ask your care manager.</p></div>
       </details>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="caregiver">
+  <div class="wrap">
+    <div class="byoc">
+      <div class="reveal">
+        <div class="eyebrow">Preferred caregiver program</div>
+        <h2>Already have someone you trust? Bring your own caregiver.</h2>
+        <p class="lede" style="margin-top:.8rem">Many people are best supported by a family member, friend or neighbor who already knows them. If your program allows it, Haven Crest Homes can hire that person, train them, pay them, and manage the plan, so the care you choose is also care that's reliable and compliant.</p>
+        <ol>
+          <li><strong>You choose the caregiver.</strong> An adult daughter, a longtime friend, a neighbor: your call.</li>
+          <li><strong>We hire and clear them.</strong> Wisconsin caregiver background check, employment paperwork, insurance coverage under Haven Crest Homes.</li>
+          <li><strong>We train them.</strong> Competency-based training on your Service Plan, documentation, safety and reporting, with a supervisor they can call.</li>
+          <li><strong>We pay them.</strong> They're a Haven Crest employee on a regular paycheck for the authorized hours they work.</li>
+          <li><strong>We manage the plan.</strong> Scheduling, documentation, authorization tracking, check-ins and backup coverage when your caregiver needs a day off.</li>
+        </ol>
+      </div>
+      <div class="panel reveal">
+        <h3>Good to know</h3>
+        <p style="color:var(--muted)">Paid family and preferred caregivers are permitted under Family Care and IRIS, subject to program rules and your MCO's or IRIS consultant's approval. Some relationships, such as spouses or legal guardians, have limits that depend on the program. We'll tell you plainly what's allowed before anyone's hopes get set.</p>
+        <p style="color:var(--muted)">Private-pay families can use the same arrangement with no program approval needed.</p>
+        <a class="btn primary" href="#contact" style="justify-self:start;margin-top:.4rem">Ask about a preferred caregiver</a>
+      </div>
     </div>
   </div>
 </section>
@@ -554,17 +612,100 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
         <div class="eyebrow">Service area</div>
         <h2>Based in Superior. Serving Northwest and Western Wisconsin.</h2>
         <p style="margin-top:.8rem;color:var(--muted)">We keep our service area deliberate. Shorter drives mean DSPs arrive on time, stay the full visit and can cover for one another when life happens. We add communities as we add staff.</p>
-      </div>
-      <div>
-        <h3>Communities we serve</h3>
+        <h3 style="margin-top:1.4rem">Communities we serve</h3>
         <div class="towns">
           <span>Superior</span><span>South Range</span><span>Lake Nebagamon</span><span>Solon Springs</span><span>Poplar</span><span>Maple</span><span>Brule</span><span>Douglas County</span><span>Hudson</span><span>St. Croix County</span>
         </div>
         <p class="note" style="margin-top:1rem">Outside this list? Ask anyway. We'll tell you plainly whether we can staff your home reliably.</p>
       </div>
+      <div>
+        <div class="map"><svg viewBox="0 0 420 446" role="img" aria-label="Map of Wisconsin highlighting Douglas and St. Croix counties" xmlns="http://www.w3.org/2000/svg">
+<g class="map-counties">
+<path class="county" d="M304.4 135.9L328.6 136.8L328.6 130.5L332.6 129.1L334.7 132.5L340.4 132.9L342.5 135.9L344.9 136.9L346.8 140.4L344.0 141.5L347.3 147.5L345.4 153.0L346.1 156.7L344.7 159.9L341.6 162.6L342.3 165.7L340.7 167.6L342.3 171.3L342.3 171.3L348.7 170.5L352.5 166.8L355.1 168.8L355.6 171.5L353.0 175.3L349.4 184.8L349.9 187.1L353.0 189.3L354.9 193.1L359.3 194.2L357.0 198.8L356.7 205.2L348.0 206.2L348.2 203.9L336.2 203.7L336.2 201.1L324.3 200.9L324.6 192.8L319.8 192.7L320.1 184.7L312.0 184.3L312.2 168.2L304.2 168.0L304.4 135.9Z"><title>Marinette County</title></path>
+<path class="county" d="M227.0 273.1L251.7 273.4L273.9 273.5L273.9 297.6L255.4 297.6L227.0 297.6L227.0 273.1Z"><title>Waushara County</title></path>
+<path class="county" d="M98.3 95.5L118.9 95.4L139.5 95.7L139.5 111.9L155.8 111.8L155.8 143.7L99.0 143.8L98.8 111.7L98.3 111.6L98.3 95.5Z"><title>Sawyer County</title></path>
+<path class="county" d="M251.7 232.7L292.6 232.9L292.4 241.1L283.8 241.1L283.6 273.4L273.9 273.5L251.7 273.4L251.7 232.7Z"><title>Waupaca County</title></path>
+<path class="county" d="M329.5 273.6L339.7 273.6L339.9 265.6L347.8 265.6L362.7 265.6L362.7 268.7L364.6 273.6L364.1 279.3L361.2 282.6L355.8 286.2L355.1 291.2L353.2 294.1L350.1 306.0L329.8 306.0L329.5 297.9L329.5 273.6Z"><title>Manitowoc County</title></path>
+<path class="county" d="M197.7 167.6L197.7 151.5L238.2 151.5L238.4 159.6L238.4 191.9L197.7 191.9L197.5 171.4L197.7 167.6Z"><title>Lincoln County</title></path>
+<path class="county" d="M139.5 175.9L139.5 167.8L155.8 167.9L170.2 168.0L197.7 167.6L197.5 171.4L197.7 191.9L187.5 191.9L187.5 199.9L179.7 199.9L171.9 200.2L139.7 200.2L139.5 175.9Z"><title>Taylor County</title></path>
+<path class="county" d="M297.1 370.7L304.9 370.9L328.3 371.1L327.9 387.4L327.9 403.5L312.2 403.6L296.6 403.5L296.6 387.1L297.1 370.7Z"><title>Waukesha County</title></path>
+<path class="county" d="M179.7 199.9L187.5 199.9L187.5 191.9L197.7 191.9L238.4 191.9L251.7 192.0L251.7 200.3L251.7 232.7L234.1 232.3L210.7 232.3L179.7 232.3L179.7 199.9Z"><title>Marathon County</title></path>
+<path class="county" d="M139.7 200.2L171.9 200.2L179.7 199.9L179.7 232.3L179.7 256.5L163.6 256.8L147.8 256.7L147.8 248.6L139.7 248.6L139.7 240.6L139.7 216.3L139.7 200.2Z"><title>Clark County</title></path>
+<path class="county" d="M210.7 232.3L234.1 232.3L251.7 232.7L251.7 273.4L227.0 273.1L218.8 273.0L218.5 248.5L210.7 248.5L210.7 232.3Z"><title>Portage County</title></path>
+<path class="county" d="M179.7 256.5L179.7 232.3L210.7 232.3L210.7 248.5L218.5 248.5L218.8 273.0L206.9 272.8L179.9 272.9L179.5 272.3L179.7 256.5Z"><title>Wood County</title></path>
+<path class="county" d="M290.2 192.1L300.4 192.2L300.2 216.5L283.8 216.4L283.8 208.3L267.8 208.4L267.8 200.3L267.8 192.1L290.2 192.1Z"><title>Menominee County</title></path>
+<path class="county" d="M255.4 297.6L273.9 297.6L273.9 305.7L273.9 330.1L266.1 330.1L258.0 330.2L258.0 329.1L250.2 329.2L250.2 318.3L255.4 317.8L255.4 313.6L253.3 313.5L253.3 307.5L255.4 307.5L255.4 297.6Z"><title>Green Lake County</title></path>
+<path class="county" d="M179.9 337.4L188.0 337.3L187.8 373.6L183.3 370.5L177.3 369.4L172.1 370.2L164.6 369.3L156.5 372.9L156.5 349.6L156.3 337.6L179.9 337.4Z"><title>Richland County</title></path>
+<path class="county" d="M242.2 403.3L265.6 403.1L281.2 403.5L281.0 411.7L281.2 436.1L270.4 435.8L242.4 435.4L242.2 403.3Z"><title>Rock County</title></path>
+<path class="county" d="M312.2 425.1L320.1 425.0L320.1 419.6L345.1 419.8L344.2 424.6L345.6 436.2L319.3 435.8L312.2 435.8L312.2 425.1Z"><title>Kenosha County</title></path>
+<path class="county" d="M227.0 297.6L255.4 297.6L255.4 307.5L253.3 307.5L253.3 313.5L255.4 313.6L255.4 317.8L250.2 318.3L250.2 329.2L227.0 329.2L227.0 297.6Z"><title>Marquette County</title></path>
+<path class="county" d="M155.8 143.7L155.8 111.8L180.7 111.9L197.7 111.8L197.7 119.7L197.7 151.5L197.7 167.6L170.2 168.0L155.8 167.9L155.8 143.7Z"><title>Price County</title></path>
+<path class="county" d="M238.4 159.6L242.4 159.4L263.5 159.8L271.5 159.8L271.3 167.8L287.6 167.8L287.6 184.0L290.2 184.0L290.2 192.1L267.8 192.1L267.8 200.3L251.7 200.3L251.7 192.0L238.4 191.9L238.4 159.6Z"><title>Langlade County</title></path>
+<path class="county" d="M90.7 183.7L98.8 183.9L99.0 175.9L139.5 175.9L139.7 200.2L139.7 216.3L91.7 216.5L91.7 191.8L90.7 191.8L90.7 183.7Z"><title>Chippewa County</title></path>
+<path class="county" d="M135.7 18.5L139.2 17.1L139.0 20.6L135.7 18.5ZM98.3 39.9L100.9 39.7L112.2 34.1L118.2 32.0L119.6 29.9L123.6 31.6L125.3 29.0L131.2 28.2L136.4 22.6L139.7 23.6L143.0 20.8L145.4 21.1L151.1 27.6L147.8 33.6L142.1 39.9L144.2 45.7L140.4 48.5L137.8 54.6L139.5 55.7L139.5 95.7L118.9 95.4L98.3 95.5L98.3 39.9Z"><title>Bayfield County</title></path>
+<path class="county" d="M117.7 321.4L140.4 321.5L171.9 321.4L179.9 321.0L179.9 329.3L179.9 337.4L156.3 337.6L156.5 349.6L121.0 349.6L119.1 346.6L120.3 342.4L118.4 338.2L119.3 334.7L117.0 331.7L116.5 326.1L117.7 321.4Z"><title>Vernon County</title></path>
+<path class="county" d="M287.4 108.8L288.6 110.8L291.9 111.2L292.6 108.6L299.0 108.4L299.5 110.4L304.4 112.1L307.3 110.9L313.0 114.7L316.3 113.5L324.8 117.4L327.4 122.8L323.4 127.0L325.5 129.5L328.6 130.5L328.6 136.8L304.4 135.9L287.9 135.9L287.9 111.8L287.4 108.8Z"><title>Florence County</title></path>
+<path class="county" d="M329.8 338.5L346.1 338.4L345.1 346.0L340.4 354.6L338.3 365.7L339.5 371.1L328.3 371.1L328.3 354.8L329.8 354.8L329.8 338.5Z"><title>Ozaukee County</title></path>
+<path class="county" d="M266.1 330.1L273.9 330.1L305.9 330.3L306.1 338.4L305.9 354.5L304.9 354.5L304.9 370.9L297.1 370.7L265.9 370.5L265.9 362.5L266.1 354.4L266.1 330.1Z"><title>Dodge County</title></path>
+<path class="county" d="M18.0 215.9L43.8 215.8L59.7 216.3L59.7 232.3L59.7 245.8L47.9 245.7L46.4 244.5L40.1 243.4L33.0 243.3L30.8 239.8L27.5 238.5L27.8 236.6L20.4 229.6L15.7 226.7L15.4 224.6L18.3 218.2L18.0 215.9Z"><title>Pierce County</title></path>
+<path class="county" d="M10.2 143.2L33.7 143.4L33.9 135.3L58.5 135.6L58.5 143.6L58.3 183.6L18.8 183.6L18.5 176.0L19.5 175.6L22.5 172.1L22.3 169.7L25.9 166.0L26.1 162.0L20.7 155.2L20.9 152.7L17.6 150.2L15.2 150.9L10.2 149.2L10.2 143.2Z"><title>Polk County</title></path>
+<path class="county served" d="M18.8 183.6L58.3 183.6L58.3 191.7L59.7 191.8L59.7 216.3L43.8 215.8L18.0 215.9L17.6 212.2L19.2 208.9L17.8 205.6L18.3 200.4L15.7 197.7L19.5 193.1L18.0 185.8L18.8 183.6Z"><title>St. Croix County</title></path>
+<path class="county" d="M214.7 329.3L227.0 329.2L250.2 329.2L258.0 329.1L258.0 330.2L266.1 330.1L266.1 354.4L265.9 362.5L242.4 362.8L242.4 361.6L219.0 361.7L219.0 359.2L221.8 355.4L226.8 353.5L227.0 337.1L218.3 335.8L219.2 333.4L215.4 332.0L214.7 329.3Z"><title>Columbia County</title></path>
+<path class="county" d="M65.4 95.5L98.3 95.5L98.3 111.6L98.8 111.7L99.0 143.8L66.6 143.6L66.3 111.6L65.4 111.6L65.4 95.5Z"><title>Washburn County</title></path>
+<path class="county" d="M47.9 245.7L59.7 245.8L59.7 232.3L91.7 232.4L91.7 240.6L68.7 240.6L67.0 241.1L65.6 248.5L63.0 258.1L54.5 255.3L52.6 253.7L48.6 249.2L47.9 245.7Z"><title>Pepin County</title></path>
+<path class="county" d="M305.9 273.3L319.8 273.5L329.5 273.6L329.5 297.9L329.8 306.0L321.7 306.0L321.7 301.8L305.9 301.7L305.9 273.3Z"><title>Calumet County</title></path>
+<path class="county" d="M292.4 241.1L316.3 241.6L319.8 241.4L319.8 273.5L305.9 273.3L283.6 273.4L283.8 241.1L292.4 241.1Z"><title>Outagamie County</title></path>
+<path class="county" d="M91.7 240.6L99.7 240.6L99.7 273.1L95.0 276.3L94.3 280.0L97.3 282.2L99.5 287.0L96.9 292.5L97.8 293.7L95.4 293.1L87.9 286.3L87.2 284.0L80.8 280.7L77.9 278.0L75.8 274.5L75.6 270.4L73.7 269.2L73.7 265.0L70.4 261.8L63.0 258.1L65.6 248.5L67.0 241.1L68.7 240.6L91.7 240.6Z"><title>Buffalo County</title></path>
+<path class="county" d="M58.5 143.6L66.6 143.6L99.0 143.8L99.0 175.9L98.8 183.9L90.7 183.7L58.3 183.6L58.5 143.6Z"><title>Barron County</title></path>
+<path class="county" d="M348.0 236.1L349.9 233.1L373.8 233.2L369.5 239.8L367.4 244.7L362.7 265.6L347.8 265.6L348.0 236.1Z"><title>Kewaunee County</title></path>
+<path class="county" d="M164.3 55.8L167.2 55.3L173.1 57.5L174.5 60.6L177.3 60.1L177.3 60.1L179.7 62.1L186.1 63.3L192.7 76.7L192.5 78.8L205.3 82.3L205.3 111.8L197.7 111.8L180.7 111.9L180.7 95.7L172.4 95.8L172.4 87.8L164.1 87.8L164.3 55.8Z"><title>Iron County</title></path>
+<path class="county" d="M121.0 349.6L156.5 349.6L156.5 372.9L155.1 372.8L151.5 377.4L148.0 378.8L144.7 381.7L138.5 383.1L137.6 384.8L130.5 389.6L125.5 389.0L124.3 390.0L122.9 381.5L122.9 376.7L125.0 374.8L126.4 370.6L130.7 365.8L127.6 359.8L121.2 356.5L121.0 349.6Z"><title>Crawford County</title></path>
+<path class="county" d="M13.1 135.2L16.9 132.0L21.6 120.2L26.3 116.4L32.2 114.6L34.1 111.5L37.5 112.6L39.8 108.1L45.5 108.7L46.9 104.0L49.3 103.2L49.3 95.5L65.4 95.5L65.4 111.6L66.3 111.6L66.6 143.6L58.5 143.6L58.5 135.6L33.9 135.3L33.7 143.4L10.2 143.2L11.7 135.9L13.1 135.2Z"><title>Burnett County</title></path>
+<path class="county" d="M211.2 369.7L213.3 366.7L218.3 365.5L219.0 361.7L242.4 361.6L242.4 362.8L265.9 362.5L265.9 370.5L265.6 403.1L242.2 403.3L242.2 402.2L211.2 402.1L211.2 369.7Z"><title>Dane County</title></path>
+<path class="county served" d="M49.3 71.3L49.3 48.5L54.5 49.8L57.1 46.3L55.0 44.8L58.8 43.7L59.5 41.4L62.8 40.5L67.8 44.5L72.5 46.9L80.5 46.0L98.3 39.9L98.3 95.5L65.4 95.5L49.3 95.5L49.3 71.3Z"><title>Douglas County</title></path>
+<path class="county" d="M124.3 390.0L125.5 389.0L130.5 389.6L137.6 384.8L138.5 383.1L144.7 381.7L148.0 378.8L151.5 377.4L155.1 372.8L156.5 372.9L164.6 369.3L172.1 370.2L172.4 406.3L172.4 434.7L158.2 434.6L158.2 431.6L153.9 422.9L141.4 419.1L135.9 416.9L130.2 412.0L127.9 399.8L125.0 397.8L124.3 390.0Z"><title>Grant County</title></path>
+<path class="county" d="M312.2 403.6L327.9 403.5L343.7 403.6L347.8 408.9L346.8 416.0L345.1 419.8L320.1 419.6L320.1 425.0L312.2 425.1L312.2 403.6Z"><title>Racine County</title></path>
+<path class="county" d="M106.6 297.4L113.4 297.4L112.2 292.5L117.0 289.3L120.1 291.0L121.5 287.8L124.6 288.5L124.6 289.3L136.4 289.4L140.4 289.3L140.4 321.5L117.7 321.4L118.4 317.0L115.8 310.2L109.2 300.2L106.6 297.4Z"><title>La Crosse County</title></path>
+<path class="county" d="M91.7 216.5L139.7 216.3L139.7 240.6L123.6 240.5L99.7 240.6L91.7 240.6L91.7 232.4L91.7 216.5Z"><title>Eau Claire County</title></path>
+<path class="county" d="M328.3 371.1L339.5 371.1L339.0 376.1L340.9 382.9L339.2 387.5L342.5 392.4L342.5 399.2L343.7 403.6L327.9 403.5L327.9 387.4L328.3 371.1Z"><title>Milwaukee County</title></path>
+<path class="county" d="M123.6 240.5L139.7 240.6L139.7 248.6L147.8 248.6L147.8 256.7L163.6 256.8L179.7 256.5L179.5 272.3L179.9 272.9L179.9 281.5L171.9 281.0L141.6 281.3L136.2 283.9L136.4 289.4L124.6 289.3L124.6 288.5L124.6 273.0L123.6 273.0L123.6 240.5Z"><title>Jackson County</title></path>
+<path class="county" d="M401.2 170.3L402.7 163.9L410.0 165.3L404.6 175.5L401.2 170.3ZM373.6 184.5L376.4 183.4L376.9 188.4L373.6 186.6L373.6 184.5ZM373.8 233.2L349.9 233.1L350.8 228.7L358.2 218.0L364.3 215.2L366.9 215.7L369.5 213.0L373.1 215.6L371.7 211.9L374.5 204.2L380.9 195.5L382.5 187.5L385.4 187.9L390.4 185.3L390.6 180.6L394.6 175.8L399.8 176.1L399.3 183.0L395.6 183.4L395.1 194.7L392.2 197.9L390.4 197.6L389.2 201.8L385.9 206.0L387.0 209.4L384.0 212.5L384.9 214.6L380.7 217.3L377.6 222.2L373.8 233.2Z"><title>Door County</title></path>
+<path class="county" d="M287.6 167.8L304.2 168.0L312.2 168.2L312.0 184.3L320.1 184.7L319.8 192.7L324.6 192.8L324.3 200.9L336.2 201.1L336.2 203.7L348.2 203.9L348.0 206.2L343.0 209.4L343.7 213.2L341.1 217.9L339.0 219.1L336.4 225.7L333.6 229.1L333.1 233.0L317.2 233.5L316.5 232.8L315.8 224.8L316.0 216.7L300.2 216.5L300.4 192.2L290.2 192.1L290.2 184.0L287.6 184.0L287.6 167.8Z"><title>Oconto County</title></path>
+<path class="county" d="M172.4 406.3L211.2 406.2L211.2 434.9L205.3 434.8L172.4 434.7L172.4 406.3Z"><title>Lafayette County</title></path>
+<path class="county" d="M211.2 402.1L242.2 402.2L242.2 403.3L242.4 435.4L240.1 435.4L211.2 434.9L211.2 406.2L211.2 402.1Z"><title>Green County</title></path>
+<path class="county" d="M197.7 111.8L205.3 111.8L205.3 82.3L260.4 97.3L267.0 101.1L270.8 103.2L270.8 111.8L263.3 111.8L263.3 119.9L254.7 119.5L255.0 123.4L246.7 123.0L246.7 119.3L238.4 119.5L197.7 119.7L197.7 111.8Z"><title>Vilas County</title></path>
+<path class="county" d="M251.7 200.3L267.8 200.3L267.8 208.4L283.8 208.3L283.8 216.4L300.2 216.5L316.0 216.7L315.8 224.8L316.5 232.8L316.3 241.6L292.4 241.1L292.6 232.9L251.7 232.7L251.7 200.3Z"><title>Shawano County</title></path>
+<path class="county" d="M58.3 183.6L90.7 183.7L90.7 191.8L91.7 191.8L91.7 216.5L91.7 232.4L59.7 232.3L59.7 216.3L59.7 191.8L58.3 191.7L58.3 183.6Z"><title>Dunn County</title></path>
+<path class="county" d="M99.7 240.6L123.6 240.5L123.6 273.0L124.6 273.0L124.6 288.5L121.5 287.8L120.1 291.0L117.0 289.3L112.2 292.5L113.4 297.4L106.6 297.4L105.6 295.8L97.8 293.7L96.9 292.5L99.5 287.0L97.3 282.2L94.3 280.0L95.0 276.3L99.7 273.1L99.7 240.6Z"><title>Trempealeau County</title></path>
+<path class="county" d="M273.9 305.7L305.9 305.9L305.9 301.7L321.7 301.8L321.7 306.0L321.7 338.4L306.1 338.4L305.9 330.3L273.9 330.1L273.9 305.7Z"><title>Fond du Lac County</title></path>
+<path class="county" d="M169.8 16.9L171.7 10.3L174.5 10.0L173.3 16.0L169.8 16.9ZM166.0 28.7L170.9 26.0L167.6 29.8L166.0 28.7ZM157.5 24.1L158.6 22.5L165.7 20.1L166.9 21.2L164.3 25.0L158.6 25.9L157.5 24.1ZM150.4 32.1L151.1 30.0L155.8 26.7L156.0 28.2L150.4 32.1ZM151.8 20.5L155.1 24.8L152.0 25.1L150.1 22.1L151.8 20.5ZM149.4 14.9L157.7 12.1L160.3 16.5L163.6 13.8L164.1 17.3L160.3 18.0L156.3 21.9L153.7 18.5L149.9 16.9L149.4 14.9ZM148.2 37.1L152.2 35.7L159.8 28.8L163.1 31.4L156.0 34.0L157.2 36.8L153.2 37.1L148.5 40.1L148.2 37.1ZM139.5 55.7L148.2 52.1L150.8 50.1L152.0 45.8L154.6 48.4L164.3 55.8L164.1 87.8L172.4 87.8L172.4 95.8L180.7 95.7L180.7 111.9L155.8 111.8L139.5 111.9L139.5 95.7L139.5 55.7Z"><title>Ashland County</title></path>
+<path class="county" d="M306.1 338.4L321.7 338.4L329.8 338.5L329.8 354.8L328.3 354.8L328.3 371.1L304.9 370.9L304.9 354.5L305.9 354.5L306.1 338.4Z"><title>Washington County</title></path>
+<path class="county" d="M281.2 403.5L296.6 403.5L312.2 403.6L312.2 425.1L312.2 435.8L285.7 436.0L281.2 436.1L281.0 411.7L281.2 403.5Z"><title>Walworth County</title></path>
+<path class="county" d="M206.9 272.8L218.8 273.0L227.0 273.1L227.0 297.6L227.0 329.2L214.7 329.3L212.4 324.5L209.5 316.1L203.1 308.6L201.7 303.8L203.6 303.0L202.2 296.4L200.1 295.2L198.9 287.7L202.0 284.6L202.4 280.5L205.5 281.8L206.9 278.2L205.5 276.2L206.9 272.8Z"><title>Adams County</title></path>
+<path class="county" d="M99.0 143.8L155.8 143.7L155.8 167.9L139.5 167.8L139.5 175.9L99.0 175.9L99.0 143.8Z"><title>Rusk County</title></path>
+<path class="county" d="M179.9 329.3L214.7 329.3L215.4 332.0L219.2 333.4L218.3 335.8L227.0 337.1L226.8 353.5L221.8 355.4L219.0 359.2L219.0 361.7L218.3 365.5L213.3 366.7L211.2 369.7L206.9 371.4L200.8 370.8L195.1 374.0L187.8 373.6L188.0 337.3L179.9 337.4L179.9 329.3Z"><title>Sauk County</title></path>
+<path class="county" d="M265.9 370.5L297.1 370.7L296.6 387.1L296.6 403.5L281.2 403.5L265.6 403.1L265.9 370.5Z"><title>Jefferson County</title></path>
+<path class="county" d="M197.7 119.7L238.4 119.5L246.7 119.3L246.7 123.0L255.0 123.4L254.7 119.5L263.3 119.9L263.5 159.8L242.4 159.4L238.4 159.6L238.2 151.5L197.7 151.5L197.7 119.7Z"><title>Oneida County</title></path>
+<path class="county" d="M179.9 281.5L179.9 321.0L171.9 321.4L140.4 321.5L140.4 289.3L136.4 289.4L136.2 283.9L141.6 281.3L171.9 281.0L179.9 281.5Z"><title>Monroe County</title></path>
+<path class="county" d="M270.8 103.2L278.9 108.1L283.6 107.6L287.4 108.8L287.9 111.8L287.9 135.9L304.4 135.9L304.2 168.0L287.6 167.8L271.3 167.8L271.5 159.8L263.5 159.8L263.3 119.9L263.3 111.8L270.8 111.8L270.8 103.2Z"><title>Forest County</title></path>
+<path class="county" d="M179.9 281.5L179.9 272.9L206.9 272.8L205.5 276.2L206.9 278.2L205.5 281.8L202.4 280.5L202.0 284.6L198.9 287.7L200.1 295.2L202.2 296.4L203.6 303.0L201.7 303.8L203.1 308.6L209.5 316.1L212.4 324.5L214.7 329.3L179.9 329.3L179.9 321.0L179.9 281.5Z"><title>Juneau County</title></path>
+<path class="county" d="M273.9 273.5L283.6 273.4L305.9 273.3L305.9 301.7L305.9 305.9L273.9 305.7L273.9 297.6L273.9 273.5Z"><title>Winnebago County</title></path>
+<path class="county" d="M316.5 232.8L317.2 233.5L333.1 233.0L332.6 239.4L329.5 243.4L334.3 246.7L337.1 246.2L338.8 241.9L344.9 236.8L348.0 236.1L347.8 265.6L339.9 265.6L339.7 273.6L329.5 273.6L319.8 273.5L319.8 241.4L316.3 241.6L316.5 232.8Z"><title>Brown County</title></path>
+<path class="county" d="M172.1 370.2L177.3 369.4L183.3 370.5L187.8 373.6L195.1 374.0L200.8 370.8L206.9 371.4L211.2 369.7L211.2 402.1L211.2 406.2L172.4 406.3L172.1 370.2Z"><title>Iowa County</title></path>
+<path class="county" d="M321.7 306.0L329.8 306.0L350.1 306.0L350.4 313.6L352.2 317.6L351.8 325.7L346.8 335.2L346.1 338.4L329.8 338.5L321.7 338.4L321.7 306.0Z"><title>Sheboygan County</title></path>
+</g>
+<path class="state" d="M401.2 170.3L402.7 163.9L410.0 165.3L404.6 175.5L401.2 170.3ZM373.6 184.5L376.4 183.4L376.9 188.4L373.6 186.6L373.6 184.5ZM169.8 16.9L171.7 10.3L174.5 10.0L173.3 16.0L169.8 16.9ZM166.0 28.7L170.9 26.0L167.6 29.8L166.0 28.7ZM157.5 24.1L158.6 22.5L165.7 20.1L166.9 21.2L164.3 25.0L158.6 25.9L157.5 24.1ZM150.4 32.1L151.1 30.0L155.8 26.7L156.0 28.2L150.4 32.1ZM151.8 20.5L155.1 24.8L152.0 25.1L150.1 22.1L151.8 20.5ZM149.4 14.9L157.7 12.1L160.3 16.5L163.6 13.8L164.1 17.3L160.3 18.0L156.3 21.9L153.7 18.5L149.9 16.9L149.4 14.9ZM148.2 37.1L152.2 35.7L159.8 28.8L163.1 31.4L156.0 34.0L157.2 36.8L153.2 37.1L148.5 40.1L148.2 37.1ZM135.7 18.5L139.2 17.1L139.0 20.6L135.7 18.5ZM67.8 44.5L72.5 46.9L80.5 46.0L92.1 41.9L96.6 39.7L100.9 39.7L112.2 34.1L118.2 32.0L119.6 29.9L123.6 31.6L125.3 29.0L131.2 28.2L136.4 22.6L139.7 23.6L143.0 20.8L145.4 21.1L151.1 27.6L147.8 33.6L142.1 39.9L144.2 45.7L140.4 48.5L137.8 54.6L140.9 55.9L150.8 50.1L152.0 45.8L162.0 54.4L165.0 56.1L167.2 55.3L173.1 57.5L174.5 60.6L177.3 60.1L177.3 60.1L179.7 62.1L186.1 63.3L192.7 76.7L192.5 78.8L260.4 97.3L280.8 108.6L283.6 107.6L287.6 108.8L288.6 111.2L291.9 111.2L292.6 108.6L299.0 108.4L299.5 110.4L304.4 112.1L307.3 110.9L313.0 114.7L316.3 113.5L325.7 117.4L325.7 121.1L327.4 122.8L323.4 127.0L327.6 130.6L332.6 129.1L334.7 132.5L340.4 132.9L341.8 135.5L344.9 136.9L346.8 140.4L344.0 141.5L347.3 147.5L345.4 153.0L346.1 156.7L344.7 159.9L341.6 162.6L342.3 165.7L340.7 167.6L342.3 171.3L342.3 171.3L348.7 170.5L352.5 166.8L355.1 168.8L355.6 171.5L353.0 175.3L349.4 184.8L349.9 187.1L353.0 189.3L354.9 193.1L359.3 194.2L357.0 198.8L356.7 205.2L348.0 206.2L343.0 209.4L343.7 213.2L341.1 217.9L339.0 219.1L336.4 225.7L333.6 229.1L331.9 237.4L332.6 239.4L329.5 243.4L334.3 246.7L337.1 246.2L338.8 241.9L344.9 236.8L347.3 236.6L350.8 231.5L350.8 228.7L358.2 218.0L364.3 215.2L366.9 215.7L369.5 213.0L373.1 215.6L371.7 211.9L374.5 204.2L380.9 195.5L382.5 187.5L385.4 187.9L390.4 185.3L390.6 180.6L394.6 175.8L399.8 176.1L399.3 183.0L395.6 183.4L395.1 194.7L392.2 197.9L390.4 197.6L389.2 201.8L385.9 206.0L387.0 209.4L384.0 212.5L384.9 214.6L380.7 217.3L377.6 222.2L375.7 229.1L371.7 237.7L369.5 239.8L367.4 244.7L362.4 266.1L364.6 273.6L364.1 279.3L361.2 282.6L355.8 286.2L355.1 291.2L353.2 294.1L349.9 307.1L350.4 313.6L352.2 317.6L351.8 325.7L346.8 335.2L345.1 346.0L340.4 354.6L338.3 367.0L340.2 373.1L339.0 376.1L340.9 382.9L339.2 387.5L342.5 392.4L342.5 399.2L344.0 404.2L347.8 408.9L346.8 416.0L344.2 424.6L345.6 436.2L326.2 435.8L290.2 435.8L280.5 436.2L234.6 435.3L222.5 434.9L168.8 434.7L158.2 434.6L158.2 431.6L153.9 422.9L149.9 421.3L138.8 418.4L130.9 413.2L127.9 399.8L125.0 397.8L125.0 392.3L123.1 385.3L122.9 376.7L125.0 374.8L126.4 370.6L130.7 365.8L127.6 359.8L121.2 356.5L121.5 350.6L119.1 346.6L120.3 342.4L118.4 338.2L119.3 334.7L117.0 331.7L116.5 326.1L118.4 317.0L116.3 311.1L109.2 300.2L105.6 295.8L96.4 293.5L87.9 286.3L87.2 284.0L80.8 280.7L76.7 277.1L75.6 270.4L73.7 269.2L73.7 265.0L70.4 261.8L65.1 258.7L53.3 254.6L50.0 251.6L47.6 245.4L44.8 244.0L33.0 243.3L30.8 239.8L27.5 238.5L27.8 236.6L20.4 229.6L16.6 227.5L15.4 224.6L18.3 218.2L17.6 212.2L19.2 208.9L17.8 205.6L18.3 200.4L15.7 197.7L19.5 193.1L18.0 185.8L19.0 183.2L18.5 176.0L22.5 172.1L22.3 169.7L25.9 166.0L26.1 162.0L20.7 155.2L20.9 152.7L17.6 150.2L15.2 150.9L10.2 149.2L10.0 145.0L11.7 135.9L16.9 132.0L21.6 120.2L26.3 116.4L32.2 114.6L34.1 111.5L37.5 112.6L39.8 108.1L45.5 108.7L46.9 104.0L49.3 103.2L49.3 48.5L54.5 49.8L57.1 46.3L55.0 44.8L58.8 43.7L59.5 41.4L62.8 40.5L67.8 44.5Z"/>
+<circle class="pin" cx="37.7" cy="199.9" r="5"/>
+<text class="label" x="46.7" y="203.9">St. Croix</text>
+<circle class="pin" cx="73.8" cy="67.7" r="5"/>
+<text class="label" x="82.8" y="71.7">Douglas</text>
+<circle class="city" cx="62.1" cy="43.2" r="3.5"/>
+<circle class="city" cx="18.5" cy="205.8" r="3.5"/>
+</svg></div>
+        <div class="legend"><span><i style="background:var(--blue)"></i>Counties we serve</span><span><i style="background:#c98a2b;border-radius:50%"></i>Superior and Hudson</span></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <section class="band" id="faq">
   <div class="wrap">
@@ -694,7 +835,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       </div>
       <div>
         <h4>Programs</h4>
-        <ul><li><a href="#pay">Family Care</a></li><li><a href="#pay">IRIS</a></li><li><a href="#pay">Private pay</a></li><li><a href="#refer">Submit a referral</a></li></ul>
+        <ul><li><a href="#pay">Family Care</a></li><li><a href="#pay">IRIS</a></li><li><a href="#pay">Private pay</a></li><li><a href="#caregiver">Preferred caregiver</a></li><li><a href="#refer">Submit a referral</a></li></ul>
       </div>
       <div>
         <h4>Company</h4>
