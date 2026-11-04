@@ -741,45 +741,46 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
           <p class="note">Monday to Friday, 8 am to 6 pm.</p>
         </div>
       </div>
-      <form id="refForm" class="reveal" action="https://formsubmit.co/compliance@havencresthome.com" method="POST">
-        <input type="hidden" name="_subject" value="New REFERRAL (havencresthome.com)">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://havencresthome.com/thank-you.html">
+      <form id="refForm" class="reveal" data-hub="referral" method="POST" action="#">
         <input type="text" name="_honey" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="off" aria-hidden="true">
         <h3 id="ref-form">Online referral</h3>
-        <p class="note">Sends a referral notice to our intake team right away. Use the member's initials here; send full member details by your organization's secure email after we acknowledge.</p>
+        <p class="note">Goes straight to our intake team. We acknowledge within one business day. Attach the authorization by secure email once we confirm receipt.</p>
         <div class="row2">
-          <label>Your name <input id="rName" name="Referrer name" autocomplete="name" required></label>
-          <label>Organization <input id="rOrg" name="Organization" placeholder="e.g. Inclusa, ADRC, hospital"></label>
+          <label>Your name <input id="rName" name="referrer_name" autocomplete="name" required></label>
+          <label>Organization <input id="rOrg" name="referrer_org" placeholder="e.g. Inclusa, ADRC, hospital"></label>
         </div>
         <div class="row2">
-          <label>Your phone <input id="rPhone" name="Referrer phone" type="tel" required></label>
-          <label>Your email <input id="rEmail" name="Referrer email" type="email"></label>
+          <label>Your phone <input id="rPhone" name="referrer_phone" type="tel" required></label>
+          <label>Your email <input id="rEmail" name="referrer_email" type="email"></label>
         </div>
         <div class="row2">
-          <label>Member initials <input id="mName" name="Member initials" placeholder="e.g. R.Z." maxlength="8"></label>
-          <label>Member county <input id="mCounty" name="Member county" placeholder="e.g. Douglas"></label>
+          <label>Member name <input id="mName" name="member_name" placeholder="First and last name"></label>
+          <label>Member county <input id="mCounty" name="county" placeholder="e.g. Douglas"></label>
+        </div>
+        <div class="row2">
+          <label>Member date of birth <input id="mDob" name="member_dob" type="date"></label>
+          <label>MCO or ICA <input id="mMco" name="mco" placeholder="e.g. Inclusa, My Choice Wisconsin"></label>
         </div>
         <div class="row2">
           <label>Program
-            <select id="mProg" name="Program">
+            <select id="mProg" name="program">
               <option>Family Care</option>
               <option>IRIS</option>
               <option>Private pay</option>
               <option>Not sure yet</option>
             </select>
           </label>
-          <label>Requested hours per week <input id="mHours" name="Hours per week" placeholder="e.g. 20"></label>
+          <label>Requested hours per week <input id="mHours" name="hours_week" placeholder="e.g. 20"></label>
         </div>
-        <label>Services requested <textarea id="mNeed" name="Services requested" rows="3" placeholder="e.g. morning personal care, meal prep, housekeeping, community outings"></textarea></label>
-        <label>Requested start date <input id="mStart" name="Requested start" type="date"></label>
+        <label>Services requested <textarea id="mNeed" name="services" rows="3" placeholder="e.g. morning personal care, meal prep, housekeeping, community outings"></textarea></label>
+        <label>Requested start date <input id="mStart" name="start_date" type="date"></label>
         <button class="btn primary" type="submit">Send referral</button>
         <div id="refOut" hidden>
-          <p class="note"><strong>Preview mode.</strong> On the live site this sends immediately. Here is the text it would send:</p>
+          <p class="note"><strong>Preview mode.</strong> On the live site this sends immediately to our intake team.</p>
           <textarea id="refText" readonly aria-label="Your referral text"></textarea>
           <button class="btn ghost" type="button" id="copyRef">Copy text</button>
         </div>
+        <p class="note" id="refErr" hidden>Something went wrong sending this. Please call 715-338-2315 or email compliance@havencresthome.com.</p>
       </form>
     </div>
   </div>
@@ -915,32 +916,29 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
           <div class="val" style="font-size:1.05rem"><span>havencresthome.com</span></div>
         </div>
       </div>
-      <form id="reqForm" class="reveal" action="https://formsubmit.co/compliance@havencresthome.com" method="POST">
-        <input type="hidden" name="_subject" value="New inquiry: request a call (havencresthome.com)">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://havencresthome.com/thank-you.html">
+      <form id="reqForm" class="reveal" data-hub="request_call" method="POST" action="#">
         <input type="text" name="_honey" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="off" aria-hidden="true">
         <h3>Request a call</h3>
         <p class="note">We'll call you back within one business day. Please don't include medical details here.</p>
-        <label>Your name <input id="fName" name="Name" autocomplete="name" required></label>
-        <label>Best phone number <input id="fPhone" name="Phone" type="tel" autocomplete="tel" required></label>
+        <label>Your name <input id="fName" name="name" autocomplete="name" required></label>
+        <label>Best phone number <input id="fPhone" name="phone" type="tel" autocomplete="tel" required></label>
         <label>I'm reaching out as
-          <select id="fRole" name="Reaching out as">
+          <select id="fRole" name="reaching_as">
             <option>The person who needs support</option>
             <option>A family member</option>
             <option>A care manager or case worker</option>
             <option>A discharge planner or facility</option>
           </select>
         </label>
-        <label>City or town <input id="fCity" name="City"></label>
-        <label>What would be most helpful? <textarea id="fNeed" name="What would help" rows="3" placeholder="For example: help in the mornings a few days a week"></textarea></label>
+        <label>City or town <input id="fCity" name="city"></label>
+        <label>What would be most helpful? <textarea id="fNeed" name="need" rows="3" placeholder="For example: help in the mornings a few days a week"></textarea></label>
         <button class="btn primary" type="submit">Request a call</button>
         <div id="formOut" hidden>
           <p class="note"><strong>Preview mode.</strong> On the live site this sends immediately. Here is what it would send:</p>
           <textarea id="outText" readonly aria-label="Your prepared message" style="min-height:9rem"></textarea>
           <button class="btn ghost" type="button" id="copyOut">Copy message</button>
         </div>
+        <p class="note" id="reqErr" hidden>Something went wrong sending this. Please call 715-338-2315.</p>
       </form>
     </div>
   </div>
@@ -1039,16 +1037,28 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
   function v(id){return document.getElementById(id).value.trim()}
 
   var PREVIEW=/claude\.ai$/.test(location.hostname);
+  var HUB='https://script.google.com/a/macros/havencresthome.com/s/AKfycbzkYeAGap0pH2TGthfpmFYjKZByENZ0LVXKic-jrCLspoNTJXxhQcsy3rtpNo5wNhX5/exec';
   function lock(f){var b=f.querySelector('button[type=submit]');if(b){b.disabled=true;b.textContent='Sending…'}}
+  function unlock(f,label){var b=f.querySelector('button[type=submit]');if(b){b.disabled=false;b.textContent=label}}
+  function hubSend(f,formType,errId,label){
+    var data={form:formType,source:'Website'};
+    f.querySelectorAll('input[name],select[name],textarea[name]').forEach(function(el){if(el.name&&!/^_/.test(el.name))data[el.name]=el.value.trim()});
+    if(f.querySelector('input[name=_honey]')&&f.querySelector('input[name=_honey]').value)data._honey='x';
+    lock(f);
+    fetch(HUB,{method:'POST',redirect:'follow',body:JSON.stringify(data)}).then(function(r){return r.json()}).then(function(j){
+      if(j&&j.ok){location.href='thank-you.html'}else{throw new Error('bad')}
+    }).catch(function(){unlock(f,label);var e=document.getElementById(errId);if(e)e.hidden=false});
+  }
   document.getElementById('refForm').addEventListener('submit',function(e){
-    if(!PREVIEW){if(!v('rName')||!v('rPhone')){return}lock(this);return}
     e.preventDefault();
+    if(!v('rName')||!v('rPhone')){document.getElementById('rName').reportValidity();document.getElementById('rPhone').reportValidity();return}
+    if(!PREVIEW){hubSend(this,'referral','refErr','Send referral');return}
     if(!v('rName')||!v('rPhone')){document.getElementById('rName').reportValidity();document.getElementById('rPhone').reportValidity();return}
     var lines=['REFERRAL — Haven Crest Homes','',
       'Referred by: '+v('rName')+(v('rOrg')?' ('+v('rOrg')+')':''),
       'Phone: '+v('rPhone')+(v('rEmail')?'   Email: '+v('rEmail'):''),
       '',
-      'Member initials: '+(v('mName')||'—'),
+      'Member: '+(v('mName')||'—'),
       'County: '+(v('mCounty')||'—'),
       'Program: '+v('mProg'),
       'Requested hours/week: '+(v('mHours')||'—'),
@@ -1063,8 +1073,9 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
   document.getElementById('copyRef').addEventListener('click',function(){copyText(document.getElementById('refText').value,this)});
 
   document.getElementById('reqForm').addEventListener('submit',function(e){
-    if(!PREVIEW){if(!v('fName')||!v('fPhone')){return}lock(this);return}
     e.preventDefault();
+    if(!v('fName')||!v('fPhone')){document.getElementById('fName').reportValidity();document.getElementById('fPhone').reportValidity();return}
+    if(!PREVIEW){hubSend(this,'request_call','reqErr','Request a call');return}
     if(!v('fName')||!v('fPhone')){document.getElementById('fName').reportValidity();document.getElementById('fPhone').reportValidity();return}
     var msg='Hello Haven Crest Homes,\n\nMy name is '+v('fName')+'. I am reaching out as: '+v('fRole').toLowerCase()+'.'+
       (v('fCity')?'\nLocation: '+v('fCity'):'')+(v('fNeed')?'\nWhat would help most: '+v('fNeed'):'')+

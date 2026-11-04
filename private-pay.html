@@ -382,38 +382,35 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
       </ul>
       <p style="margin-top:1.4rem"><a class="tel" href="tel:+17153382315">Call 715-338-2315</a><br><span class="note">Monday to Friday, 8 am to 6 pm. A person answers.</span></p>
     </div>
-    <form id="ppForm" class="sticky" action="https://formsubmit.co/compliance@havencresthome.com" method="POST">
+    <form id="ppForm" class="sticky" method="POST" action="#">
       <h3>Request a free in-home consultation</h3>
       <p class="note">We'll call you within one business day to set it up. Please don't include medical details here.</p>
-      <input type="hidden" name="_subject" value="New private-pay consultation request (havencresthome.com)">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://havencresthome.com/thank-you.html">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label>Your name <input id="pName" name="Your name" autocomplete="name" required></label>
-      <label>Best phone number <input id="pPhone" name="Phone" type="tel" autocomplete="tel" required></label>
-      <label>Email (optional) <input id="pEmail" name="Email" type="email" autocomplete="email"></label>
+      <label>Your name <input id="pName" name="name" autocomplete="name" required></label>
+      <label>Best phone number <input id="pPhone" name="phone" type="tel" autocomplete="tel" required></label>
+      <label>Email (optional) <input id="pEmail" name="email" type="email" autocomplete="email"></label>
       <label>Who needs support?
-        <select id="pWho" name="Support is for">
+        <select id="pWho" name="support_for">
           <option>Myself</option>
           <option>My parent</option>
           <option>My spouse or partner</option>
           <option>Another family member or friend</option>
         </select>
       </label>
-      <label>City or town <input id="pCity" name="City" placeholder="e.g. Superior"></label>
+      <label>City or town <input id="pCity" name="city" placeholder="e.g. Superior"></label>
       <label>When would you like to start?
-        <select id="pWhen" name="Start timing">
+        <select id="pWhen" name="start_timing">
           <option>As soon as possible</option>
           <option>Within the next 2 weeks</option>
           <option>Within the next month</option>
           <option>Just gathering information</option>
         </select>
       </label>
-      <label>What would help most? <textarea id="pNeed" name="What would help most" rows="3" placeholder="For example: mornings a few days a week, help after a hospital stay, a break for me as caregiver"></textarea></label>
+      <label>What would help most? <textarea id="pNeed" name="need" rows="3" placeholder="For example: mornings a few days a week, help after a hospital stay, a break for me as caregiver"></textarea></label>
       <button class="btn primary" type="submit">Request my consultation</button>
       <p class="note">Prefer to talk? Call 715-338-2315.</p>
       <div id="ppOut" hidden><p class="note"><strong>Preview mode:</strong> on the live site this sends your request to Haven Crest Homes.</p></div>
+      <p class="note" id="ppErr" hidden>Something went wrong sending this. Please call 715-338-2315.</p>
     </form>
   </div>
 </section>
@@ -481,8 +478,16 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
 (function(){var hdr=document.getElementById('hdr');function s(){hdr.classList.toggle('scrolled',window.scrollY>8)}window.addEventListener('scroll',s,{passive:true});s();
 var mb=document.getElementById('menuBtn'),nl=document.getElementById('navList');mb.addEventListener('click',function(){var o=nl.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
 var f=document.getElementById('ppForm');if(f){f.addEventListener('submit',function(e){
-  if(/claude\.ai$/.test(location.hostname)){e.preventDefault();document.getElementById('ppOut').hidden=false;return}
-  var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='Sending…';});}
+  e.preventDefault();
+  if(!f.checkValidity()){f.reportValidity();return}
+  if(/claude\.ai$/.test(location.hostname)){document.getElementById('ppOut').hidden=false;return}
+  var data={form:'private_pay',source:'Website'};
+  f.querySelectorAll('input[name],select[name],textarea[name]').forEach(function(el){if(el.name&&!/^_/.test(el.name))data[el.name]=el.value.trim()});
+  if(f.querySelector('input[name=_honey]').value)data._honey='x';
+  var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='Sending…';
+  fetch('https://script.google.com/a/macros/havencresthome.com/s/AKfycbzkYeAGap0pH2TGthfpmFYjKZByENZ0LVXKic-jrCLspoNTJXxhQcsy3rtpNo5wNhX5/exec',{method:'POST',redirect:'follow',body:JSON.stringify(data)}).then(function(r){return r.json()}).then(function(j){
+    if(j&&j.ok){location.href='thank-you.html'}else{throw new Error('bad')}
+  }).catch(function(){b.disabled=false;b.textContent='Request my consultation';document.getElementById('ppErr').hidden=false});});}
 })();
 </script>
 </body></html>

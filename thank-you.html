@@ -405,8 +405,16 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
 (function(){var hdr=document.getElementById('hdr');function s(){hdr.classList.toggle('scrolled',window.scrollY>8)}window.addEventListener('scroll',s,{passive:true});s();
 var mb=document.getElementById('menuBtn'),nl=document.getElementById('navList');mb.addEventListener('click',function(){var o=nl.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
 var f=document.getElementById('ppForm');if(f){f.addEventListener('submit',function(e){
-  if(/claude\.ai$/.test(location.hostname)){e.preventDefault();document.getElementById('ppOut').hidden=false;return}
-  var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='Sending…';});}
+  e.preventDefault();
+  if(!f.checkValidity()){f.reportValidity();return}
+  if(/claude\.ai$/.test(location.hostname)){document.getElementById('ppOut').hidden=false;return}
+  var data={form:'private_pay',source:'Website'};
+  f.querySelectorAll('input[name],select[name],textarea[name]').forEach(function(el){if(el.name&&!/^_/.test(el.name))data[el.name]=el.value.trim()});
+  if(f.querySelector('input[name=_honey]').value)data._honey='x';
+  var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='Sending…';
+  fetch('https://script.google.com/a/macros/havencresthome.com/s/AKfycbzkYeAGap0pH2TGthfpmFYjKZByENZ0LVXKic-jrCLspoNTJXxhQcsy3rtpNo5wNhX5/exec',{method:'POST',redirect:'follow',body:JSON.stringify(data)}).then(function(r){return r.json()}).then(function(j){
+    if(j&&j.ok){location.href='thank-you.html'}else{throw new Error('bad')}
+  }).catch(function(){b.disabled=false;b.textContent='Request my consultation';document.getElementById('ppErr').hidden=false});});}
 })();
 </script>
 </body></html>
