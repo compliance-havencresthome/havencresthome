@@ -72,9 +72,11 @@ nav ul a:hover{color:var(--blue)}
 nav .btn{padding:.6rem 1.1rem;font-size:.88rem}
 .menu{display:none;background:none;border:2px solid var(--line);border-radius:10px;padding:.45rem .6rem;cursor:pointer;color:var(--ink)}
 .menu svg{width:22px;height:22px;display:block}
+.staff-mini{display:none;font-family:var(--display);font-weight:800;font-size:.85rem;color:var(--blue);text-decoration:none;border:2px solid var(--line);border-radius:999px;padding:.45rem .8rem;margin-left:auto;margin-right:.5rem}
 @media (max-width:900px){
   nav{flex-wrap:wrap}
   .menu{display:block}
+  .staff-mini{display:inline-block}
   nav ul{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding-block:.5rem}
   nav ul.open{display:flex}
   nav ul li a{display:block;padding:.7rem 0;border-top:1px solid var(--line)}
@@ -336,6 +338,7 @@ footer{padding-block:3rem;color:var(--muted);font-size:.92rem;border-top:1px sol
         <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 17 16 6l12 11" stroke="#1a6ff0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 15v11h16V15" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M16 22.5s-4-2.4-4-5a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.6-4 5-4 5z" fill="#1a6ff0"/></svg>
         <span>Haven Crest Homes<small>Care you can count on</small></span>
       </a>
+      <a class="staff-mini" href="hub.html" rel="nofollow">Staff</a>
       <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navList" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <ul id="navList">
         <li><a href="#services">Services</a></li>
