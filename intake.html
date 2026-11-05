@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Haven Crest Intake</title>
+<meta name="description" content="Tell us a little about the support you need at home. Takes about 8 minutes. Save and finish any time.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap">
+<style>
+:root{--bg:#ffffff;--surface:#ffffff;--ink:#0d0f14;--muted:#4d5666;--line:#d9e2f0;--blue:#1a6ff0;--blue-dark:#0f52c9;--blue-light:#5f9bf5;--tint:#eaf1fd;--on-blue:#ffffff;--good:#1e8e5a;--good-soft:#e3f5ec;--bad:#d64545;--bad-soft:#fde8e8;--warm:#e8a33d;--warm-soft:#fff1dc;
+ --display:Poppins,system-ui,sans-serif;--body:"Nunito Sans",system-ui,sans-serif;--r:14px;--shadow:0 10px 30px rgba(13,15,20,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1420;--surface:#151d2c;--ink:#f1f4fa;--muted:#aab4c6;--line:#27344b;--blue:#3b84f5;--blue-dark:#2f6fd6;--blue-light:#8fb7f8;--tint:#172238;--good-soft:#14301f;--bad-soft:#3a1a1a;--warm-soft:#2b2416;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0e1420;--surface:#151d2c;--ink:#f1f4fa;--muted:#aab4c6;--line:#27344b;--blue:#3b84f5;--blue-dark:#2f6fd6;--blue-light:#8fb7f8;--tint:#172238;--good-soft:#14301f;--bad-soft:#3a1a1a;--warm-soft:#2b2416;--shadow:0 10px 30px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--body);min-height:100dvh}
+h1:focus{outline:none}h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.12;margin:0;letter-spacing:-.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--blue)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;font-size:1.02rem;text-decoration:none;color:var(--ink)}
+.brand svg{width:28px;height:28px;flex:none}
+.call{margin-left:auto;text-decoration:none;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.call svg{width:18px;height:18px}
+.call span{display:none}
+@media(min-width:560px){.call span{display:inline}}
+/* progress */
+.prog{max-width:1180px;margin:0 auto;padding:0 16px 10px}
+.bar{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;list-style:none;margin:0;padding:0}
+.bar button{width:100%;height:44px;border:0;background:transparent;padding:0;cursor:pointer;display:grid;gap:6px;align-content:center;border-radius:8px}
+.bar button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.bar i{display:block;height:7px;border-radius:5px;background:var(--line);transition:background .25s}
+.bar .done i{background:var(--good)}.bar .cur i{background:var(--blue)}
+.bar span{font-size:.72rem;font-weight:700;color:var(--muted);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .cur span{color:var(--blue)}
+.bar button:disabled{cursor:default}
+.bar span{display:none}
+@media(min-width:720px){.bar span{display:block}}
+/* mobile step menu */
+.menu{display:block;margin:6px 0 0}
+.menu summary{list-style:none;cursor:pointer;font-weight:700;color:var(--muted);font-size:.9rem;display:flex;align-items:center;gap:8px;min-height:40px}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary b{color:var(--ink)}
+.menu summary svg{width:16px;height:16px;transition:transform .2s}
+.menu[open] summary svg{transform:rotate(180deg)}
+.menu ol{margin:4px 0 6px;padding:0;list-style:none;display:grid;gap:4px}
+.menu li button{width:100%;text-align:left;border:0;background:transparent;padding:10px 8px;border-radius:8px;display:flex;gap:10px;align-items:center;min-height:44px;cursor:pointer}
+.menu li button:disabled{color:var(--muted);cursor:default}
+.menu li button.cur{background:var(--tint);color:var(--blue);font-weight:700}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.72rem;font-weight:800;flex:none}
+.dot.done{background:var(--good);border-color:var(--good);color:#fff}.dot.cur{border-color:var(--blue);color:var(--blue)}
+@media(min-width:960px){.menu{display:none}}
+/* layout */
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 130px;display:grid;gap:24px}
+@media(min-width:960px){.wrap{grid-template-columns:minmax(0,680px) 300px;justify-content:center;padding-top:32px;gap:40px}}
+main{min-width:0}
+.step{display:none;animation:in .28s ease}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.step{animation:none}}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--blue)}
+.step h1{font-size:clamp(1.6rem,4.5vw,2.1rem);margin:4px 0 8px}
+.lead{color:var(--muted);margin:0 0 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:16px}
+.card h2{font-size:1.08rem;margin-bottom:12px}
+.grid{display:grid;gap:14px}
+@media(min-width:640px){.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:1fr 1fr 1fr}.span2{grid-column:1/-1}}
+.f{display:grid;gap:6px}
+.f>label,.f>.lbl{font-weight:700;font-size:.95rem}
+.f small{color:var(--muted);font-weight:400;font-size:.85rem}
+.f input,.f select,.f textarea{min-height:50px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);width:100%;font-size:1.05rem;transition:border-color .15s,box-shadow .15s}
+.f textarea{min-height:100px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px var(--tint)}
+.f.err input,.f.err select,.f.err textarea{border-color:var(--bad)}
+.msg{font-size:.88rem;color:var(--bad);font-weight:600;display:none;align-items:center;gap:6px}
+.f.err .msg{display:flex}
+.hint{font-size:.85rem;color:var(--muted)}
+/* pills */
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{min-height:48px;padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .15s;text-align:left}
+.pill:hover{border-color:var(--blue-light)}
+.pill[aria-pressed="true"],.pill[aria-checked="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.pill:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.cards{display:grid;gap:10px}
+@media(min-width:560px){.cards{grid-template-columns:1fr 1fr}}
+.opt{min-height:64px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer;text-align:left;display:grid;gap:2px;transition:all .15s}
+.opt b{font-size:1rem}.opt span{font-size:.85rem;color:var(--muted)}
+.opt:hover{border-color:var(--blue-light)}
+.opt[aria-pressed="true"]{border-color:var(--blue);background:var(--tint);box-shadow:inset 0 0 0 1px var(--blue)}
+.opt[aria-pressed="true"] span{color:inherit}
+/* ADL rows */
+.adl{display:grid;gap:10px}
+.task{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:8px;background:var(--surface)}
+.task.on{border-color:var(--blue)}
+.task .nm{font-weight:800;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.task .nm small{font-weight:600;color:var(--muted);font-size:.8rem}
+.task .pills .pill{min-height:42px;padding:7px 13px;font-size:.92rem}
+.task .pill[data-l="None"][aria-pressed="true"]{background:var(--tint);border-color:var(--line);color:var(--muted)}
+.est{background:var(--tint);border-radius:12px;padding:14px 16px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.est b{font-family:var(--display);font-size:1.6rem;color:var(--blue)}
+.est span{color:var(--muted);font-size:.9rem}
+.flag{background:var(--warm-soft);border-radius:12px;padding:12px 14px;font-size:.95rem;margin-top:12px}
+.flag.good{background:var(--good-soft)}
+.cond{display:none}.cond.on{display:block}
+/* review */
+.rev{display:grid;gap:10px}
+.rev .row{display:grid;grid-template-columns:140px 1fr;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.rev .row b{color:var(--muted);font-weight:700}
+.rev .row a{font-weight:700}
+.rev .row:last-child{border:0}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;min-height:56px}
+.chk input{width:24px;height:24px;margin:2px 0 0;flex:none;accent-color:var(--blue)}
+.chk.err{border-color:var(--bad)}
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--bg);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.nav .in{max-width:1180px;margin:0 auto;display:flex;gap:10px;align-items:center}
+@media(min-width:960px){.nav .in{max-width:680px;margin:0;padding-left:calc((100% - 1020px)/2)}}
+.btn{min-height:52px;padding:12px 22px;border-radius:999px;border:2px solid transparent;font-family:var(--display);font-weight:800;font-size:1rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;text-decoration:none}
+.btn.primary{background:var(--blue);color:var(--on-blue);flex:1}
+.btn.primary:hover{background:var(--blue-dark)}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:default}
+.saved{margin-left:auto;font-size:.8rem;color:var(--muted);font-weight:700;display:none;white-space:nowrap}
+@media(min-width:560px){.saved{display:block}}
+/* sidebar */
+aside{display:none}
+@media(min-width:960px){aside{display:block;position:sticky;top:92px;align-self:start}}
+.side{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.side h3{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.side ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.side li button{width:100%;text-align:left;border:0;background:transparent;padding:9px 8px;border-radius:8px;display:flex;gap:10px;align-items:center;cursor:pointer;min-height:44px}
+.side li button:disabled{color:var(--muted);cursor:default}
+.side li button.cur{background:var(--tint);color:var(--blue);font-weight:700}
+.side .st{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+.side .st b{color:var(--ink)}
+.help{margin-top:14px;background:var(--tint);border-radius:12px;padding:14px;font-size:.92rem}
+.help a{font-weight:800;text-decoration:none}
+/* done */
+.done-wrap{text-align:center;padding:30px 0}
+.done-wrap .big{width:84px;height:84px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center;margin:0 auto 18px}
+.done-wrap .big svg{width:42px;height:42px}
+.next{display:grid;gap:10px;text-align:left;margin:22px 0}
+.next div{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.next .dot{border-color:var(--blue);color:var(--blue)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:700;font-size:.9rem;opacity:0;transition:opacity .2s;z-index:40;pointer-events:none;max-width:90vw;text-align:center}
+.toast.on{opacity:1}
+.resume{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.resume input{flex:1;min-width:180px;min-height:46px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface)}
+.resume .btn{min-height:46px;padding:8px 16px;font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="in">
+    <a class="brand" href="index.html" aria-label="Haven Crest Homes home">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 17 16 6l12 11" stroke="#1a6ff0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 15v11h16V15" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M16 22.5s-4-2.4-4-5a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.6-4 5-4 5z" fill="#1a6ff0"/></svg>
+      Haven Crest Homes
+    </a>
+    <a class="call" href="tel:+17153382315" aria-label="Call 715-338-2315"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg><span>715-338-2315</span></a>
+  </div>
+  <div class="prog">
+    <ol class="bar" id="bar" aria-label="Progress"></ol>
+    <details class="menu" id="menu">
+      <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span id="menuLbl">Step 1 of 6 · <b>Getting started</b></span></summary>
+      <ol id="menuList"></ol>
+    </details>
+  </div>
+</header>
+
+<div class="wrap">
+<main id="main">
+<form id="form" novalidate autocomplete="on">
+
+<!-- ===== STEP 1 ===== -->
+<section class="step on" data-step="1" aria-labelledby="h1s">
+  <div class="eyebrow">Step 1 of 6</div>
+  <h1 id="h1s">Let's get started</h1>
+  <p class="lead">A few quick questions so the right person can call you back. Takes about 8 minutes total, and your answers save as you go.</p>
+
+  <div class="card">
+    <h2>Who's filling this out?</h2>
+    <div class="cards" role="radiogroup" aria-label="Who is filling this out" data-field="reaching_as" data-required>
+      <button type="button" class="opt" data-v="The person who needs support"><b>Me</b><span>I'm looking for support in my own home</span></button>
+      <button type="button" class="opt" data-v="Family member or friend"><b>A family member or friend</b><span>I'm helping someone I care about</span></button>
+      <button type="button" class="opt" data-v="Care manager or professional"><b>A care manager or professional</b><span>MCO, IRIS, ADRC, hospital, clinic, facility</span></button>
+      <button type="button" class="opt" data-v="Current or future caregiver"><b>A caregiver</b><span>I already help this person and want to do it through Haven Crest</span></button>
+    </div>
+    <p class="msg" data-msg-for="reaching_as">Please pick one so we know who to call.</p>
+  </div>
+
+  <div class="card">
+    <h2>How can we reach you?</h2>
+    <div class="grid two">
+      <div class="f"><label for="first_name">Your first name</label><input id="first_name" name="first_name" autocomplete="given-name" required data-min="1"><p class="msg">Please enter your first name.</p></div>
+      <div class="f"><label for="last_name">Your last name</label><input id="last_name" name="last_name" autocomplete="family-name" required><p class="msg">Please enter your last name.</p></div>
+      <div class="f"><label for="phone">Mobile or home phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="715-555-0123" required data-type="phone"><p class="msg">Enter a 10-digit phone number.</p></div>
+      <div class="f"><label for="email">Email <small>(optional, for your copy)</small></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" data-type="email"><p class="msg">That email doesn't look right.</p></div>
+      <div class="f span2" id="orgWrap" style="display:none"><label for="org">Your organization</label><input id="org" name="referrer_org" autocomplete="organization" placeholder="Inclusa, Essentia, St. Croix County ADRC…"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Best time to call</h2>
+    <div class="pills" role="radiogroup" aria-label="Best time to call" data-field="best_time">
+      <button type="button" class="pill" data-v="Morning">Morning</button><button type="button" class="pill" data-v="Midday">Midday</button><button type="button" class="pill" data-v="Afternoon">Afternoon</button><button type="button" class="pill" data-v="Evening">Evening</button><button type="button" class="pill" data-v="Any time">Any time</button>
+    </div>
+    <h2 style="margin-top:18px">How soon is support needed?</h2>
+    <div class="pills" role="radiogroup" aria-label="How soon" data-field="start_timing" data-required>
+      <button type="button" class="pill" data-v="Right away">Right away</button><button type="button" class="pill" data-v="Within 2 weeks">Within 2 weeks</button><button type="button" class="pill" data-v="Within a month">Within a month</button><button type="button" class="pill" data-v="Just exploring">Just exploring</button>
+    </div>
+    <p class="msg" data-msg-for="start_timing">Pick the closest answer.</p>
+  </div>
+</section>
+
+<!-- ===== STEP 2 ===== -->
+<section class="step" data-step="2" aria-labelledby="h2s">
+  <div class="eyebrow">Step 2 of 6</div>
+  <h1 id="h2s">About the person receiving support</h1>
+  <p class="lead" id="memberLead">We call them "the member." If that's you, this is about you.</p>
+
+  <div class="card">
+    <h2>Member details</h2>
+    <div class="grid two">
+      <div class="f"><label for="m_first">Member first name</label><input id="m_first" name="m_first" autocomplete="off" required><p class="msg">Please enter the member's first name.</p></div>
+      <div class="f"><label for="m_last">Member last name</label><input id="m_last" name="m_last" autocomplete="off" required><p class="msg">Please enter the member's last name.</p></div>
+      <div class="f"><label for="member_dob">Date of birth</label><input id="member_dob" name="member_dob" type="date" required data-type="dob" max="2030-01-01"><p class="msg">Enter a valid date of birth.</p></div>
+      <div class="f"><label for="member_phone">Member's phone <small>(if different)</small></label><input id="member_phone" name="member_phone" type="tel" inputmode="tel" data-type="phone"><p class="msg">Enter a 10-digit phone number.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Where will support happen?</h2>
+    <div class="grid two">
+      <div class="f span2"><label for="address">Street address</label><input id="address" name="address" autocomplete="street-address" required placeholder="1507 Tower Ave, Apt 2"><p class="msg">Please enter the street address.</p></div>
+      <div class="f"><label for="zip">ZIP code</label><input id="zip" name="zip" inputmode="numeric" pattern="[0-9]*" autocomplete="postal-code" maxlength="5" required data-type="zip"><p class="msg">Enter a 5-digit ZIP code.</p><span class="hint" id="zipHint">We'll fill in the city for you.</span></div>
+      <div class="f"><label for="city">City</label><input id="city" name="city" autocomplete="address-level2" required><p class="msg">Please enter the city.</p></div>
+      <div class="f"><label for="state">State</label><select id="state" name="state" autocomplete="address-level1"><option>WI</option><option>MN</option><option>MI</option><option>IA</option><option>IL</option><option>Other</option></select></div>
+      <div class="f"><label for="county">County</label><select id="county" name="county" required><option value="">Choose a county…</option></select><p class="msg">Please choose the county (we use it to match the right program).</p></div>
+    </div>
+    <div class="flag" id="stateFlag" style="display:none">We serve Wisconsin homes. If the member lives outside Wisconsin, call us and we'll point you to the right resource.</div>
+  </div>
+
+  <div class="card">
+    <h2>A little more</h2>
+    <div class="f" style="margin-bottom:14px"><span class="lbl">Who does the member live with?</span>
+      <div class="pills" role="radiogroup" aria-label="Lives with" data-field="lives_with">
+        <button type="button" class="pill" data-v="Alone">Alone</button><button type="button" class="pill" data-v="Spouse / partner">Spouse / partner</button><button type="button" class="pill" data-v="Family">Family</button><button type="button" class="pill" data-v="Roommate / other">Roommate / other</button>
+      </div></div>
+    <div class="f"><span class="lbl">Preferred language</span>
+      <div class="pills" role="radiogroup" aria-label="Preferred language" data-field="language">
+        <button type="button" class="pill" data-v="English" aria-pressed="true">English</button><button type="button" class="pill" data-v="Spanish">Spanish</button><button type="button" class="pill" data-v="Hmong">Hmong</button><button type="button" class="pill" data-v="Somali">Somali</button><button type="button" class="pill" data-v="Ojibwe">Ojibwe</button><button type="button" class="pill" data-v="Other">Other</button>
+      </div></div>
+  </div>
+</section>
+
+<!-- ===== STEP 3 ===== -->
+<section class="step" data-step="3" aria-labelledby="h3s">
+  <div class="eyebrow">Step 3 of 6</div>
+  <h1 id="h3s">How will support be paid for?</h1>
+  <p class="lead">Not sure? That's common. Pick your best guess and we'll sort it out on the call.</p>
+
+  <div class="card">
+    <h2>Program</h2>
+    <div class="cards" role="radiogroup" aria-label="Program" data-field="program" data-required>
+      <button type="button" class="opt" data-v="Family Care"><b>Family Care</b><span>Through an MCO like Inclusa, Lakeland Care or My Choice Wisconsin</span></button>
+      <button type="button" class="opt" data-v="IRIS"><b>IRIS</b><span>Self-directed; works with an IRIS consultant</span></button>
+      <button type="button" class="opt" data-v="Not sure yet"><b>Medicaid, but not sure which</b><span>Has a ForwardHealth card; program unknown</span></button>
+      <button type="button" class="opt" data-v="Private pay"><b>Private pay</b><span>Paying directly, or long-term-care insurance</span></button>
+      <button type="button" class="opt" data-v="No coverage yet"><b>No coverage yet</b><span>Would like help finding out what's available</span></button>
+    </div>
+    <p class="msg" data-msg-for="program">Pick the closest answer.</p>
+    <div class="flag" id="progFlag" style="display:none"></div>
+  </div>
+
+  <div class="card cond" id="mcoCard">
+    <h2 id="mcoTitle">Which MCO?</h2>
+    <div class="pills" role="radiogroup" aria-label="MCO" data-field="mco" id="mcoPills">
+      <button type="button" class="pill" data-v="Inclusa">Inclusa</button><button type="button" class="pill" data-v="Lakeland Care">Lakeland Care</button><button type="button" class="pill" data-v="My Choice Wisconsin">My Choice Wisconsin</button><button type="button" class="pill" data-v="Community Care">Community Care</button><button type="button" class="pill" data-v="iCare">iCare</button><button type="button" class="pill" data-v="Other / not sure">Other / not sure</button>
+    </div>
+    <div class="pills" role="radiogroup" aria-label="IRIS consultant agency" data-field="ica" id="icaPills" style="display:none">
+      <button type="button" class="pill" data-v="TMG">TMG</button><button type="button" class="pill" data-v="Advocates4U">Advocates4U</button><button type="button" class="pill" data-v="Connections">Connections</button><button type="button" class="pill" data-v="First Person Care">First Person Care</button><button type="button" class="pill" data-v="Other / not sure">Other / not sure</button>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="f"><label for="cm_name"><span class="cmWord">Care manager</span> name <small>(if known)</small></label><input id="cm_name" name="cm_name" autocomplete="off"></div>
+      <div class="f"><label for="cm_phone"><span class="cmWord">Care manager</span> phone</label><input id="cm_phone" name="cm_phone" type="tel" inputmode="tel" data-type="phone"><p class="msg">Enter a 10-digit phone number.</p></div>
+      <div class="f span2"><label for="cm_email"><span class="cmWord">Care manager</span> email</label><input id="cm_email" name="cm_email" type="email" inputmode="email" data-type="email"><p class="msg">That email doesn't look right.</p></div>
+      <div class="f"><label for="medicaid_id">ForwardHealth ID <small>(10 digits on the card, optional)</small></label><input id="medicaid_id" name="medicaid_id" inputmode="numeric" maxlength="10" autocomplete="off"></div>
+    </div>
+    <div class="f" style="margin-top:14px"><span class="lbl">Is there already a service plan with home-care hours?</span>
+      <div class="pills" role="radiogroup" aria-label="Service plan status" data-field="plan_status">
+        <button type="button" class="pill" data-v="Yes, hours are authorized">Yes, hours are authorized</button><button type="button" class="pill" data-v="In progress">In progress</button><button type="button" class="pill" data-v="No / not sure">No / not sure</button>
+      </div></div>
+  </div>
+
+  <div class="card cond" id="ppCard">
+    <h2>Private pay</h2>
+    <p class="hint" style="margin:0 0 12px">We'll send a written quote after a short home visit. Visits are 2 hours minimum; most families start with 2–4 visits a week.</p>
+    <div class="f"><span class="lbl">Rough budget per week <small>(optional)</small></span>
+      <div class="pills" role="radiogroup" aria-label="Budget" data-field="budget">
+        <button type="button" class="pill" data-v="Under $300">Under $300</button><button type="button" class="pill" data-v="$300–$600">$300–$600</button><button type="button" class="pill" data-v="$600–$1,200">$600–$1,200</button><button type="button" class="pill" data-v="Over $1,200">Over $1,200</button><button type="button" class="pill" data-v="Not sure">Not sure</button>
+      </div></div>
+  </div>
+</section>
+
+<!-- ===== STEP 4 ===== -->
+<section class="step" data-step="4" aria-labelledby="h4s">
+  <div class="eyebrow">Step 4 of 6</div>
+  <h1 id="h4s">What would help day to day?</h1>
+  <p class="lead">Tap the level of help for anything that applies. Skip what doesn't. This gives us a starting estimate; nothing is final until we meet.</p>
+
+  <div class="card">
+    <h2>Daily activities</h2>
+    <div class="adl" id="adl"></div>
+    <div class="est" style="margin-top:14px"><b id="estH">0</b><span>estimated hours per week · <span id="estD">0</span> hrs on a typical day</span></div>
+    <p class="msg" data-msg-for="tasks" style="margin-top:8px">Pick at least one activity, or choose "Just checking" below.</p>
+    <div class="pills" style="margin-top:10px" role="group"><button type="button" class="pill" id="noTasks" data-v="Just checking">Just checking — not sure yet</button></div>
+  </div>
+
+  <div class="card">
+    <h2>Getting around</h2>
+    <div class="pills" role="group" aria-label="Mobility aids" data-field="mobility" data-multi>
+      <button type="button" class="pill" data-v="Walks without help">Walks without help</button><button type="button" class="pill" data-v="Cane">Cane</button><button type="button" class="pill" data-v="Walker">Walker</button><button type="button" class="pill" data-v="Wheelchair">Wheelchair</button><button type="button" class="pill" data-v="Needs help with transfers">Needs help with transfers</button><button type="button" class="pill" data-v="Mechanical lift">Mechanical lift</button><button type="button" class="pill" data-v="Mostly in bed">Mostly in bed</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>When would visits work best?</h2>
+    <div class="f" style="margin-bottom:14px"><span class="lbl">Days</span>
+      <div class="pills" role="group" aria-label="Preferred days" data-field="pref_days" data-multi>
+        <button type="button" class="pill" data-v="Mon">Mon</button><button type="button" class="pill" data-v="Tue">Tue</button><button type="button" class="pill" data-v="Wed">Wed</button><button type="button" class="pill" data-v="Thu">Thu</button><button type="button" class="pill" data-v="Fri">Fri</button><button type="button" class="pill" data-v="Sat">Sat</button><button type="button" class="pill" data-v="Sun">Sun</button><button type="button" class="pill" data-v="Flexible">Flexible</button>
+      </div></div>
+    <div class="f" style="margin-bottom:14px"><span class="lbl">Time of day</span>
+      <div class="pills" role="group" aria-label="Preferred time" data-field="pref_time" data-multi>
+        <button type="button" class="pill" data-v="Mornings">Mornings</button><button type="button" class="pill" data-v="Midday">Midday</button><button type="button" class="pill" data-v="Afternoons">Afternoons</button><button type="button" class="pill" data-v="Evenings">Evenings</button><button type="button" class="pill" data-v="Flexible">Flexible</button>
+      </div></div>
+    <div class="f"><label for="goals">What matters most? <small>(optional)</small></label><textarea id="goals" name="schedule_notes" placeholder="e.g. Mom wants to keep cooking but needs help with showers and getting to church on Sundays."></textarea></div>
+  </div>
+</section>
+
+<!-- ===== STEP 5 ===== -->
+<section class="step" data-step="5" aria-labelledby="h5s">
+  <div class="eyebrow">Step 5 of 6</div>
+  <h1 id="h5s">Home &amp; safety</h1>
+  <p class="lead">So the caregiver arrives prepared. Only share what you're comfortable with.</p>
+
+  <div class="card">
+    <h2>The home</h2>
+    <div class="f" style="margin-bottom:14px"><span class="lbl">Anything a caregiver should know? <small>(tap all that apply)</small></span>
+      <div class="pills" role="group" aria-label="Home notes" data-field="home_flags" data-multi>
+        <button type="button" class="pill" data-v="Stairs to enter">Stairs to enter</button><button type="button" class="pill" data-v="Stairs inside">Stairs inside</button><button type="button" class="pill" data-v="Oxygen in use">Oxygen in use</button><button type="button" class="pill" data-v="Smoking in home">Smoking in home</button><button type="button" class="pill" data-v="Fall in last 6 months">Fall in last 6 months</button><button type="button" class="pill" data-v="Memory concerns">Memory concerns</button><button type="button" class="pill" data-v="Hospital bed">Hospital bed</button><button type="button" class="pill" data-v="Nothing special">Nothing special</button>
+      </div></div>
+    <div class="grid two">
+      <div class="f"><label for="pets">Pets <small>(type, name, friendly?)</small></label><input id="pets" name="pets" placeholder="e.g. Max, friendly lab"></div>
+      <div class="f"><label for="home_access">How do we get in?</label><input id="home_access" name="home_access" placeholder="Knock, lockbox, side door…"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Emergency contact</h2>
+    <div class="grid two">
+      <div class="f"><label for="ec_name">Name</label><input id="ec_name" name="ec_name" autocomplete="off" required><p class="msg">Please add an emergency contact.</p></div>
+      <div class="f"><label for="ec_phone">Phone</label><input id="ec_phone" name="ec_phone" type="tel" inputmode="tel" required data-type="phone"><p class="msg">Enter a 10-digit phone number.</p></div>
+      <div class="f"><label for="ec_rel">Relationship</label><input id="ec_rel" name="ec_relationship" placeholder="Daughter, neighbor…"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Health notes <small style="font-weight:600;color:var(--muted)">(optional)</small></h2>
+    <p class="hint" style="margin:0 0 10px">We're a supportive home care agency, not a medical provider. We don't need diagnoses, just anything that affects how we help: diet, allergies, hearing or vision, things that upset or calm the member.</p>
+    <div class="f"><label for="safety_notes" class="sr">Health and safety notes</label><textarea id="safety_notes" name="safety_notes" placeholder="e.g. Hard of hearing in left ear. Diabetic diet. Gets anxious in the evening."></textarea></div>
+  </div>
+</section>
+
+<!-- ===== STEP 6 ===== -->
+<section class="step" data-step="6" aria-labelledby="h6s">
+  <div class="eyebrow">Step 6 of 6</div>
+  <h1 id="h6s">Caregiver &amp; review</h1>
+  <p class="lead">Last step. Check your answers, then send them to us.</p>
+
+  <div class="card">
+    <h2>Is there someone the member already wants as their caregiver?</h2>
+    <p class="hint" style="margin:0 0 10px">A family member, friend or neighbor can often be hired, trained and paid through Haven Crest. Some programs limit spouses and legal guardians; we'll confirm.</p>
+    <div class="pills" role="radiogroup" aria-label="Preferred caregiver" data-field="caregiver_has">
+      <button type="button" class="pill" data-v="Yes">Yes</button><button type="button" class="pill" data-v="Maybe">Maybe</button><button type="button" class="pill" data-v="No">No, please match us</button>
+    </div>
+    <div class="cond" id="cgWrap" style="margin-top:14px">
+      <div class="grid two">
+        <div class="f"><label for="caregiver_name">Caregiver name</label><input id="caregiver_name" name="caregiver_name" autocomplete="off"></div>
+        <div class="f"><label for="caregiver_phone">Caregiver phone</label><input id="caregiver_phone" name="caregiver_phone" type="tel" inputmode="tel" data-type="phone"><p class="msg">Enter a 10-digit phone number.</p></div>
+        <div class="f span2"><span class="lbl">Relationship to member</span>
+          <div class="pills" role="radiogroup" aria-label="Caregiver relationship" data-field="caregiver_relationship">
+            <button type="button" class="pill" data-v="Adult child">Adult child</button><button type="button" class="pill" data-v="Other relative">Other relative</button><button type="button" class="pill" data-v="Friend / neighbor">Friend / neighbor</button><button type="button" class="pill" data-v="Spouse / partner">Spouse / partner</button><button type="button" class="pill" data-v="Legal guardian / POA">Legal guardian / POA</button><button type="button" class="pill" data-v="Current paid aide">Current paid aide</button>
+          </div></div>
+        <div class="f span2"><span class="lbl">Experience</span>
+          <div class="pills" role="radiogroup" aria-label="Caregiver experience" data-field="caregiver_exp">
+            <button type="button" class="pill" data-v="Family caregiving only">Family caregiving only</button><button type="button" class="pill" data-v="Prior CNA / DSP / home care">CNA / DSP / home care</button><button type="button" class="pill" data-v="None, needs full training">New to this</button>
+          </div></div>
+      </div>
+      <div class="flag" id="cgFlag" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Review</h2>
+    <div class="rev" id="review"></div>
+  </div>
+
+  <div class="card">
+    <h2>Consent</h2>
+    <label class="chk" id="c1"><input type="checkbox" name="consent_contact" required> <span>Haven Crest Homes may contact me by phone, text or email about this request.</span></label>
+    <label class="chk" id="c2" style="margin-top:10px"><input type="checkbox" name="consent_share" required> <span>Haven Crest Homes may share this information with the member's care manager, MCO or IRIS consultant to request a service plan and authorization.</span></label>
+    <p class="msg" id="consentMsg" style="margin-top:8px">Please check both boxes to continue.</p>
+    <div class="f" style="margin-top:14px"><label for="signed_name">Type your full name to sign</label><input id="signed_name" name="signed_name" required placeholder="Your full name"><p class="msg">Please type your full name.</p><span class="hint">Typing your name is your electronic signature. You'll get a copy by email if you entered one.</span></div>
+  </div>
+</section>
+
+<!-- ===== DONE ===== -->
+<section class="step" data-step="7">
+  <div class="done-wrap">
+    <div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+    <h1>Thank you<span id="doneName"></span>.</h1>
+    <p class="lead" style="margin-top:8px">We have what we need to get started.<span id="doneRef"></span></p>
+    <div class="next">
+      <div><span class="dot">1</span><div><b>We call you.</b><br>During business hours we call back within 60 minutes, at the time you picked.</div></div>
+      <div><span class="dot">2</span><div><b>Virtual meet, then a home visit.</b><br>A short video or phone visit first, and an in-person visit within 30 days.</div></div>
+      <div><span class="dot">3</span><div><b>We handle the paperwork.</b><br>We contact the care manager for the service plan and authorization, or send a private-pay quote.</div></div>
+    </div>
+    <p class="hint">Need us sooner? Call <a href="tel:+17153382315"><b>715-338-2315</b></a>.</p>
+    <a class="btn ghost" href="index.html" style="margin-top:10px">Back to havencresthome.com</a>
+  </div>
+</section>
+
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+</form>
+</main>
+
+<aside>
+  <div class="side">
+    <h3>Your intake</h3>
+    <ol id="sideList"></ol>
+    <div class="st" id="sideSt">Not saved yet</div>
+    <div class="help"><b>Stuck?</b> Call <a href="tel:+17153382315">715-338-2315</a> and we'll finish it with you.<br><br><b>Finish on another device?</b>
+      <div class="resume"><input type="email" id="resumeEmail" inputmode="email" placeholder="Email me a link"><button type="button" class="btn ghost" id="resumeBtn">Send</button></div>
+    </div>
+  </div>
+</aside>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="in">
+    <button type="button" class="btn ghost" id="back">Back</button>
+    <button type="button" class="btn primary" id="next">Next</button>
+    <span class="saved" id="saved"></span>
+  </div>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var HUB='https://script.google.com/a/macros/havencresthome.com/s/AKfycbyxqZeZy2fuGzKXAwAwonUO-y6chV4tMTDkBMww7HlaQ0o42WYNNB599j4mfk7MVJuU/exec';
+var PREVIEW=/claude\.ai$|claude\.site$/.test(location.hostname);
+var KEY='hch_intake_v1';
+var STEPS=['Getting started','The member','Coverage','Daily needs','Home & safety','Review & sign'];
+var TASKS=[
+ ['Bathing / showering',30,1,3,'Standby, washing hard-to-reach spots, full bath'],['Dressing & grooming',15,2,7,'Buttons, socks, hair, shaving'],['Toileting / incontinence care',10,4,7,''],['Transfers & mobility',10,4,7,'Bed to chair, steadying, walking'],
+ ['Meal preparation',30,2,7,'Cooking, plating, cleanup'],['Eating / feeding support',20,2,7,'Cueing or hands-on'],['Medication reminders',5,2,7,'Reminders only; we don’t administer'],
+ ['Light housekeeping',45,1,3,'Dishes, surfaces, floors, trash'],['Laundry & linens',45,1,2,''],['Shopping & errands',60,1,1,''],['Appointments & rides',90,1,1,'Escort to appointments where allowed'],
+ ['Community outings',120,1,1,'Church, library, visiting friends'],['Supervision / safety presence',60,1,7,'Someone there so they’re not alone'],['Respite for a family caregiver',240,1,1,'So you can rest']];
+var LEVELS=['None','Standby / cueing','Hands-on','Full assist'];
+var WI=['Adams','Ashland','Barron','Bayfield','Brown','Buffalo','Burnett','Calumet','Chippewa','Clark','Columbia','Crawford','Dane','Dodge','Door','Douglas','Dunn','Eau Claire','Florence','Fond du Lac','Forest','Grant','Green','Green Lake','Iowa','Iron','Jackson','Jefferson','Juneau','Kenosha','Kewaunee','La Crosse','Lafayette','Langlade','Lincoln','Manitowoc','Marathon','Marinette','Marquette','Menominee','Milwaukee','Monroe','Oconto','Oneida','Outagamie','Ozaukee','Pepin','Pierce','Polk','Portage','Price','Racine','Richland','Rock','Rusk','St. Croix','Sauk','Sawyer','Shawano','Sheboygan','Taylor','Trempealeau','Vernon','Vilas','Walworth','Washburn','Washington','Waukesha','Waupaca','Waushara','Winnebago','Wood'];
+var ZIP_COUNTY={'54880':'Douglas','54874':'Douglas','54849':'Douglas','54838':'Douglas','54873':'Douglas','54864':'Douglas','54836':'Douglas','54806':'Ashland','54814':'Bayfield','54891':'Bayfield','54847':'Bayfield','54801':'Washburn','54843':'Sawyer','54830':'Burnett','54872':'Burnett','54840':'Burnett','54016':'St. Croix','54017':'St. Croix','54015':'St. Croix','54025':'St. Croix','54026':'St. Croix','54027':'St. Croix','54082':'St. Croix','54022':'Pierce','54011':'Pierce','54021':'Pierce','54024':'Polk','54020':'Polk','54001':'Polk','54009':'Polk','54701':'Eau Claire','54702':'Eau Claire','54703':'Eau Claire','54751':'Dunn','54729':'Chippewa','54868':'Barron','54812':'Barron','54601':'La Crosse','54401':'Marathon','54501':'Oneida','54301':'Brown','53703':'Dane','53202':'Milwaukee'};
+
+var $=function(s,c){return (c||document).querySelector(s)};var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+var S={step:1,maxStep:1,data:{},tasks:TASKS.map(function(t){return {name:t[0],level:'None',minutes:t[1],perDay:t[2],daysWeek:t[3]}}),ts:null};
+
+/* ---------- persistence ---------- */
+function load(){ try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); S.data=o.data||{}; S.tasks=o.tasks||S.tasks; S.maxStep=o.maxStep||1; S.step=Math.min(o.step||1,6); S.ts=o.ts||null;} }catch(e){} }
+var saveT;
+function save(now){ clearTimeout(saveT); saveT=setTimeout(function(){ try{ S.ts=Date.now(); localStorage.setItem(KEY,JSON.stringify({data:S.data,tasks:S.tasks,step:S.step,maxStep:S.maxStep,ts:S.ts})); savedLbl(); }catch(e){} }, now?0:400); }
+function savedLbl(){ var t=S.ts?'Saved '+new Date(S.ts).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):''; $('#saved').textContent=t; $('#sideSt').innerHTML=S.ts?'<b>Saved on this device</b> · '+new Date(S.ts).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})+'<br>Come back any time to finish.':'Autosaves as you type.'; }
+
+/* ---------- build UI ---------- */
+function buildProgress(){
+  var b=$('#bar'),m=$('#menuList'),s=$('#sideList'); b.innerHTML=m.innerHTML=s.innerHTML='';
+  STEPS.forEach(function(n,i){
+    var k=i+1;
+    var li=document.createElement('li'); li.innerHTML='<button type="button" data-go="'+k+'"><i></i><span>'+n+'</span></button>'; b.appendChild(li);
+    var li2=document.createElement('li'); li2.innerHTML='<button type="button" data-go="'+k+'"><span class="dot">'+k+'</span>'+n+'</button>'; m.appendChild(li2);
+    var li3=document.createElement('li'); li3.innerHTML='<button type="button" data-go="'+k+'"><span class="dot">'+k+'</span>'+n+'</button>'; s.appendChild(li3);
+  });
+  $$('[data-go]').forEach(function(bt){ bt.addEventListener('click',function(){ var k=+bt.dataset.go; if(k<=S.maxStep){ go(k); $('#menu').removeAttribute('open'); } }); });
+}
+function paintProgress(){
+  $$('#bar li').forEach(function(li,i){ var k=i+1; li.className=k<S.step?'done':k===S.step?'cur':''; li.firstChild.disabled=k>S.maxStep; });
+  [['#menuList'],['#sideList']].forEach(function(p){ $$(p[0]+' li').forEach(function(li,i){ var k=i+1,bt=li.firstChild,d=bt.firstChild; bt.className=k===S.step?'cur':''; bt.disabled=k>S.maxStep; d.className='dot'+(k<S.step?' done':k===S.step?' cur':''); d.innerHTML=k<S.step?'&#10003;':k; }); });
+  $('#menuLbl').innerHTML='Step '+Math.min(S.step,6)+' of 6 · <b>'+STEPS[Math.min(S.step,6)-1]+'</b>';
+}
+function buildADL(){
+  var w=$('#adl'); w.innerHTML='';
+  TASKS.forEach(function(t,i){
+    var d=document.createElement('div'); d.className='task'; d.dataset.i=i;
+    d.innerHTML='<div class="nm"><span>'+t[0]+'</span>'+(t[4]?'<small>'+t[4]+'</small>':'')+'</div><div class="pills" role="radiogroup" aria-label="'+t[0]+'">'+LEVELS.map(function(l){return '<button type="button" class="pill" data-l="'+l+'">'+(l==='None'?'Not needed':l)+'</button>'}).join('')+'</div>';
+    w.appendChild(d);
+  });
+  w.addEventListener('click',function(e){ var p=e.target.closest('.pill'); if(!p) return; var card=p.closest('.task'); var i=+card.dataset.i; S.tasks[i].level=p.dataset.l; paintADL(); if(p.dataset.l!=='None'){ S.data.just_checking=''; $('#noTasks').setAttribute('aria-pressed','false'); } clearErr('tasks'); save(); });
+  $('#noTasks').addEventListener('click',function(){ var on=this.getAttribute('aria-pressed')!=='true'; this.setAttribute('aria-pressed',on); S.data.just_checking=on?'Yes':''; if(on){ S.tasks.forEach(function(t){t.level='None'}); paintADL(); } clearErr('tasks'); save(); });
+}
+function paintADL(){
+  $$('.task').forEach(function(card,i){ var lv=S.tasks[i].level; card.classList.toggle('on',lv!=='None'); $$('.pill',card).forEach(function(p){ p.setAttribute('aria-pressed',p.dataset.l===lv); }); });
+  var wk=0,days=0; S.tasks.forEach(function(t){ if(t.level!=='None'){ wk+=t.minutes*t.perDay*t.daysWeek/60; days=Math.max(days,t.daysWeek); } });
+  S.data.est_hours_week=Math.round(wk*10)/10; S.data.est_hours_day=days?Math.round(wk/days*10)/10:0;
+  $('#estH').textContent=S.data.est_hours_week; $('#estD').textContent=S.data.est_hours_day;
+  $('#noTasks').setAttribute('aria-pressed',S.data.just_checking==='Yes');
+}
+function buildCounty(){ var s=$('#county'); WI.forEach(function(c){ var o=document.createElement('option'); o.value=c; o.textContent=c; s.appendChild(o); }); var o=document.createElement('option'); o.value='Not sure'; o.textContent="Not sure"; s.appendChild(o); }
+
+/* ---------- field plumbing ---------- */
+function fields(){ return $$('#form input[name], #form select[name], #form textarea[name]').filter(function(i){return i.name!=='_honey'}); }
+function hydrate(){
+  fields().forEach(function(i){ if(i.type==='checkbox'){ i.checked=!!S.data[i.name]; } else if(S.data[i.name]!=null){ i.value=S.data[i.name]; } });
+  $$('[data-field]').forEach(function(g){ var k=g.dataset.field,v=S.data[k]; var multi=g.hasAttribute('data-multi'); var arr=multi?(Array.isArray(v)?v:[]):null;
+    $$('.pill,.opt',g).forEach(function(p){ p.setAttribute('aria-pressed', multi?arr.indexOf(p.dataset.v)>=0:(v===p.dataset.v)); }); });
+  if(!S.data.language) S.data.language='English';
+  paintADL(); conditionals();
+}
+document.addEventListener('click',function(e){
+  var p=e.target.closest('[data-field] .pill, [data-field] .opt'); if(!p) return;
+  var g=p.closest('[data-field]'),k=g.dataset.field;
+  if(g.hasAttribute('data-multi')){ var arr=Array.isArray(S.data[k])?S.data[k].slice():[]; var on=p.getAttribute('aria-pressed')!=='true'; var v=p.dataset.v;
+    if(on){ if(/^(Nothing special|Flexible|Walks without help)$/.test(v)) arr=[]; else arr=arr.filter(function(x){return !/^(Nothing special|Flexible|Walks without help)$/.test(x)}); arr.push(v); } else arr=arr.filter(function(x){return x!==v});
+    S.data[k]=arr; $$('.pill,.opt',g).forEach(function(q){ q.setAttribute('aria-pressed',arr.indexOf(q.dataset.v)>=0); });
+  } else { S.data[k]=p.dataset.v; $$('.pill,.opt',g).forEach(function(q){ q.setAttribute('aria-pressed',q===p); }); }
+  clearErr(k); conditionals(); if(S.step===6) review(); save();
+});
+$('#form').addEventListener('input',function(e){ var i=e.target; if(!i.name||i.name==='_honey') return; S.data[i.name]=i.type==='checkbox'?i.checked:i.value; if(i.classList.contains('err')||i.closest('.f.err')) validateField(i); if(i.name==='consent_contact'||i.name==='consent_share') $('#consentMsg').style.display='none'; if(S.step===6&&i.name!=='signed_name') review(); save(); });
+$('#form').addEventListener('focusout',function(e){ var i=e.target; if(i.name&&i.closest('.f')) validateField(i); });
+$('#form').addEventListener('keydown',function(e){ if(e.key==='Enter'&&e.target.tagName==='INPUT'){ e.preventDefault(); next(); } });
+
+/* phone auto-format */
+$$('input[data-type="phone"]').forEach(function(i){ i.addEventListener('input',function(){ var d=this.value.replace(/\D/g,'').slice(0,10); this.value=d.length>6?d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6):d.length>3?d.slice(0,3)+'-'+d.slice(3):d; S.data[this.name]=this.value; }); });
+/* ZIP → city/state/county */
+var zipT; $('#zip').addEventListener('input',function(){ var z=this.value.replace(/\D/g,'').slice(0,5); this.value=z; S.data.zip=z; clearTimeout(zipT); if(z.length===5) zipT=setTimeout(function(){ lookupZip(z); },250); });
+function lookupZip(z){
+  $('#zipHint').textContent='Looking up…';
+  fetch('https://api.zippopotam.us/us/'+z).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){
+    var p=j.places&&j.places[0]; if(!p) throw 0;
+    if(!S.data.city||S.data._cityAuto){ $('#city').value=p['place name']; S.data.city=p['place name']; S.data._cityAuto=true; }
+    var st=p['state abbreviation']; $('#state').value=['WI','MN','MI','IA','IL'].indexOf(st)>=0?st:'Other'; S.data.state=$('#state').value;
+    var c=ZIP_COUNTY[z]; if(st==='WI'&&c&&!S.data.county){ $('#county').value=c; S.data.county=c; }
+    $('#zipHint').textContent=p['place name']+', '+st+' — edit if needed.'; clearErr('city'); conditionals(); save();
+  }).catch(function(){ var c=ZIP_COUNTY[z]; if(c&&!S.data.county){ $('#county').value=c; S.data.county=c; save(); } $('#zipHint').textContent='Enter the city'+(c?'':' and county')+' below.'; });
+}
+$('#city').addEventListener('input',function(){ S.data._cityAuto=false; });
+
+/* ---------- conditionals ---------- */
+function conditionals(){
+  var d=S.data;
+  $('#orgWrap').style.display=d.reaching_as==='Care manager or professional'?'':'none';
+  $('#memberLead').textContent=d.reaching_as==='The person who needs support'?'This section is about you.':'We call them "the member."';
+  var fc=d.program==='Family Care',iris=d.program==='IRIS',ns=d.program==='Not sure yet',pp=d.program==='Private pay',none=d.program==='No coverage yet';
+  $('#mcoCard').classList.toggle('on',fc||iris||ns); $('#ppCard').classList.toggle('on',pp);
+  $('#mcoPills').style.display=iris?'none':''; $('#icaPills').style.display=iris?'':'none';
+  $('#mcoTitle').textContent=iris?'Which IRIS consultant agency?':fc?'Which MCO?':'If you know the MCO, tap it';
+  $$('.cmWord').forEach(function(x){ x.textContent=iris?'IRIS consultant':'Care manager'; });
+  var pf=$('#progFlag'); var ptxt=none?'No problem. Your county ADRC can do a free functional screen to see what the member qualifies for. We can start private pay right away and switch when coverage begins. We’ll walk you through it on the call.':ns?'Good enough. If there’s a care manager who calls or visits, that’s Family Care. If there’s an IRIS consultant and a budget, that’s IRIS.':'';
+  pf.style.display=ptxt?'':'none'; pf.textContent=ptxt;
+  var sf=$('#stateFlag'); sf.style.display=(d.state&&d.state!=='WI')?'':'none';
+  $('#cgWrap').classList.toggle('on',d.caregiver_has==='Yes'||d.caregiver_has==='Maybe');
+  var cf=$('#cgFlag'); var rel=d.caregiver_relationship||''; var ctxt=/Spouse|guardian/i.test(rel)?'Spouses and legal guardians can be paid caregivers only in some situations. We’ll confirm with the care manager before promising anything.':(d.caregiver_has==='Yes'?'Great. Your caregiver will complete a background check, hire paperwork and short competency training before the first paid visit.':'');
+  cf.style.display=ctxt?'':'none'; cf.textContent=ctxt; cf.className='flag'+(/Spouse|guardian/i.test(rel)?'':' good');
+}
+
+/* ---------- validation ---------- */
+function setErr(el,on){ var f=el.closest('.f'); if(f) f.classList.toggle('err',!!on); return !on; }
+function clearErr(k){ var m=$('[data-msg-for="'+k+'"]'); if(m) m.style.display='none'; var i=$('#form [name="'+k+'"]'); if(i) setErr(i,false); }
+function validateField(i){
+  if(i.disabled||i.offsetParent===null&&!i.closest('.cond.on')&&i.closest('.cond')) return true;
+  var v=(i.value||'').trim(),t=i.dataset.type;
+  if(i.required&&i.type!=='checkbox'&&!v) return setErr(i,true);
+  if(!v) return setErr(i,false);
+  if(t==='phone'&&v.replace(/\D/g,'').length!==10) return setErr(i,true);
+  if(t==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return setErr(i,true);
+  if(t==='zip'&&!/^\d{5}$/.test(v)) return setErr(i,true);
+  if(t==='dob'){ var dt=new Date(v),now=new Date(); if(isNaN(dt)||dt>now||now.getFullYear()-dt.getFullYear()>120) return setErr(i,true); }
+  return setErr(i,false);
+}
+function validateStep(k){
+  var sec=$('.step[data-step="'+k+'"]'),ok=true,first=null;
+  $$('input[name],select[name],textarea[name]',sec).forEach(function(i){ if(i.closest('.cond')&&!i.closest('.cond.on')) return; if(i.type==='checkbox') return; if(!validateField(i)){ ok=false; first=first||i; } });
+  $$('[data-field][data-required]',sec).forEach(function(g){ var kk=g.dataset.field; var m=$('[data-msg-for="'+kk+'"]'); var bad=!S.data[kk]; if(m) m.style.display=bad?'flex':'none'; if(bad){ ok=false; first=first||g; } });
+  if(k===4){ var any=S.tasks.some(function(t){return t.level!=='None'})||S.data.just_checking==='Yes'; var m4=$('[data-msg-for="tasks"]'); m4.style.display=any?'none':'flex'; if(!any){ ok=false; first=first||$('#adl'); } }
+  if(k===6){ var c=$('[name="consent_contact"]').checked&&$('[name="consent_share"]').checked; $('#consentMsg').style.display=c?'none':'flex'; $('#c1').classList.toggle('err',!$('[name="consent_contact"]').checked); $('#c2').classList.toggle('err',!$('[name="consent_share"]').checked); if(!c){ ok=false; first=first||$('#c1'); } }
+  if(!ok&&first){ first.scrollIntoView({behavior:'smooth',block:'center'}); var fi=first.matches&&first.matches('input,select,textarea')?first:$('input,select,textarea,button',first); if(fi) setTimeout(function(){fi.focus({preventScroll:true})},350); toast('Please check the highlighted fields'); }
+  return ok;
+}
+
+/* ---------- navigation ---------- */
+function go(k){
+  S.step=k; $$('.step').forEach(function(s){ s.classList.toggle('on',+s.dataset.step===k); });
+  paintProgress(); if(k===6) review(); if(k===7) $('#nav').style.display='none';
+  $('#back').style.visibility=k===1?'hidden':''; $('#next').textContent=k===6?'Send to Haven Crest':'Next';
+  window.scrollTo({top:0,behavior:'smooth'}); var h=$('.step.on h1'); if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); }
+  save(true);
+}
+function next(){ if(S.step>=7) return; if(!validateStep(S.step)) return; if(S.step===6){ submit(); return; } S.maxStep=Math.max(S.maxStep,S.step+1); go(S.step+1); }
+$('#next').addEventListener('click',next); $('#back').addEventListener('click',function(){ if(S.step>1) go(S.step-1); });
+
+/* ---------- review ---------- */
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]}); }
+function review(){
+  var d=S.data; var j=function(a){return Array.isArray(a)?a.join(', '):(a||'')};
+  var tasks=S.tasks.filter(function(t){return t.level!=='None'}).map(function(t){return t.name+' ('+t.level+')'}).join('; ')||(d.just_checking==='Yes'?'Just checking for now':'—');
+  var rows=[['You',[d.first_name,d.last_name].filter(Boolean).join(' ')+(d.reaching_as?' · '+d.reaching_as:'')+(d.referrer_org?' · '+d.referrer_org:''),1],['Contact',[d.phone,d.email].filter(Boolean).join(' · ')+(d.best_time?' · '+d.best_time:''),1],['Timing',d.start_timing,1],
+   ['Member',[d.m_first,d.m_last].filter(Boolean).join(' ')+(d.member_dob?' · DOB '+d.member_dob:''),2],['Home',[d.address,d.city,d.state,d.zip].filter(Boolean).join(', ')+(d.county?' · '+d.county+' County':''),2],['Lives with',(d.lives_with||'—')+' · '+(d.language||'English'),2],
+   ['Coverage',[d.program,d.mco||d.ica].filter(Boolean).join(' · ')+(d.plan_status?' · '+d.plan_status:'')+(d.budget?' · '+d.budget+'/wk':''),3],['Care manager',[d.cm_name,d.cm_phone,d.cm_email].filter(Boolean).join(' · ')||'—',3],
+   ['Daily needs',tasks+' · est. '+(d.est_hours_week||0)+' hrs/wk',4],['Mobility',j(d.mobility)||'—',4],['Schedule',[j(d.pref_days),j(d.pref_time)].filter(Boolean).join(' · ')||'—',4],
+   ['Home notes',[j(d.home_flags),d.pets?'Pets: '+d.pets:'',d.home_access?'Access: '+d.home_access:''].filter(Boolean).join(' · ')||'—',5],['Emergency',[d.ec_name,d.ec_relationship,d.ec_phone].filter(Boolean).join(' · '),5],
+   ['Caregiver',d.caregiver_has==='No'?'Please match us':[d.caregiver_has,d.caregiver_name,d.caregiver_relationship].filter(Boolean).join(' · ')||'—',6]];
+  $('#review').innerHTML=rows.map(function(r){return '<div class="row"><b>'+r[0]+'</b><span>'+esc(r[1]||'—')+' <a href="#" data-go-edit="'+r[2]+'">Edit</a></span></div>'}).join('');
+  $$('[data-go-edit]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); go(+a.dataset.goEdit); }); });
+}
+
+/* ---------- submit ---------- */
+function payload(){
+  var d=S.data;
+  var intake={member_name:[d.m_first,d.m_last].filter(Boolean).join(' '),member_dob:d.member_dob,member_phone:d.member_phone||'',member_email:d.reaching_as==='The person who needs support'?d.email:'',address:[d.address,d.zip].filter(Boolean).join(' '),city:d.city,county:d.county,language:d.language||'English',lives_with:d.lives_with||'',pets:d.pets||'',home_access:d.home_access||'',ec_name:d.ec_name,ec_phone:d.ec_phone,
+    safety_notes:[Array.isArray(d.home_flags)?d.home_flags.join(', '):'',Array.isArray(d.mobility)?'Mobility: '+d.mobility.join(', '):'',d.safety_notes||''].filter(Boolean).join('\n'),
+    program:d.program,mco:d.mco||d.ica||'',medicaid_id:d.medicaid_id||'',cm_name:d.cm_name||'',cm_phone:d.cm_phone||'',cm_email:d.cm_email||'',auth_status:d.plan_status==='Yes, hours are authorized'?'Authorized':d.plan_status==='In progress'?'Requested':'Not requested',plan_on_file:d.plan_status==='Yes, hours are authorized'?'Yes':'No',consent_contact:'Yes',
+    tasks:S.tasks,est_hours_week:d.est_hours_week||0,est_hours_day:d.est_hours_day||0,start_date:'',pref_days:Array.isArray(d.pref_days)?d.pref_days.join('/'):'',pref_time:Array.isArray(d.pref_time)?d.pref_time.join(', '):'',schedule_notes:d.schedule_notes||'',
+    caregiver_has:d.caregiver_has||'No',caregiver_name:d.caregiver_name||'',caregiver_phone:d.caregiver_phone||'',caregiver_relationship:d.caregiver_relationship||'',caregiver_exp:d.caregiver_exp||'',caregiver_consent:'Not asked',visit_type:'Virtual first, in-person within 30 days',
+    call_notes:'Web intake. Best time: '+(d.best_time||'any')+'. Budget: '+(d.budget||'n/a')+'. Emergency contact relationship: '+(d.ec_relationship||'')+'. Signed by '+(d.signed_name||'')+' on '+new Date().toLocaleString()+'. Consent to contact: yes. Consent to share with care team: yes.'};
+  return {form:'intake',source:'Website intake',name:[d.first_name,d.last_name].filter(Boolean).join(' '),phone:d.phone,email:d.email||'',city:d.city,county:d.county,reaching_as:d.reaching_as,start_timing:d.start_timing,referrer_org:d.referrer_org||'',
+    member_name:intake.member_name,member_dob:d.member_dob,program:d.program,mco:intake.mco,hours_week:String(d.est_hours_week||''),
+    need:(S.tasks.filter(function(t){return t.level!=='None'}).map(function(t){return t.name}).join(', ')||'Just checking')+(d.schedule_notes?'. '+d.schedule_notes:''),intake:intake,signed_name:d.signed_name};
+}
+function submit(){
+  var b=$('#next'); b.disabled=true; b.textContent='Sending…';
+  var p=payload();
+  var done=function(id){ $('#doneName').textContent=S.data.first_name?', '+S.data.first_name:''; $('#doneRef').textContent=id?' Your reference number is '+id+'.':''; S.maxStep=7; go(7); try{ localStorage.removeItem(KEY); }catch(e){} };
+  if(PREVIEW){ setTimeout(function(){ done('PREVIEW'); },600); return; }
+  fetch(HUB,{method:'POST',redirect:'follow',body:JSON.stringify(p)}).then(function(r){return r.json()}).then(function(j){ if(j&&j.ok) done(j.id); else throw new Error(j&&j.error||'send failed'); })
+  .catch(function(){ b.disabled=false; b.textContent='Send to Haven Crest'; toast('Couldn’t send just now. Your answers are saved here; please try again or call 715-338-2315.'); });
+}
+
+/* ---------- resume on another device ---------- */
+$('#resumeBtn').addEventListener('click',function(){
+  var em=$('#resumeEmail').value.trim(); if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ toast('Enter a valid email'); return; }
+  var bt=this; bt.disabled=true;
+  if(PREVIEW){ setTimeout(function(){ bt.disabled=false; toast('Preview: a resume link would be emailed to '+em); },500); return; }
+  fetch(HUB,{method:'POST',redirect:'follow',body:JSON.stringify({action:'draft',email:em,page:location.origin+location.pathname,draft:{data:S.data,tasks:S.tasks,step:S.step,maxStep:S.maxStep}})}).then(function(r){return r.json()}).then(function(j){ bt.disabled=false; if(j&&j.ok) toast('Link sent to '+em); else throw 0; }).catch(function(){ bt.disabled=false; toast('Couldn’t send the link right now. Your answers are still saved on this device.'); });
+});
+function resumeFromLink(){
+  var m=location.search.match(/[?&]resume=([a-f0-9]{32})/); if(!m) return;
+  fetch(HUB+'?draft='+m[1],{redirect:'follow'}).then(function(r){return r.json()}).then(function(j){ if(j&&j.ok&&j.draft){ S.data=j.draft.data||{}; S.tasks=j.draft.tasks||S.tasks; S.maxStep=j.draft.maxStep||1; S.step=Math.min(j.draft.step||1,6); hydrate(); go(S.step); toast('Welcome back — picking up where you left off'); history.replaceState(null,'',location.pathname); } }).catch(function(){});
+}
+
+/* ---------- toast ---------- */
+var tt; function toast(m){ var t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){t.classList.remove('on')},3200); }
+
+/* ---------- init ---------- */
+load(); buildProgress(); buildADL(); buildCounty(); hydrate(); savedLbl();
+go(S.step); resumeFromLink();
+if(S.ts&&Object.keys(S.data).length>2) toast('Welcome back — your answers were saved');
+})();
+</script>
+</body>
+</html>
