@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    function signedIn() { return request.auth != null && request.auth.token.email_verified == true; }
+    function bootstrapAdmin() {
+      return request.auth != null && request.auth.token.email in ['compliance@havencresthome.com', 'aibrahim@havencresthome.com'];
+    }
+    function userDoc() { return get(/databases/$(db)/documents/users/$(request.auth.uid)); }
+    function isAdmin() { return signedIn() && (bootstrapAdmin() || (exists(/databases/$(db)/documents/users/$(request.auth.uid)) && userDoc().data.access == 'admin')); }
+    function isActive() { return signedIn() && (isAdmin() || (exists(/databases/$(db)/documents/users/$(request.auth.uid)) && userDoc().data.access == 'active')); }
+    function own(uid) { return request.auth != null && request.auth.uid == uid; }
+
+    match /users/{uid} {
+      allow read: if own(uid) || isAdmin();
+      // Self-registration: a user may create only their own record, as pending (bootstrap admins may create as admin).
+      allow create: if own(uid)
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.role in ['dsp', 'admin']
+        && (request.resource.data.access == 'pending' || (bootstrapAdmin() && request.resource.data.access == 'admin'))
+        && request.resource.data.name is string && request.resource.data.name.size() >= 2;
+      // Users may edit only their own name/phone/role; admins may edit anything.
+      allow update: if isAdmin() || (own(uid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'phone', 'role', 'updatedAt']));
+      allow delete: if isAdmin();
+    }
+
+    match /progress/{uid}/modules/{mid} {
+      allow read: if own(uid) || isAdmin();
+      allow write: if (own(uid) && isActive()) || isAdmin();
+    }
+
+    match /creds/{uid}/items/{cid} {
+      allow read: if own(uid) || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /audit/{doc} {
+      allow read: if isAdmin();
+      allow create: if signedIn();
+    }
+  }
+}

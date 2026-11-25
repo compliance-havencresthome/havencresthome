@@ -245,7 +245,7 @@ function render(){
   $('#barFill').style.width=Math.max(3,Math.round(100*(S.i+1)/vis.length))+'%';
   $('#metaL').innerHTML='Question <b>'+(S.i+1)+'</b> of '+vis.length; $('#metaR').textContent=Math.max(1,Math.round((vis.length-S.i-1)*0.3))+' min left';
   paintSections(vis,sc);
-  $('#back').style.visibility=S.i===0?'hidden':''; $('#next').textContent=sc.submit?'Send to Haven Crest':'Continue →';
+  $('#back').style.visibility=S.i===0?'hidden':''; $('#next').textContent=sc.submit?'Send to Haven Crest':(S.returnTo&&sc.id!=='review'?'Back to review →':'Continue →');
   bindScreen(sc);
   window.scrollTo({top:0,behavior:'smooth'}); var hh=$('#screen h1'); if(hh&&S.i>0) hh.focus({preventScroll:true});
   save(true);
@@ -312,7 +312,7 @@ function validateScreen(sc){
 }
 
 /* ---------- navigation ---------- */
-function next(){ if(S.done) return; var vis=visible(); var sc=vis[S.i]; if(!validateScreen(sc)) return; if(sc.submit){ submit(); return; } if(S.i<vis.length-1){ S.i++; render(); } }
+function next(){ if(S.done) return; var vis=visible(); var sc=vis[S.i]; if(!validateScreen(sc)) return; if(sc.submit){ submit(); return; } if(S.returnTo&&sc.id!=='review'){ var ri=vis.findIndex(function(x){return x.id===S.returnTo}); S.returnTo=null; if(ri>=0){ S.i=ri; render(); return; } } if(S.i<vis.length-1){ S.i++; render(); } }
 $('#next').addEventListener('click',next); $('#back').addEventListener('click',function(){ if(S.i>0){ S.i--; render(); } });
 
 /* ---------- review ---------- */
@@ -324,7 +324,7 @@ function review(){
    ['Support',(e.lines.map(function(l){return l.name+' ('+l.level+')'}).join('; ')||(d.just_checking==='Yes'?'Just checking for now':'—')),'tasks'],['Weekly plan',e.base?e.total+' hrs/week (incl. '+e.cushion+' h cushion)':'—','estimate'],['Mobility',j(d.mobility)||'—','mobility'],['Schedule',[j(d.pref_days),j(d.pref_time)].filter(Boolean).join(' · ')||'—','schedule'],
    ['Home notes',[j(d.home_flags),d.pets?'Pets: '+d.pets:'',d.home_access?'Access: '+d.home_access:''].filter(Boolean).join(' · ')||'—','home'],['Emergency',[d.ec_name,d.ec_relationship,d.ec_phone].filter(Boolean).join(' · '),'ec'],
    ['Caregiver',d.caregiver_has==='No'?'Please match us':[d.caregiver_has,d.caregiver_name,d.caregiver_relationship].filter(Boolean).join(' · ')||'—','cg']];
-  setTimeout(function(){ $$('[data-go]').forEach(function(a){ a.addEventListener('click',function(ev){ ev.preventDefault(); S.i=at(a.dataset.go); render(); }); }); },0);
+  setTimeout(function(){ $$('[data-go]').forEach(function(a){ a.addEventListener('click',function(ev){ ev.preventDefault(); S.returnTo='review'; S.i=at(a.dataset.go); render(); }); }); },0);
   return '<div class="rev">'+rows.map(function(r){return '<div class="row"><b>'+r[0]+'</b><span>'+esc(r[1]||'—')+'</span><a href="#" data-go="'+r[2]+'">Edit</a></div>'}).join('')+'</div>';
 }
 
