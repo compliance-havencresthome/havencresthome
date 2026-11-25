@@ -118,7 +118,7 @@ table.ros td.m{text-align:center;padding:4px}
 <script src="/training/modules/manifest.js"></script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, updateProfile, reload } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, updateProfile, reload, getIdToken } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, serverTimestamp, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const $=s=>document.querySelector(s); const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -182,7 +182,7 @@ function authView(mode){
 function verifyView(){
   $('#app').innerHTML=`<div class="card auth"><h1>Verify your email</h1><p>We sent a verification link to <b>${esc(S.user.email)}</b>. Open it, then come back here.</p>
   <div class="row"><button class="btn" id="vCheck">I've verified — continue</button><button class="btn sec" id="vResend">Resend email</button></div><div id="vErr"></div></div>`;
-  $('#vCheck').onclick=async()=>{ await reload(S.user); if(S.user.emailVerified) boot(S.user); else $('#vErr').innerHTML='<div class="err">Not verified yet. Check your inbox (and spam folder).</div>'; };
+  $('#vCheck').onclick=async()=>{ await reload(S.user); if(S.user.emailVerified){ sessionStorage.removeItem('hch_tok'); boot(S.user); } else $('#vErr').innerHTML='<div class="err">Not verified yet. Check your inbox (and spam folder).</div>'; };
   $('#vResend').onclick=async()=>{ try{ await sendEmailVerification(S.user,{url:location.origin+'/training/'}); toast('Sent'); }catch(e){ toast(e.message); } };
 }
 function pendingView(){
@@ -206,6 +206,7 @@ function modStatus(p,m){
   const total=m.sections.reduce((n,s)=>n+s.slides.length,0); let done=0; for(let i=0;i<(p.section||0);i++) done+=m.sections[i].slides.length; done+=(p.slide||0);
   return {k:'ip',label:'In progress',pct:Math.round(100*done/total)};
 }
+function tsMs(v){ return v?(v.seconds?v.seconds*1000:+new Date(v)):0; }
 function trackMods(){ const r=S.profile.role||'dsp'; return MODS.filter(m=>m.roles.includes(r)); }
 
 /* ---------- home ---------- */
@@ -219,14 +220,19 @@ function homeView(){
     <div style="flex:1"></div>
     <div class="row">${pct===100?'<button class="btn sec" id="hCert">View certificate</button>':''}${isAdmin()?'<button class="btn sec" id="hAdmin">Admin dashboard</button>':''}<button class="btn ghost sm" id="hRole">Switch track</button></div></div>
     <div class="grid" id="mods"></div>
+    <div class="card" style="margin-top:18px"><h3 style="font-size:16px;margin-bottom:8px">Your certificates</h3><div id="certList" style="font-size:14.5px"></div></div>
     <div class="card" style="margin-top:18px"><h3 style="font-size:16px;margin-bottom:8px">Your credentials on file</h3><div id="credList" style="font-size:14.5px"></div></div>`;
   const completed=m=>['ok','wn','ex'].includes(modStatus(S.progress[m.id],m).k);
   $('#mods').innerHTML=mods.map((m,i)=>{ const st=modStatus(S.progress[m.id],m); const locked=i>0&&st.k==='na'&&!completed(mods[i-1]); const canOpen=!locked;
     return `<div class="mod ${locked?'locked':''}"><div class="n">Module ${i+1}</div><h3>${esc(m.title)}</h3><div class="meta"><span>⏱ ${m.minutes} min</span><span>${m.sections.length} sections</span><span>${m.quiz.length}-question final</span></div>
     <div class="bar"><i style="width:${st.pct}%"></i></div>
     <div class="foot"><span class="pill ${st.k==='ok'?'ok':st.k==='wn'?'warn':st.k==='ex'?'bad':st.k==='ip'?'':'mute'}">${locked?'Complete previous module first':esc(st.label)}</span>
-    ${canOpen?`<button class="btn sm ${st.k==='ok'?'sec':''}" data-open="${m.id}">${st.k==='na'?'Start':st.k==='ip'?'Continue':st.k==='ex'||st.k==='wn'?'Renew':'Review'}</button>`:''}</div></div>`; }).join('');
+    <span class="row" style="gap:6px">${completed(m)?`<button class="btn sm ghost" data-cert="${m.id}" title="View, print or save this certificate">Certificate</button>`:''}${canOpen?`<button class="btn sm ${st.k==='ok'?'sec':''}" data-open="${m.id}">${st.k==='na'?'Start':st.k==='ip'?'Continue':st.k==='ex'||st.k==='wn'?'Renew':'Review'}</button>`:''}</span></div></div>`; }).join('');
   document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openModule(b.dataset.open));
+  document.querySelectorAll('[data-cert]').forEach(b=>b.onclick=()=>certView(MODS.find(x=>x.id===b.dataset.cert)));
+  const certs=mods.filter(completed); $('#certList').innerHTML=certs.length?'<table class="ros"><tr><th>Certificate</th><th>Completed</th><th>Score</th><th>Valid until</th><th></th></tr>'+(pct===100?`<tr><td><b>Core curriculum — all modules</b></td><td>${fmtD(Math.max(...certs.map(x=>tsMs(S.progress[x.id].completedAt))))}</td><td>—</td><td>${fmtD(Math.min(...certs.map(x=>tsMs(S.progress[x.id].expiresAt))))}</td><td><button class="btn sm" data-certall="1">View / save</button></td></tr>`:'')+certs.map(x=>{const p=S.progress[x.id]; const dl=Math.ceil((tsMs(p.expiresAt)-Date.now())/DAY); return `<tr><td>${esc(x.title)}</td><td>${fmtD(p.completedAt)}</td><td>${p.score}%</td><td>${fmtD(p.expiresAt)} ${dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':''}</td><td><button class="btn sm sec" data-cert="${x.id}">View / save</button></td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">Certificates appear here as you complete modules. Each one stays on your portal and can be printed or saved as a PDF any time.</span>';
+  document.querySelectorAll('[data-cert]').forEach(b=>b.onclick=()=>certView(MODS.find(x=>x.id===b.dataset.cert)));
+  const ca=$('[data-certall]'); if(ca) ca.onclick=()=>certView();
   const hc=$('#hCert'); if(hc) hc.onclick=()=>certView();
   const ha=$('#hAdmin'); if(ha) ha.onclick=()=>adminView();
   $('#hRole').onclick=async()=>{ const r=S.profile.role==='admin'?'dsp':'admin'; if(!confirm('Switch your training track to '+(r==='admin'?'Office / Admin':'DSP')+'? Your progress is kept.')) return; await updateDoc(doc(db,'users',S.user.uid),{role:r,updatedAt:serverTimestamp()}); S.profile.role=r; homeView(); };
@@ -276,7 +282,7 @@ function renderQuiz(){
     <div class="nav" style="margin-top:auto"><span style="font-size:13px;color:var(--mute)">Pick the best answer. You'll see results at the end.</span><button class="btn" id="qNext" disabled>${i===qs.length-1?'Submit':'Next'}</button></div></div></div>`;
     $('#pBack').onclick=()=>{ if(confirm('Leave the quiz? Your answers so far will not be saved.')) homeView(); };
     let pick=null; document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); pick=+b.dataset.k; $('#qNext').disabled=false; });
-    $('#qNext').onclick=()=>{ if(pick===q.a) correct++; else missed.push(q); i++; if(i<qs.length) draw(); else finish(); };
+    $('#qNext').onclick=()=>{ $('#qNext').disabled=true; document.querySelectorAll('.opt').forEach(x=>x.disabled=true); if(pick===q.a) correct++; else missed.push(q); i++; if(i<qs.length) draw(); else finish(); };
     window.scrollTo({top:0});
   };
   const finish=async()=>{ const score=Math.round(100*correct/qs.length); const passed=score>=(m.pass||80); S.play.attempts++;
@@ -293,7 +299,7 @@ function renderQuiz(){
 }
 function certView(m){
   const mods=trackMods(); const all=!m; const when=all?Math.max(...mods.map(x=>{const p=S.progress[x.id];return p&&p.completedAt?(p.completedAt.seconds?p.completedAt.seconds*1000:+new Date(p.completedAt)):0})):(S.progress[m.id].completedAt.seconds?S.progress[m.id].completedAt.seconds*1000:+new Date(S.progress[m.id].completedAt));
-  $('#app').innerHTML=`<div class="row" style="margin-bottom:14px"><button class="btn ghost sm" id="cBack">← Back</button><button class="btn sm" onclick="print()">Print / save PDF</button></div>
+  $('#app').innerHTML=`<div class="row" style="margin-bottom:14px"><button class="btn ghost sm" id="cBack">← Back</button><button class="btn sm" onclick="print()">Save as PDF / print</button><span style="font-size:13px;color:var(--mute);align-self:center">Choose "Save as PDF" in the print dialog. This certificate stays on your portal.</span></div>
   <div class="cert"><img src="/logo.png" alt="Haven Crest Homes"><h2>Certificate of Completion</h2><p>This certifies that</p><div class="nm">${esc(S.profile.name)}</div>
   <p>has successfully completed${all?' the Haven Crest DSP Academy core curriculum':''}</p><p style="font:700 18px Poppins,sans-serif;color:var(--ink)">${all?mods.map(x=>esc(x.title)).join(' · '):esc(m.title)}</p>
   <p>with a passing score of ${all?'80% or higher on every module':S.progress[m.id].score+'%'} · ${fmtD(when)}</p>
@@ -354,7 +360,9 @@ function manageUser(u){
 async function boot(user){
   S.user=user; busy(true);
   try{
-    if(!user.emailVerified && !ADMINS.includes((user.email||'').toLowerCase())){ busy(false); $('#who').innerHTML=`<b>${esc(user.displayName||user.email)}</b>unverified`; $('#btnOut').classList.remove('hide'); return verifyView(); }
+    if(!user.emailVerified){ busy(false); $('#who').innerHTML=`<b>${esc(user.displayName||user.email)}</b>unverified`; $('#btnOut').classList.remove('hide'); return verifyView(); }
+    // Security rules read email_verified from the ID token; refresh it once per session so a just-verified account is not denied.
+    if(!sessionStorage.getItem('hch_tok')){ try{ await getIdToken(user,true); sessionStorage.setItem('hch_tok','1'); }catch(_){} }
     const ps=await getDoc(doc(db,'users',user.uid));
     if(!ps.exists()){ const isBoot=ADMINS.includes((user.email||'').toLowerCase()); await setDoc(doc(db,'users',user.uid),{name:user.displayName||user.email,email:user.email,phone:'',role:'dsp',access:isBoot?'admin':'pending',createdAt:serverTimestamp()}); S.profile=(await getDoc(doc(db,'users',user.uid))).data(); } else S.profile=ps.data();
     $('#who').innerHTML=`<b>${esc(S.profile.name)}</b>${esc(S.profile.role==='admin'?'Office / Admin':'DSP')}${isAdmin()?' · admin':''}`; $('#btnOut').classList.remove('hide');
@@ -364,7 +372,7 @@ async function boot(user){
     const m=(location.hash.match(/#m=(\w+)/)||[])[1]; if(m&&MODS.find(x=>x.id===m)) openModule(m); else if(location.hash==='#admin'&&isAdmin()) adminView(); else homeView();
   }catch(e){ busy(false); $('#app').innerHTML=`<div class="card auth"><h1>Something went wrong</h1><p>${esc(e.message)}</p><button class="btn" onclick="location.reload()">Reload</button></div>`; }
 }
-$('#btnOut').onclick=()=>signOut(auth);
+$('#btnOut').onclick=()=>{ sessionStorage.removeItem('hch_tok'); signOut(auth); };
 onAuthStateChanged(auth,u=>{ if(u) boot(u); else { S.user=null; S.profile=null; $('#who').innerHTML=''; $('#btnOut').classList.add('hide'); authView(location.hash==='#register'?'register':'login'); } });
 </script>
 </body>
