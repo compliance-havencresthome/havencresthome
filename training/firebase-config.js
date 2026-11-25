@@ -1,13 +1,11 @@
-// Haven Crest Homes — Training Portal Firebase config.
-// Paste the values from Firebase console → Project settings → General → "Your apps" → Web app → SDK setup (Config).
-// Nothing here is secret: these identify the project; access is governed by Firestore security rules.
+// Haven Crest DSP Academy — Firebase web config (public; access is enforced by Firestore rules + Auth).
 window.HCH_FIREBASE = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT_ID.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "AIzaSyALWvIzKeCGpILX7a9I75XFfU9ORHVz0AE",
+  authDomain: "haven-crest-academy.firebaseapp.com",
+  projectId: "haven-crest-academy",
+  storageBucket: "haven-crest-academy.firebasestorage.app",
+  messagingSenderId: "205226588438",
+  appId: "1:205226588438:web:f5483647d4e62f3a25b837"
 };
 // Emails that are always treated as administrators (must match firestore.rules).
 window.HCH_ADMIN_EMAILS = ["compliance@havencresthome.com", "aibrahim@havencresthome.com"];
