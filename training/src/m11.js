@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m11', order:11, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
+id:'m11', order:11, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80, beforePersonalCare:true,
 title:'Safe Mobility, Transfers, Fall Prevention and Adaptive Equipment',
 refs:['DHS 105.17(1n)(a)2.b, d','DHS P-01602 §V.4 (member-specific), Inclusa SHC Scope §5.4 (adaptive aids and equipment)','CDC STEADI fall-prevention guidance'],
 sections:[

@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m10', order:10, roles:['dsp','admin'], minutes:40, renewDays:365, pass:80,
+id:'m10', order:10, roles:['dsp','admin'], minutes:40, renewDays:365, pass:80, beforePersonalCare:true,
 title:'Personal Care Skills: Bathing, Grooming, Dressing, Toileting and Eating',
 refs:['DHS 105.17(1n)(a)2.b (skill training and demonstration)','DHS P-01602 §V.4–5','DHS 105.17(1w)(b)3.g–h (dignity, teach the member)'],
 sections:[
