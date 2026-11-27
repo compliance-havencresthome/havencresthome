@@ -69,48 +69,58 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
 .detail .secs li.done i{background:var(--blue);border-color:var(--blue);color:#fff}.detail .secs li.done{color:var(--blue-dark);font-weight:700}
 .detail .secs li.cur i{border-color:var(--blue)}.detail .secs li.cur{color:var(--blue-dark)}
 @media (max-width:860px){.home{grid-template-columns:1fr}}
-/* LMS-style home */
-.banner{position:relative;border-radius:var(--r);overflow:hidden;background:linear-gradient(100deg,#0F52C9 0%,#1A6FF0 55%,#5F9BF5 100%);color:#fff;padding:26px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px;min-height:150px}
-.banner::after{content:'';position:absolute;right:-40px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12)}
-.banner::before{content:'';position:absolute;right:120px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
-.banner h1{font-size:28px;position:relative}.banner p{margin:4px 0 0;opacity:.92;position:relative}
-.banner .ring{background:conic-gradient(#fff calc(var(--p)*1%),rgba(255,255,255,.25) 0);position:relative}.banner .ring span{background:rgba(15,82,201,.75);color:#fff}
-.banner .acts{position:relative;display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.banner .btn.sec{background:#fff;border-color:#fff;color:var(--blue)}.banner .btn.ghost{color:#fff;border:2px solid rgba(255,255,255,.55);background:transparent}.banner .btn.ghost:hover{background:rgba(255,255,255,.15);color:#fff}
+/* Classic LMS home */
+.banner{position:relative;border-radius:var(--r);overflow:hidden;min-height:190px;display:flex;align-items:flex-end;padding:26px 26px;color:#fff;margin-bottom:16px;background:#1A6FF0 url(/training/img/banner.svg) center/cover no-repeat}
+.banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,15,20,0) 30%,rgba(13,15,20,.45))}
+.banner>*{position:relative;z-index:1}
+.banner h1{font-size:32px;text-shadow:0 2px 14px rgba(0,0,0,.3)}.banner p{margin:4px 0 0;opacity:.95;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.banner .acts{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.banner .btn.sec{background:#fff;border-color:#fff;color:var(--blue)}.banner .btn.ghost{color:#fff;border:2px solid rgba(255,255,255,.6);background:rgba(13,15,20,.15)}.banner .btn.ghost:hover{background:rgba(255,255,255,.2);color:#fff}
 .tool{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
-.seg{display:flex;gap:4px;background:#eef2f9;border-radius:999px;padding:4px}
-.seg button{border:0;background:transparent;padding:8px 16px;border-radius:999px;font-weight:700;color:var(--mute);cursor:pointer}
-.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(13,15,20,.12)}
-.search{margin-left:auto;position:relative;min-width:200px;flex:0 1 260px}.search input{padding-left:36px;border-radius:999px;border-width:1.5px}.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--mute);fill:none;stroke-width:2.2}
-.cont{background:#fff;border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:var(--r);padding:16px 18px;display:flex;gap:16px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
-.cont .th{width:88px;height:64px;flex:none}
-.cont .t{flex:1;min-width:200px}.cont .t small{color:var(--blue);font:800 11px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase}.cont .t b{display:block;font-size:17px;line-height:1.25}
-.cont .bar{margin-top:8px;max-width:360px}
-.clist{display:flex;flex-direction:column;gap:10px}
-.cc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;transition:border-color .15s,box-shadow .15s}
+.seg{display:flex;gap:4px}
+.seg button{border:0;background:transparent;padding:8px 18px;border-radius:999px;font-weight:700;color:var(--mute);cursor:pointer}
+.seg button.on{background:#EEF2F9;color:var(--ink)}
+.search{margin-left:auto;position:relative;min-width:200px;flex:0 1 260px}.search input{padding:9px 12px 9px 36px;border-radius:8px;border-width:1.5px}.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--mute);fill:none;stroke-width:2.2}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.chart{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;gap:18px;align-items:center}
+.chart h3{font-size:15px;margin-bottom:10px}
+.clist{display:flex;flex-direction:column;gap:12px}
+.cc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;grid-template-columns:200px 1fr 200px;gap:18px;align-items:center;transition:border-color .15s,box-shadow .15s}
 .cc:hover{border-color:var(--sky);box-shadow:0 6px 20px rgba(26,111,240,.08)}
-.cc.locked{opacity:.55}
-.th{border-radius:10px;background:linear-gradient(135deg,var(--blue),#5F9BF5);height:76px;width:110px;display:grid;place-items:center;color:#fff;font:800 26px Poppins,sans-serif;position:relative;overflow:hidden}
-.th::after{content:'';position:absolute;inset:auto -20px -30px auto;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.18)}
-.th.done{background:linear-gradient(135deg,#0F52C9,#1A6FF0)}.th.locked{background:linear-gradient(135deg,#9aa3b2,#c3c9d4)}.th.warn{background:linear-gradient(135deg,#B7791F,#E0A443)}.th.bad{background:linear-gradient(135deg,#9B2C21,#C0392B)}
-.th svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;position:relative}
-.cc .t{min-width:0}.cc .t h3{font-size:16.5px;line-height:1.25}.cc .t .meta{font-size:13px;color:var(--mute);margin:3px 0 8px}
-.cc .t .stat{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}.cc .t .stat .bar{flex:1;max-width:260px}.cc .t .stat b{color:var(--ink);white-space:nowrap}
-.cc .t .stat.ok b{color:var(--blue)}.cc .t .stat.warn b{color:var(--warn)}.cc .t .stat.bad b{color:var(--bad)}
-.cc .act{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
-.cc .act .lnk{font-size:13px;color:var(--blue);background:none;border:0;cursor:pointer;font-weight:700;padding:0}
+.cc.locked{opacity:.6}.cc.cont{border-left:5px solid var(--blue)}
+.th{border-radius:8px;height:110px;width:100%;background:var(--tint) center/cover no-repeat;position:relative;overflow:hidden}
+.th.locked::after{content:'';position:absolute;inset:0;background:rgba(77,86,102,.55)}
+.th.locked svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2.4;z-index:1}
+.cc .t{min-width:0}.cc .t .kick{font:800 11px Poppins,sans-serif;color:var(--blue);letter-spacing:.1em;text-transform:uppercase}.cc .t h3{font-size:17px;line-height:1.25}.cc .t .meta{font-size:13px;color:var(--mute);margin-top:4px}
+.cc .pr{font-size:13px;color:var(--mute)}.cc .pr b{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}.cc .pr.ok b{color:var(--ok)}.cc .pr.warn b{color:var(--warn)}.cc .pr.bad b{color:var(--bad)}
+.cc .pr .bar{height:5px}.cc .pr .bar.ok i{background:var(--ok)}.cc .pr .bar.warn i{background:var(--warn)}.cc .pr .bar.bad i{background:var(--bad)}
+.cc .pr .acts{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.cc .lnk{font-size:13px;color:var(--blue);background:none;border:0;cursor:pointer;font-weight:700;padding:0}
 .empty{color:var(--mute);padding:30px;text-align:center;background:#fff;border:1px dashed var(--line);border-radius:var(--r)}
+.heroC{display:none}
 .tabbar{display:none}
+.slide .hdr{height:150px;background:var(--tint) center/cover no-repeat;margin:-30px -34px 22px;border-radius:var(--r) var(--r) 0 0}
 @media (max-width:640px){
-  .banner{padding:20px 18px;min-height:0}.banner h1{font-size:24px}.banner .ring{display:none}
-  .cc{grid-template-columns:72px 1fr;gap:12px}.cc .th{width:72px;height:56px;font-size:20px}.cc .act{grid-column:1/-1;flex-direction:row;justify-content:flex-end}
-  .search{flex:1 1 100%;margin-left:0}
+  .banner{display:none}
+  .heroC{display:block;margin-bottom:12px;border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line)}
+  .heroC .ph{height:150px;background:var(--tint) center/cover no-repeat;position:relative}
+  .heroC .chip{position:absolute;left:12px;bottom:12px;background:rgba(13,15,20,.55);color:#fff;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px}
+  .heroC .chip::before{content:'▶';font-size:9px;margin-right:6px}
+  .heroC .bar{border-radius:0;height:4px}.heroC .t{padding:10px 14px;display:flex;align-items:center;gap:10px}.heroC .t b{flex:1;font:800 15px Poppins,sans-serif;line-height:1.25}
+  .mhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.mhead h1{font-size:22px}
+  .stats{grid-template-columns:1fr}.chart{padding:14px;gap:12px}.donut{width:92px;height:92px}.donut span{width:64px;height:64px;font-size:16px}
+  .cc{grid-template-columns:64px 1fr;gap:12px;padding:10px}.cc .th{height:64px;border-radius:8px}.cc .t h3{font-size:14px}.cc .t .meta{font-size:12px}.cc .pr{grid-column:2;margin-top:-4px}.cc .pr b{font-size:12.5px;margin-bottom:4px}
+  .seg button{padding:7px 12px;font-size:14px}.search{flex:1 1 100%;margin-left:0}
   .wrap{padding-bottom:90px}
+  .slide .hdr{height:100px;margin:-22px -18px 16px}
   .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:30;padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
   .tabbar button{flex:1;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--mute);padding:6px 0;cursor:pointer}
   .tabbar button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .tabbar button.on{color:var(--blue)}
+  .charts{grid-template-columns:1fr}.scroll.matrix{display:none}.mlist{display:block}
 }
+.mhead{display:none}@media (max-width:640px){.mhead{display:flex}}
+.mlist{display:none}.mrow{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;display:flex;gap:10px;align-items:center}.mrow .t{flex:1;min-width:0}.mrow .t b{display:block}.mrow .t small{color:var(--mute)}.mrow .bar{margin:6px 0;height:5px}.mrow .bar.bad i{background:var(--bad)}.mrow .bar.warn i{background:var(--warn)}
 /* admin charts */
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:16px}
 .chart{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;gap:18px;align-items:center}
@@ -288,50 +298,62 @@ function trackMods(){ const r=S.profile.role||'dsp'; return MODS.filter(m=>m.rol
 /* ---------- home ---------- */
 function icon(i){ const I=['M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5','M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8z','M12 2a5 5 0 0 1 5 5v3h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1V7a5 5 0 0 1 5-5zm-3 8h6V7a3 3 0 0 0-6 0z','M9 12l2 2 4-4M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z','M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z','M14 3v4h4M6 3h8l6 6v12H6zM9 13h6M9 17h6','M12 8v4l3 3M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z','M8 2v3M16 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z','M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5M12 13v5M9.5 15.5h5','M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0zM12 8v4M8 12h8','M16 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 21l3-7 4 1 2 3 3-1M9 14l1-4 4 1 2 3','M6 2l1 7h10l1-7M5 9h14l-1 11H6zM9 13h6','M8 10h8M8 14h5M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z','M9 3h6M12 3v4M7 7h10l1 14H6zM9 12h6','M4 4h16v16H4zM8 8h8M8 12h8M8 16h5'];
   return `<svg viewBox="0 0 24 24"><path d="${I[i%I.length]}"/></svg>`; }
+function thumb(m){ return '/training/img/'+m.id+'.svg'; }
+function donutCSS(c){ const t=Object.values(c).reduce((a,b)=>a+b,0)||1; const p=k=>Math.round(1000*c[k]/t)/10; return {a:p('ok'),b:p('ip'),c:p('wn'),d:p('ex'),na:p('na')}; }
+function gaugeSVG(frac,color){ return `<svg viewBox="0 0 120 66" aria-hidden="true"><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="#e6ebf3" stroke-width="13" stroke-linecap="round"/><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="${color||'var(--blue)'}" stroke-width="13" stroke-linecap="round" stroke-dasharray="${(157.08*Math.max(0,Math.min(1,frac))).toFixed(1)} 400"/></svg>`; }
 function homeView(tab){
-  S.view='home'; S.tab=tab||(['enrolled','completed','records'].includes(S.tab)?S.tab:'enrolled'); const mods=trackMods(); const done=mods.filter(m=>['ok','wn'].includes(modStatus(S.progress[m.id],m).k)).length; const pct=Math.round(100*done/mods.length);
-  const exp=mods.filter(m=>modStatus(S.progress[m.id],m).k==='ex').length; const soon=mods.filter(m=>modStatus(S.progress[m.id],m).k==='wn').length;
-  const mins=mods.reduce((n,m)=>n+m.minutes,0);
+  S.view='home'; S.tab=tab||(['enrolled','completed','records'].includes(S.tab)?S.tab:'enrolled'); const mods=trackMods();
   const completed=m=>['ok','wn','ex'].includes(modStatus(S.progress[m.id],m).k);
   const info=mods.map((m,i)=>{ const st=modStatus(S.progress[m.id],m); const locked=i>0&&st.k==='na'&&!completed(mods[i-1]); return {m,i,st,locked}; });
+  const cnt={ok:0,ip:0,wn:0,ex:0,na:0}; info.forEach(x=>cnt[x.st.k]++); const done=cnt.ok+cnt.wn; const pct=Math.round(100*done/mods.length); const d=donutCSS(cnt);
+  const scores=info.filter(x=>x.st.score!==undefined).map(x=>x.st.score); const avg=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):null;
+  const hrsDone=info.filter(x=>completed(x.m)).reduce((n,x)=>n+x.m.minutes,0)/60, hrsAll=mods.reduce((n,m)=>n+m.minutes,0)/60;
+  const nextDue=info.filter(x=>x.st.days!==undefined&&x.st.days>=0).sort((a,b)=>a.st.days-b.st.days)[0];
   const cur=info.find(x=>x.st.k==='ip')||info.find(x=>x.st.k==='ex')||info.find(x=>x.st.k==='na'&&!x.locked)||info.find(x=>x.st.k==='wn')||null;
-  const first=esc(S.profile.name.split(' ')[0]);
-  $('#app').innerHTML=`<div class="banner"><div style="flex:1;min-width:220px"><h1>My Courses</h1><p>${pct===100?'Core curriculum complete, '+first+'.':'Welcome back, '+first+'.'} ${esc(S.profile.role==='admin'?'Office / Admin track':'DSP track')} · ${done} of ${mods.length} complete · about ${Math.round(mins/60*10)/10} hours${exp?` · <b>${exp} expired</b>`:''}${soon?` · <b>${soon} due for renewal</b>`:''}</p>
-    <div class="acts">${cur?`<button class="btn sec sm" data-open="${cur.m.id}">${cur.st.k==='ip'?'Continue training':cur.st.k==='ex'||cur.st.k==='wn'?'Renew now':'Start training'}</button>`:''}${pct===100?'<button class="btn ghost sm" id="hCert">Core certificate</button>':''}${isAdmin()?'<button class="btn ghost sm" id="hAdmin">Admin dashboard</button>':''}<button class="btn ghost sm" id="hRole">Switch track</button></div></div>
-    <div class="ring" style="--p:${pct}"><span>${pct}%</span></div></div>
-    <div class="tool"><div class="seg" role="tablist"><button role="tab" data-tab="enrolled" class="${S.tab==='enrolled'?'on':''}">Enrolled</button><button role="tab" data-tab="completed" class="${S.tab==='completed'?'on':''}">Completed</button><button role="tab" data-tab="records" class="${S.tab==='records'?'on':''}">Certificates</button></div>
+  const first=esc(S.profile.name.split(' ')[0]); const track=esc(S.profile.role==='admin'?'Office / Admin track':'DSP track');
+  $('#app').innerHTML=`<div class="banner"><div><h1>My Courses</h1><p>${pct===100?'Core curriculum complete, '+first+'.':'Welcome back, '+first+'.'} ${track} · ${done} of ${mods.length} complete${cnt.ex?` · <b>${cnt.ex} expired</b>`:''}${cnt.wn?` · <b>${cnt.wn} due for renewal</b>`:''}</p></div>
+    <div class="acts">${pct===100?'<button class="btn sec sm" id="hCert">Core certificate</button>':''}${isAdmin()?'<button class="btn ghost sm" id="hAdmin">Admin dashboard</button>':''}<button class="btn ghost sm" id="hRole">Switch track</button></div></div>
+    <div class="mhead"><h1>My Courses</h1><div class="row">${isAdmin()?'<button class="btn ghost sm" id="hAdminM">Admin</button>':''}<button class="btn ghost sm" id="hRoleM">Track</button></div></div>
+    <div class="tool"><div class="seg" role="tablist"><button role="tab" data-tab="enrolled" class="${S.tab==='enrolled'?'on':''}">Enrolled${cnt.ok<mods.length?' '+(mods.length-cnt.ok):''}</button><button role="tab" data-tab="completed" class="${S.tab==='completed'?'on':''}">Completed${done?' '+done:''}</button><button role="tab" data-tab="records" class="${S.tab==='records'?'on':''}">Certificates</button></div>
     <label class="search" style="margin:0;font-weight:400"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="hSearch" placeholder="Search courses" autocomplete="off"></label></div>
     <div id="hBody"></div>
     <nav class="tabbar"><button data-tab="enrolled" class="${S.tab==='enrolled'?'on':''}"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V5a2 2 0 0 1 2-2h14v14H6.5A2.5 2.5 0 0 0 4 19.5z"/></svg>Courses</button><button data-tab="completed" class="${S.tab==='completed'?'on':''}"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>Completed</button><button data-tab="records" class="${S.tab==='records'?'on':''}"><svg viewBox="0 0 24 24"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8.5 14.5 7 22l5-3 5 3-1.5-7.5"/></svg>Certificates</button>${isAdmin()?'<button id="tbAdmin"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Admin</button>':''}</nav>`;
   const q=()=>($('#hSearch').value||'').trim().toLowerCase();
-  const card=x=>{ const {m,i,st,locked}=x; const p=S.progress[m.id]||{}; const kind=st.k==='ok'?'ok':st.k==='wn'?'warn':st.k==='ex'?'bad':'';
-    const statTxt=locked?'Locked · finish Module '+i:st.k==='ok'?'Completed · '+st.score+'%':st.k==='wn'?'Renew within '+st.days+' days':st.k==='ex'?'Expired · renew now':st.k==='ip'?'In progress ('+st.pct+'%)':'Not started';
+  const statOf=x=>{ const {st,locked,i}=x; const kind=st.k==='ok'?'ok':st.k==='wn'?'warn':st.k==='ex'?'bad':''; const txt=locked?'Locked · finish Module '+i:st.k==='ok'?'Completed · '+st.score+'%':st.k==='wn'?'Renew within '+st.days+' days':st.k==='ex'?'Expired · renew now':st.k==='ip'?'In progress ('+st.pct+'% viewed)':'Not started'; return {kind,txt}; };
+  const card=(x,isCont)=>{ const {m,i,st,locked}=x; const p=S.progress[m.id]||{}; const {kind,txt}=statOf(x);
     const btn=locked?'':`<button class="btn sm ${st.k==='ok'?'sec':''}" data-open="${m.id}">${st.k==='na'?'Start':st.k==='ip'?'Continue':st.k==='ex'||st.k==='wn'?'Renew':'Review'}</button>`;
-    return `<div class="cc ${locked?'locked':''}"><div class="th ${locked?'locked':st.k==='ok'?'done':st.k==='wn'?'warn':st.k==='ex'?'bad':''}">${locked?'<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>':icon(i)}</div>
-      <div class="t"><h3>Module ${i+1} · ${esc(m.title)}</h3><div class="meta">${m.minutes} min · ${m.sections.length} sections · ${m.quiz.length}-question final${p.completedAt?' · valid until '+fmtD(p.expiresAt):''}</div>
-      <div class="stat ${kind}"><b>${statTxt}</b><div class="bar"><i style="width:${st.pct}%"></i></div></div></div>
-      <div class="act">${btn}${completed(m)?`<button class="lnk" data-cert="${m.id}">Certificate</button>`:''}</div></div>`; };
+    return `<div class="cc ${locked?'locked':''} ${isCont?'cont':''}"><div class="th ${locked?'locked':''}" style="background-image:url('${thumb(m)}')">${locked?'<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>':''}</div>
+      <div class="t">${isCont?`<div class="kick">${st.k==='ip'?'Continue training':st.k==='ex'?'Expired — renew':st.k==='wn'?'Due for renewal':'Up next'}</div>`:''}<h3>Module ${i+1} · ${esc(m.title)}</h3><div class="meta">${p.completedAt?'Completed '+fmtD(p.completedAt)+' · Score '+p.score+'% · Valid until '+fmtD(p.expiresAt):m.minutes+' min · '+m.sections.length+' sections · Certificate'}</div></div>
+      <div class="pr ${kind}"><b>${txt}</b><div class="bar ${kind}"><i style="width:${st.pct}%"></i></div><div class="acts">${btn}${completed(m)?`<button class="lnk" data-cert="${m.id}">Certificate</button>`:''}</div></div></div>`; };
   const draw=()=>{ const t=S.tab; const f=q(); let list=info.filter(x=>!f||x.m.title.toLowerCase().includes(f)||('module '+(x.i+1)).includes(f));
-    if(t==='enrolled') list=list.filter(x=>!(x.st.k==='ok'));
-    if(t==='completed') list=list.filter(x=>completed(x.m));
     let html='';
-    if(t==='enrolled'&&cur&&!f) html+=`<div class="cont"><div class="th ${cur.st.k==='ex'?'bad':cur.st.k==='wn'?'warn':''}">${icon(cur.i)}</div><div class="t"><small>${cur.st.k==='ip'?'Continue training':cur.st.k==='ex'?'Expired — renew':cur.st.k==='wn'?'Due for renewal':'Up next'}</small><b>Module ${cur.i+1} · ${esc(cur.m.title)}</b><div class="bar"><i style="width:${cur.st.pct}%"></i></div></div><button class="btn" data-open="${cur.m.id}">${cur.st.k==='ip'?'Continue':cur.st.k==='ex'||cur.st.k==='wn'?'Renew':'Start'}</button></div>`;
-    if(t==='records'){ const certs=info.filter(x=>completed(x.m)).map(x=>x.m);
+    if(t==='enrolled'){
+      if(cur&&!f) html+=`<div class="heroC"><div class="ph" style="background-image:url('${thumb(cur.m)}')"><span class="chip">${cur.st.k==='ip'?'Continue training':cur.st.k==='ex'||cur.st.k==='wn'?'Renew now':'Start training'}</span></div><div class="bar"><i style="width:${cur.st.pct}%"></i></div><div class="t"><b>Module ${cur.i+1} · ${esc(cur.m.title)}</b><button class="btn sm" data-open="${cur.m.id}">${cur.st.k==='ip'?'Continue':cur.st.k==='ex'||cur.st.k==='wn'?'Renew':'Start'}</button></div></div>`;
+      html+=`<div class="stats"><div class="chart"><div class="donut" style="--a:${d.a};--b:${d.b};--c:${d.c};--d:${d.d}"><span>${pct}%</span></div><div style="flex:1"><h3>My progress</h3><div class="lg"><div><i style="background:var(--blue)"></i>Complete<b>${cnt.ok}</b></div><div><i style="background:var(--sky)"></i>In progress<b>${cnt.ip}</b></div><div><i style="background:var(--warn)"></i>Due for renewal<b>${cnt.wn}</b></div><div><i style="background:var(--bad)"></i>Expired<b>${cnt.ex}</b></div><div><i style="background:#e6ebf3"></i>Not started<b>${cnt.na}</b></div></div></div></div>
+        <div class="chart"><div class="gauge">${gaugeSVG(done/mods.length)}<span>${done}/${mods.length}</span></div><div style="flex:1"><h3>My results</h3><div class="lg"><div>Average score<b>${avg===null?'—':avg+'%'}</b></div><div>Hours completed<b>${Math.round(hrsDone*10)/10} / ${Math.round(hrsAll*10)/10}</b></div><div>Next renewal<b>${nextDue?nextDue.st.days+' days':'—'}</b></div><div>Core certificate<b>${pct===100?'Earned':'—'}</b></div></div></div></div></div>`;
+      list=list.filter(x=>x.st.k!=='ok'); if(cur&&!f) list=[...list.filter(x=>x.m.id===cur.m.id),...list.filter(x=>x.m.id!==cur.m.id)];
+      html+=`<div class="clist">${list.length?list.map(x=>card(x,cur&&x.m.id===cur.m.id)).join(''):`<div class="empty">${f?'No courses match “'+esc(f)+'”.':'All modules complete. See Completed to review or print certificates.'}</div>`}</div>`;
+      $('#hBody').innerHTML=html;
+    } else if(t==='completed'){
+      list=list.filter(x=>completed(x.m));
+      html+=`<div class="clist">${list.length?list.map(x=>card(x,false)).join(''):`<div class="empty">No completed modules yet. Finish a module and it moves here with its certificate.</div>`}</div>`;
+      $('#hBody').innerHTML=html;
+    } else { const certs=info.filter(x=>completed(x.m)).map(x=>x.m);
       html+=`<div class="card" style="margin-bottom:14px"><h3 style="font-size:16px;margin-bottom:8px">Your certificates</h3><div id="certList" style="font-size:14.5px;overflow-x:auto"></div></div><div class="card"><h3 style="font-size:16px;margin-bottom:8px">Your credentials on file</h3><div id="credList" style="font-size:14.5px;overflow-x:auto"></div></div>`;
       $('#hBody').innerHTML=html;
       $('#certList').innerHTML=certs.length?'<table class="ros"><tr><th>Certificate</th><th>Completed</th><th>Score</th><th>Valid until</th><th></th></tr>'+(pct===100?`<tr><td><b>Core curriculum — all modules</b></td><td>${fmtD(Math.max(...certs.map(x=>tsMs(S.progress[x.id].completedAt))))}</td><td>—</td><td>${fmtD(Math.min(...certs.map(x=>tsMs(S.progress[x.id].expiresAt))))}</td><td><button class="btn sm" data-certall="1">View / save</button></td></tr>`:'')+certs.map(x=>{const p=S.progress[x.id]; const dl=Math.ceil((tsMs(p.expiresAt)-Date.now())/DAY); return `<tr><td>${esc(x.title)}</td><td>${fmtD(p.completedAt)}</td><td>${p.score}%</td><td>${fmtD(p.expiresAt)} ${dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':''}</td><td><button class="btn sm sec" data-cert="${x.id}">View / save</button></td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">Certificates appear here as you complete modules. Each one stays on your portal and can be saved as a PDF any time.</span>';
-      $('#credList').innerHTML=S.creds.length?'<table class="ros"><tr><th>Credential</th><th>Issued</th><th>Expires</th><th>Status</th></tr>'+S.creds.map(c=>{const dl=c.expiresAt?Math.ceil(((c.expiresAt.seconds?c.expiresAt.seconds*1000:c.expiresAt)-Date.now())/DAY):null; return `<tr><td>${esc(c.label)}</td><td>${fmtD(c.issuedAt)}</td><td>${fmtD(c.expiresAt)}</td><td>${dl===null?'<span class="pill mute">No expiry</span>':dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':'<span class="pill ok">Current</span>'}</td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">None recorded yet. Your administrator records CPR/First Aid, background check and health screening dates here.</span>';
-    } else { html+=`<div class="clist">${list.length?list.map(card).join(''):`<div class="empty">${t==='completed'?'No completed modules yet. Finish a module and it moves here with its certificate.':f?'No courses match “'+esc(f)+'”.':'All modules complete. Switch to Completed to review or print certificates.'}</div>`}</div>`; $('#hBody').innerHTML=html; }
+      $('#credList').innerHTML=S.creds.length?'<table class="ros"><tr><th>Credential</th><th>Issued</th><th>Expires</th><th>Status</th></tr>'+S.creds.map(c=>{const dl=c.expiresAt?Math.ceil(((c.expiresAt.seconds?c.expiresAt.seconds*1000:c.expiresAt)-Date.now())/DAY):null; return `<tr><td>${esc(c.label)}</td><td>${fmtD(c.issuedAt)}</td><td>${fmtD(c.expiresAt)}</td><td>${dl===null?'<span class="pill mute">No expiry</span>':dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':'<span class="pill ok">Current</span>'}</td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">None recorded yet. Your administrator records CPR/First Aid, background check and health screening dates here.</span>'; }
     document.querySelectorAll('#app [data-open]').forEach(b=>b.onclick=()=>openModule(b.dataset.open));
     document.querySelectorAll('#app [data-cert]').forEach(b=>b.onclick=()=>certView(MODS.find(y=>y.id===b.dataset.cert)));
     const ca=$('[data-certall]'); if(ca) ca.onclick=()=>certView();
   };
   draw();
   $('#hSearch').oninput=draw;
-  document.querySelectorAll('#app [data-tab]').forEach(b=>b.onclick=()=>{ S.tab=b.dataset.tab; document.querySelectorAll('#app [data-tab]').forEach(y=>y.classList.toggle('on',y.dataset.tab===S.tab)); draw(); });
+  document.querySelectorAll('#app [data-tab]').forEach(b=>b.onclick=()=>{ S.tab=b.dataset.tab; document.querySelectorAll('#app [data-tab]').forEach(y=>y.classList.toggle('on',y.dataset.tab===S.tab)); draw(); window.scrollTo({top:0}); });
   const hc=$('#hCert'); if(hc) hc.onclick=()=>certView();
-  const ha=$('#hAdmin'); if(ha) ha.onclick=()=>adminView(); const ta=$('#tbAdmin'); if(ta) ta.onclick=()=>adminView();
-  $('#hRole').onclick=async()=>{ const r=S.profile.role==='admin'?'dsp':'admin'; if(!confirm('Switch your training track to '+(r==='admin'?'Office / Admin':'DSP')+'? Your progress is kept.')) return; await updateDoc(doc(db,'users',S.user.uid),{role:r,updatedAt:serverTimestamp()}); S.profile.role=r; homeView(); };
+  ['#hAdmin','#hAdminM','#tbAdmin'].forEach(id=>{ const e=$(id); if(e) e.onclick=()=>adminView(); });
+  const sw=async()=>{ const r=S.profile.role==='admin'?'dsp':'admin'; if(!confirm('Switch your training track to '+(r==='admin'?'Office / Admin':'DSP')+'? Your progress is kept.')) return; await updateDoc(doc(db,'users',S.user.uid),{role:r,updatedAt:serverTimestamp()}); S.profile.role=r; homeView(); };
+  ['#hRole','#hRoleM'].forEach(id=>{ const e=$(id); if(e) e.onclick=sw; });
 }
 
 /* ---------- player ---------- */
@@ -345,7 +367,7 @@ function renderSlide(){
   const {m,sec,sl}=S.play; const S_=m.sections[sec]; const slide=S_.slides[sl]; const total=m.sections.reduce((n,s)=>n+s.slides.length,0); let idx=0; for(let i=0;i<sec;i++) idx+=m.sections[i].slides.length; idx+=sl;
   const last=sl===S_.slides.length-1;
   $('#app').innerHTML=`<div class="player"><div class="pbar"><button class="btn ghost sm" id="pBack">← All modules</button><span>${esc(m.title)}</span><div class="bar"><i style="width:${Math.round(100*(idx)/total)}%"></i></div><span>${idx+1}/${total}</span></div>
-  <div class="slide"><div class="sec">Section ${sec+1} of ${m.sections.length} · ${esc(S_.title)}</div><h2>${esc(slide.h)}</h2><div class="body">${slide.body}${slide.ref?`<div class="ref">Source: ${esc(slide.ref)}</div>`:''}</div></div>
+  <div class="slide">${sl===0?`<div class="hdr" style="background-image:url('${thumb(m)}')"></div>`:''}<div class="sec">Section ${sec+1} of ${m.sections.length} · ${esc(S_.title)}</div><h2>${esc(slide.h)}</h2><div class="body">${slide.body}${slide.ref?`<div class="ref">Source: ${esc(slide.ref)}</div>`:''}</div></div>
   <div class="nav"><button class="btn sec" id="pPrev" ${idx===0?'disabled':''}>Back</button><div class="dots">${S_.slides.map((_,i)=>`<i class="${i<sl?'done':i===sl?'on':''}"></i>`).join('')}</div><button class="btn" id="pNext">${last?(S_.check&&S_.check.length?'Knowledge check →':(sec===m.sections.length-1?'Final quiz →':'Next section →')):'Next'}</button></div></div>`;
   window.scrollTo({top:0});
   $('#pBack').onclick=()=>{ history.replaceState(null,'','#'); homeView(); };
@@ -418,11 +440,12 @@ function drawAdmin(){
   const tot={ok:0,ip:0,wn:0,ex:0,na:0}; rows.forEach(r=>r.sts.forEach(s=>tot[s.k]++)); const slots=Object.values(tot).reduce((a,b)=>a+b,0)||1; const pc=k=>Math.round(1000*tot[k]/slots)/10;
   $('#app').innerHTML=`<div class="row" style="margin-bottom:14px"><button class="btn ghost sm" id="aBack">← My training</button><h1 style="font-size:22px">Training administration</h1><div style="flex:1"></div><button class="btn sec sm" id="aCsv">Export CSV</button><button class="btn sec sm" id="aReload">Refresh</button></div>
   <div class="charts">
-    <div class="chart"><div class="donut" style="--a:${pc('ok')};--b:${pc('ip')};--c:${pc('wn')};--d:${pc('ex')}"><span>${pc('ok')+pc('wn')>=100?'100':Math.round(pc('ok')+pc('wn'))}%</span></div><div><h3>Team progress</h3><div class="lg"><div><i style="background:var(--blue)"></i>Complete<b>${pc('ok')}%</b></div><div><i style="background:var(--sky)"></i>In progress<b>${pc('ip')}%</b></div><div><i style="background:var(--warn)"></i>Due within 30 days<b>${pc('wn')}%</b></div><div><i style="background:var(--bad)"></i>Expired<b>${pc('ex')}%</b></div><div><i style="background:#e6ebf3"></i>Not started<b>${pc('na')}%</b></div></div></div></div>
-    <div class="chart"><div class="gauge"><svg viewBox="0 0 120 66" aria-hidden="true"><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="#e6ebf3" stroke-width="13" stroke-linecap="round"/><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="var(--blue)" stroke-width="13" stroke-linecap="round" stroke-dasharray="${(157.08*(act.length?complete/act.length:0)).toFixed(1)} 400"/></svg><span>${complete}/${act.length}</span></div><div><h3>Fully trained staff</h3><div class="lg"><div>Active staff<b>${act.length}</b></div><div>Items due within 30 days<b style="color:${soon?'var(--warn)':'inherit'}">${soon}</b></div><div>Expired items<b style="color:${expired?'var(--bad)':'inherit'}">${expired}</b></div><div>Awaiting approval<b style="color:${pend.length?'var(--blue)':'inherit'}">${pend.length}</b></div></div></div></div>
+    <div class="chart"><div class="donut" style="--a:${pc('ok')};--b:${pc('ip')};--c:${pc('wn')};--d:${pc('ex')}"><span>${pc('ok')+pc('wn')>=100?'100':Math.round(pc('ok')+pc('wn'))}%</span></div><div style="flex:1"><h3>Team Progress</h3><div class="lg"><div><i style="background:var(--blue)"></i>Complete<b>${pc('ok')}%</b></div><div><i style="background:var(--sky)"></i>In progress<b>${pc('ip')}%</b></div><div><i style="background:var(--warn)"></i>Due within 30 days<b>${pc('wn')}%</b></div><div><i style="background:var(--bad)"></i>Expired<b>${pc('ex')}%</b></div><div><i style="background:#e6ebf3"></i>Not started<b>${pc('na')}%</b></div></div></div></div>
+    <div class="chart"><div class="gauge"><svg viewBox="0 0 120 66" aria-hidden="true"><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="#e6ebf3" stroke-width="13" stroke-linecap="round"/><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="var(--blue)" stroke-width="13" stroke-linecap="round" stroke-dasharray="${(157.08*(act.length?complete/act.length:0)).toFixed(1)} 400"/></svg><span>${complete}/${act.length}</span></div><div style="flex:1"><h3>Employee Results</h3><div class="lg"><div>Fully trained<b>${complete} of ${act.length}</b></div><div>Items due within 30 days<b style="color:${soon?'var(--warn)':'inherit'}">${soon}</b></div><div>Expired items<b style="color:${expired?'var(--bad)':'inherit'}">${expired}</b></div><div>Awaiting approval<b style="color:${pend.length?'var(--blue)':'inherit'}">${pend.length}</b></div></div></div></div>
   </div>
   ${pend.length?`<div class="card" style="margin-bottom:16px"><h3 style="font-size:16px;margin-bottom:8px">Awaiting approval</h3>${pend.map(u=>`<div class="row" style="padding:8px 0;border-top:1px solid var(--line)"><div style="flex:1"><b>${esc(u.name)}</b> · ${esc(u.email)} · ${esc(u.phone||'')} · <span class="pill">${u.role==='admin'?'Office/Admin':'DSP'}</span> · registered ${fmtD(u.createdAt)}</div><button class="btn sm" data-approve="${u.id}">Approve</button><button class="btn danger sm" data-deny="${u.id}">Remove</button></div>`).join('')}</div>`:''}
-  <div class="scroll"><table class="ros"><thead><tr><th>Staff</th><th>Track</th><th>Progress</th>${MODS.map((m,i)=>`<th class="c" title="${esc(m.title)}">${i+1}</th>`).join('')}<th>Credentials</th><th></th></tr></thead><tbody>
+  <div class="mlist">${rows.map(({u,mods,sts,done})=>{ const ex=sts.filter(x=>x.k==='ex').length, wn=sts.filter(x=>x.k==='wn').length; return `<div class="mrow"><div class="t"><b>${esc(u.name)}</b><div class="bar ${ex?'bad':wn?'warn':''}"><i style="width:${Math.round(100*done/mods.length)}%"></i></div><small>${done}/${mods.length} complete${ex?' · <span style="color:var(--bad)">'+ex+' expired</span>':''}${wn?' · <span style="color:var(--warn)">'+wn+' due'+'</span>':''}</small></div><button class="btn ghost sm" data-edit="${u.id}">Manage</button></div>`; }).join('')}</div>
+  <div class="scroll matrix"><table class="ros"><thead><tr><th>Staff</th><th>Track</th><th>Progress</th>${MODS.map((m,i)=>`<th class="c" title="${esc(m.title)}">${i+1}</th>`).join('')}<th>Credentials</th><th></th></tr></thead><tbody>
   ${rows.map(({u,mods,sts,done})=>`<tr><td><b>${esc(u.name)}</b><br><span style="color:var(--mute);font-size:12px">${esc(u.email)}</span></td><td>${u.role==='admin'?'Office':'DSP'}${u.access==='admin'?' · <span class="pill">admin</span>':''}</td><td><div class="bar" style="width:90px"><i style="width:${Math.round(100*done/mods.length)}%"></i></div><span style="font-size:12px;color:var(--mute)">${done}/${mods.length}</span></td>
   ${MODS.map((m,i)=>{ if(!m.roles.includes(u.role||'dsp')) return '<td class="c"><i class="dot na" title="Not in this track" style="opacity:.4"></i></td>'; const s=modStatus(u.progress[m.id],m); return `<td class="c"><i class="dot ${s.k}" title="${i+1}. ${esc(m.title)} · ${esc(s.label)}${s.score!==undefined?' · score '+s.score+'%':''}"></i></td>`; }).join('')}
   <td>${u.creds.length?u.creds.map(c=>{const dl=c.expiresAt?Math.ceil(((c.expiresAt.seconds?c.expiresAt.seconds*1000:c.expiresAt)-Date.now())/DAY):null; return `<span class="pill ${dl===null?'mute':dl<0?'bad':dl<=30?'warn':'ok'}" title="${esc(c.label)} · exp ${fmtD(c.expiresAt)}">${esc(c.label.split(' ')[0])}</span>`}).join(' '):'<span style="color:var(--mute)">—</span>'}</td>
