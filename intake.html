@@ -134,11 +134,12 @@ body.gated>:not(#gate){visibility:hidden}
 <div id="gate"><form class="g" id="gForm"><h1>Staff sign-in</h1><p>The intake form is for Haven Crest office staff. Sign in with your DSP Academy account.</p>
 <label for="gEmail">Email</label><input id="gEmail" type="email" autocomplete="username" required>
 <label for="gPass">Password</label><input id="gPass" type="password" autocomplete="current-password" required>
+<label for="gStay" style="display:flex;gap:8px;align-items:center;font-weight:400;margin-top:10px"><input id="gStay" type="checkbox" checked style="width:auto;margin:0"> Stay signed in on this device</label>
 <button type="submit" id="gBtn">Sign in</button><div class="err" id="gErr"></div>
 <div class="ft">No account yet? <a href="/training/#register">Register in the DSP Academy</a> and ask the office to approve you. Families and referral partners: <a href="/#contact">request a call</a> instead.</div></form></div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence, browserSessionPersistence, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 const cfg=window.HCH_FIREBASE; const app=initializeApp(cfg); const auth=getAuth(app); const db=getFirestore(app);
 const gate=document.getElementById('gate'), err=document.getElementById('gErr'), form=document.getElementById('gForm');
@@ -146,7 +147,8 @@ async function allow(u){ if(!u) return false; if(!u.emailVerified){ err.textCont
   try{ const d=await getDoc(doc(db,'users',u.uid)); const a=d.exists()?d.data().access:''; if(a==='admin'||a==='active') return true; err.textContent=a==='pending'?'Your account is awaiting approval by the office.':'This account is not cleared for intake. Contact compliance@havencresthome.com.'; }catch(e){ err.textContent='Could not check your access: '+e.message; }
   return false; }
 onAuthStateChanged(auth, async u=>{ if(await allow(u)){ gate.remove(); document.body.classList.remove('gated'); const b=document.createElement('a'); b.href='#'; b.textContent='Sign out'; b.style.cssText='position:fixed;top:10px;right:12px;font-size:.8rem;color:#4D5666;z-index:40'; b.onclick=e=>{e.preventDefault(); signOut(auth).then(()=>location.reload());}; document.body.appendChild(b); } else if(u){ await signOut(auth); } });
-form.onsubmit=async e=>{ e.preventDefault(); err.textContent=''; document.getElementById('gBtn').disabled=true; try{ await signInWithEmailAndPassword(auth,document.getElementById('gEmail').value.trim(),document.getElementById('gPass').value); }catch(x){ err.textContent=/invalid|wrong|not-found|credential/i.test(x.code||'')?'Email or password is incorrect.':x.message; } document.getElementById('gBtn').disabled=false; };
+try{ if(localStorage.getItem('hch_stay')==='0') document.getElementById('gStay').checked=false; const last=localStorage.getItem('hch_email'); if(last) document.getElementById('gEmail').value=last; }catch(_){}
+form.onsubmit=async e=>{ e.preventDefault(); err.textContent=''; document.getElementById('gBtn').disabled=true; try{ const stay=document.getElementById('gStay').checked; try{ localStorage.setItem('hch_stay',stay?'1':'0'); if(stay) localStorage.setItem('hch_email',document.getElementById('gEmail').value.trim()); else localStorage.removeItem('hch_email'); }catch(_){} await setPersistence(auth, stay?browserLocalPersistence:browserSessionPersistence); await signInWithEmailAndPassword(auth,document.getElementById('gEmail').value.trim(),document.getElementById('gPass').value); }catch(x){ err.textContent=/invalid|wrong|not-found|credential/i.test(x.code||'')?'Email or password is incorrect.':x.message; } document.getElementById('gBtn').disabled=false; };
 </script>
 <script src="/training/firebase-config.js"></script>
 

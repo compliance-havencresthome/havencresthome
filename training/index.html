@@ -227,7 +227,7 @@ table.ros td.m{text-align:center;padding:4px}
 <script src="/training/modules/manifest.js"></script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, updateProfile, reload, getIdToken } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence, browserSessionPersistence, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, updateProfile, reload, getIdToken } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, serverTimestamp, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const $=s=>document.querySelector(s); const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -245,6 +245,7 @@ const MODS=(window.HCH_MODULES||[]).slice().sort((a,b)=>a.order-b.order);
 const S={user:null,profile:null,progress:{},creds:[],view:'home',tab:'dsp',play:null};
 
 /* ---------- auth screens ---------- */
+function stayPref(){ try{ return localStorage.getItem('hch_stay')!=='0'; }catch(_){ return true; } }
 function authView(mode){
   const reg=mode==='register';
   $('#app').innerHTML=`<div class="card auth">
@@ -255,6 +256,7 @@ function authView(mode){
     <label>I am training as</label><select id="aRole"><option value="dsp">Direct Support Professional (DSP)</option><option value="admin">Office / Administrative staff</option></select>`:''}
     <label>Email</label><input id="aEmail" type="email" autocomplete="email" placeholder="you@example.com">
     <label>Password</label><input id="aPass" type="password" autocomplete="${reg?'new-password':'current-password'}" placeholder="${reg?'At least 8 characters':'Your password'}">
+    <label style="font-weight:400;display:flex;gap:8px;align-items:center;margin:10px 0 0"><input type="checkbox" id="aStay" ${stayPref()?'checked':''} style="width:auto"> Stay signed in on this device</label>
     <div id="aErr"></div>
     <div class="row" style="margin-top:18px"><button class="btn" id="aGo">${reg?'Create account':'Sign in'}</button>
     <button class="btn ghost" id="aSwap">${reg?'I already have an account':'New here? Register'}</button></div>
@@ -262,6 +264,7 @@ function authView(mode){
     <div class="info" style="margin-top:22px">Questions? <a href="mailto:compliance@havencresthome.com">compliance@havencresthome.com</a> · 715-338-2315</div>
   </div>`;
   $('#aSwap').onclick=()=>authView(reg?'login':'register');
+  try{ const last=localStorage.getItem('hch_email'); if(last&&!reg) $('#aEmail').value=last; }catch(_){}
   const err=m=>{$('#aErr').innerHTML=m?`<div class="err">${esc(m)}</div>`:''};
   const nice=e=>({'auth/invalid-email':'That email address is not valid.','auth/user-not-found':'No account with that email. Register first.','auth/wrong-password':'Wrong password.','auth/invalid-credential':'Email or password is incorrect.','auth/email-already-in-use':'An account already exists for that email. Sign in instead.','auth/weak-password':'Use at least 8 characters.','auth/too-many-requests':'Too many attempts. Wait a few minutes and try again.'}[e.code]||e.message);
   $('#aGo').onclick=async()=>{
@@ -269,6 +272,8 @@ function authView(mode){
     if(!email||!pass) return err('Enter your email and password.');
     busy(true); $('#aGo').disabled=true;
     try{
+      const stay=$('#aStay').checked; try{ localStorage.setItem('hch_stay',stay?'1':'0'); if(stay) localStorage.setItem('hch_email',email); else localStorage.removeItem('hch_email'); }catch(_){}
+      await setPersistence(auth, stay?browserLocalPersistence:browserSessionPersistence);
       if(reg){
         const name=$('#aName').value.trim(), phone=$('#aPhone').value.trim(), role=$('#aRole').value;
         if(name.length<2) throw new Error('Enter your full name.');
