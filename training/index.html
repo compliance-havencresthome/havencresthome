@@ -69,6 +69,58 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
 .detail .secs li.done i{background:var(--blue);border-color:var(--blue);color:#fff}.detail .secs li.done{color:var(--blue-dark);font-weight:700}
 .detail .secs li.cur i{border-color:var(--blue)}.detail .secs li.cur{color:var(--blue-dark)}
 @media (max-width:860px){.home{grid-template-columns:1fr}}
+/* LMS-style home */
+.banner{position:relative;border-radius:var(--r);overflow:hidden;background:linear-gradient(100deg,#0F52C9 0%,#1A6FF0 55%,#5F9BF5 100%);color:#fff;padding:26px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px;min-height:150px}
+.banner::after{content:'';position:absolute;right:-40px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12)}
+.banner::before{content:'';position:absolute;right:120px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
+.banner h1{font-size:28px;position:relative}.banner p{margin:4px 0 0;opacity:.92;position:relative}
+.banner .ring{background:conic-gradient(#fff calc(var(--p)*1%),rgba(255,255,255,.25) 0);position:relative}.banner .ring span{background:rgba(15,82,201,.75);color:#fff}
+.banner .acts{position:relative;display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.banner .btn.sec{background:#fff;border-color:#fff;color:var(--blue)}.banner .btn.ghost{color:#fff;border:2px solid rgba(255,255,255,.55);background:transparent}.banner .btn.ghost:hover{background:rgba(255,255,255,.15);color:#fff}
+.tool{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.seg{display:flex;gap:4px;background:#eef2f9;border-radius:999px;padding:4px}
+.seg button{border:0;background:transparent;padding:8px 16px;border-radius:999px;font-weight:700;color:var(--mute);cursor:pointer}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(13,15,20,.12)}
+.search{margin-left:auto;position:relative;min-width:200px;flex:0 1 260px}.search input{padding-left:36px;border-radius:999px;border-width:1.5px}.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--mute);fill:none;stroke-width:2.2}
+.cont{background:#fff;border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:var(--r);padding:16px 18px;display:flex;gap:16px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.cont .th{width:88px;height:64px;flex:none}
+.cont .t{flex:1;min-width:200px}.cont .t small{color:var(--blue);font:800 11px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase}.cont .t b{display:block;font-size:17px;line-height:1.25}
+.cont .bar{margin-top:8px;max-width:360px}
+.clist{display:flex;flex-direction:column;gap:10px}
+.cc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;transition:border-color .15s,box-shadow .15s}
+.cc:hover{border-color:var(--sky);box-shadow:0 6px 20px rgba(26,111,240,.08)}
+.cc.locked{opacity:.55}
+.th{border-radius:10px;background:linear-gradient(135deg,var(--blue),#5F9BF5);height:76px;width:110px;display:grid;place-items:center;color:#fff;font:800 26px Poppins,sans-serif;position:relative;overflow:hidden}
+.th::after{content:'';position:absolute;inset:auto -20px -30px auto;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.18)}
+.th.done{background:linear-gradient(135deg,#0F52C9,#1A6FF0)}.th.locked{background:linear-gradient(135deg,#9aa3b2,#c3c9d4)}.th.warn{background:linear-gradient(135deg,#B7791F,#E0A443)}.th.bad{background:linear-gradient(135deg,#9B2C21,#C0392B)}
+.th svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;position:relative}
+.cc .t{min-width:0}.cc .t h3{font-size:16.5px;line-height:1.25}.cc .t .meta{font-size:13px;color:var(--mute);margin:3px 0 8px}
+.cc .t .stat{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}.cc .t .stat .bar{flex:1;max-width:260px}.cc .t .stat b{color:var(--ink);white-space:nowrap}
+.cc .t .stat.ok b{color:var(--blue)}.cc .t .stat.warn b{color:var(--warn)}.cc .t .stat.bad b{color:var(--bad)}
+.cc .act{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.cc .act .lnk{font-size:13px;color:var(--blue);background:none;border:0;cursor:pointer;font-weight:700;padding:0}
+.empty{color:var(--mute);padding:30px;text-align:center;background:#fff;border:1px dashed var(--line);border-radius:var(--r)}
+.tabbar{display:none}
+@media (max-width:640px){
+  .banner{padding:20px 18px;min-height:0}.banner h1{font-size:24px}.banner .ring{display:none}
+  .cc{grid-template-columns:72px 1fr;gap:12px}.cc .th{width:72px;height:56px;font-size:20px}.cc .act{grid-column:1/-1;flex-direction:row;justify-content:flex-end}
+  .search{flex:1 1 100%;margin-left:0}
+  .wrap{padding-bottom:90px}
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:30;padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+  .tabbar button{flex:1;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--mute);padding:6px 0;cursor:pointer}
+  .tabbar button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .tabbar button.on{color:var(--blue)}
+}
+/* admin charts */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:16px}
+.chart{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;gap:18px;align-items:center}
+.chart h3{font-size:15px;margin-bottom:10px}
+.donut{--a:0;--b:0;--c:0;--d:0;width:120px;height:120px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--blue) 0 calc(var(--a)*1%),var(--sky) calc(var(--a)*1%) calc((var(--a) + var(--b))*1%),var(--warn) calc((var(--a) + var(--b))*1%) calc((var(--a) + var(--b) + var(--c))*1%),var(--bad) calc((var(--a) + var(--b) + var(--c))*1%) calc((var(--a) + var(--b) + var(--c) + var(--d))*1%),#e6ebf3 0)}
+.donut span{width:84px;height:84px;border-radius:50%;background:#fff;display:grid;place-items:center;font:800 22px Poppins,sans-serif;color:var(--ink)}
+.lg{font-size:13.5px;color:var(--mute);display:grid;gap:6px;flex:1}.lg div{display:flex;align-items:center;gap:8px}.lg i{width:10px;height:10px;border-radius:50%;flex:none}.lg b{margin-left:auto;color:var(--ink);font-variant-numeric:tabular-nums}
+.gauge{width:150px;flex:none;position:relative}.gauge svg{width:100%;height:auto;display:block}.gauge span{position:absolute;left:0;right:0;bottom:4px;text-align:center;font:800 24px Poppins,sans-serif}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;background:#dfe5ef}.dot.ok{background:var(--blue)}.dot.ip{background:#fff;border:3px solid var(--blue);box-sizing:border-box}.dot.wn{background:var(--warn)}.dot.ex{background:var(--bad)}.dot.na{background:#e4e9f1}
+table.ros th.c{text-align:center;padding:8px 5px;position:sticky}table.ros td.c{text-align:center;padding:6px 5px}
 .mod{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;position:relative;transition:border-color .15s,box-shadow .15s}
 .mod:hover{border-color:var(--sky);box-shadow:0 6px 20px rgba(26,111,240,.08)}
 .mod.locked{opacity:.6}
@@ -108,7 +160,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
 /* admin */
 table.ros{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff}
 table.ros th,table.ros td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:middle;white-space:nowrap}
-table.ros th{position:sticky;top:56px;background:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);z-index:5}
+table.ros th{position:sticky;top:0;background:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);z-index:5}
 table.ros th.m{writing-mode:vertical-rl;transform:rotate(180deg);white-space:normal;max-height:150px;text-transform:none;letter-spacing:0;font-size:12px;padding:6px 4px;text-align:left}
 table.ros td.m{text-align:center;padding:4px}
 .st{display:inline-block;width:22px;height:22px;border-radius:6px;font-size:11px;font-weight:800;line-height:22px;text-align:center;cursor:default}
@@ -234,48 +286,52 @@ function tsMs(v){ return v?(v.seconds?v.seconds*1000:+new Date(v)):0; }
 function trackMods(){ const r=S.profile.role||'dsp'; return MODS.filter(m=>m.roles.includes(r)); }
 
 /* ---------- home ---------- */
-function homeView(){
-  S.view='home'; const mods=trackMods(); const done=mods.filter(m=>['ok','wn'].includes(modStatus(S.progress[m.id],m).k)).length; const pct=Math.round(100*done/mods.length);
+function icon(i){ const I=['M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5','M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8z','M12 2a5 5 0 0 1 5 5v3h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1V7a5 5 0 0 1 5-5zm-3 8h6V7a3 3 0 0 0-6 0z','M9 12l2 2 4-4M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z','M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z','M14 3v4h4M6 3h8l6 6v12H6zM9 13h6M9 17h6','M12 8v4l3 3M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z','M8 2v3M16 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z','M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5M12 13v5M9.5 15.5h5','M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0zM12 8v4M8 12h8','M16 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 21l3-7 4 1 2 3 3-1M9 14l1-4 4 1 2 3','M6 2l1 7h10l1-7M5 9h14l-1 11H6zM9 13h6','M8 10h8M8 14h5M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z','M9 3h6M12 3v4M7 7h10l1 14H6zM9 12h6','M4 4h16v16H4zM8 8h8M8 12h8M8 16h5'];
+  return `<svg viewBox="0 0 24 24"><path d="${I[i%I.length]}"/></svg>`; }
+function homeView(tab){
+  S.view='home'; S.tab=tab||(['enrolled','completed','records'].includes(S.tab)?S.tab:'enrolled'); const mods=trackMods(); const done=mods.filter(m=>['ok','wn'].includes(modStatus(S.progress[m.id],m).k)).length; const pct=Math.round(100*done/mods.length);
   const exp=mods.filter(m=>modStatus(S.progress[m.id],m).k==='ex').length; const soon=mods.filter(m=>modStatus(S.progress[m.id],m).k==='wn').length;
   const mins=mods.reduce((n,m)=>n+m.minutes,0);
-  $('#app').innerHTML=`<div class="hero"><div class="ring" style="--p:${pct}"><span>${pct}%</span></div>
-    <div><h1>${pct===100?'Core curriculum complete':'Welcome back, '+esc(S.profile.name.split(' ')[0])}</h1>
-    <p>${esc(S.profile.role==='admin'?'Office / Admin track':'DSP track')} · ${done} of ${mods.length} modules complete · about ${Math.round(mins/60*10)/10} hours total${exp?` · <b style="color:var(--bad)">${exp} expired</b>`:''}${soon?` · <b style="color:var(--warn)">${soon} due for renewal</b>`:''}</p></div>
-    <div style="flex:1"></div>
-    <div class="row">${pct===100?'<button class="btn sec" id="hCert">View certificate</button>':''}${isAdmin()?'<button class="btn sec" id="hAdmin">Admin dashboard</button>':''}<button class="btn ghost sm" id="hRole">Switch track</button></div></div>
-    <div class="home"><div class="course"><h3>Your course</h3><div id="mods"></div></div><div><div class="detail" id="detail"></div>
-    <div class="card" style="margin-top:18px"><h3 style="font-size:16px;margin-bottom:8px">Your certificates</h3><div id="certList" style="font-size:14.5px"></div></div>
-    <div class="card" style="margin-top:18px"><h3 style="font-size:16px;margin-bottom:8px">Your credentials on file</h3><div id="credList" style="font-size:14.5px"></div></div></div></div>`;
   const completed=m=>['ok','wn','ex'].includes(modStatus(S.progress[m.id],m).k);
   const info=mods.map((m,i)=>{ const st=modStatus(S.progress[m.id],m); const locked=i>0&&st.k==='na'&&!completed(mods[i-1]); return {m,i,st,locked}; });
-  const curIdx=(()=>{ let k=info.findIndex(x=>x.st.k==='ip'); if(k<0) k=info.findIndex(x=>x.st.k==='ex'); if(k<0) k=info.findIndex(x=>x.st.k==='na'&&!x.locked); if(k<0) k=info.findIndex(x=>x.st.k==='wn'); return k; })();
-  let selIdx=(()=>{ const h=(location.hash.match(/#sel=(\w+)/)||[])[1]; const k=info.findIndex(x=>x.m.id===h); return k>=0?k:(curIdx>=0?curIdx:0); })();
-  const rowCls=x=>[completed(x.m)?'done':'', x.i===curIdx?'cur':'', x.locked?'locked':'', x.st.k==='wn'?'warn':x.st.k==='ex'?'bad':''].filter(Boolean).join(' ');
-  const rowSt=x=>completed(x.m)&&x.st.k==='ok'?'✓':x.st.k==='ex'?'!':String(x.i+1);
-  const rowSub=x=>x.locked?'Complete the previous module first':x.st.k==='ok'?'Complete · '+x.st.score+'%':x.st.k==='wn'?'Due for renewal · '+x.st.days+' days':x.st.k==='ex'?'Expired — renew now':x.st.k==='ip'?'In progress · '+x.st.pct+'%':x.m.minutes+' min · '+x.m.sections.length+' sections';
-  $('#mods').innerHTML=info.map(x=>`<button class="crow ${rowCls(x)} ${x.i===selIdx?'sel':''}" data-sel="${x.i}"><span class="st">${rowSt(x)}</span><span class="t"><b>${esc(x.m.title)}</b><small>${esc(rowSub(x))}</small></span></button>`).join('');
-  const drawDetail=()=>{ const x=info[selIdx]; const m=x.m, st=x.st, p=S.progress[m.id]||{}; const canOpen=!x.locked;
-    const secDone=i=>completed(m)?true:!!((p.checks&&p.checks[i])||(p.section||0)>i); const secCur=i=>!completed(m)&&(p.section||0)===i&&st.k==='ip';
-    $('#detail').innerHTML=`<div class="n">Module ${x.i+1} of ${mods.length}</div><h2>${esc(m.title)}</h2>
-      <div class="meta"><span>⏱ ${m.minutes} min</span><span>${m.sections.length} sections</span><span>${m.quiz.length}-question final · pass ${m.pass||80}%</span><span>Valid ${Math.round((m.renewDays||365)/30)} months</span></div>
-      <div class="row" style="gap:8px;align-items:center"><span class="pill ${st.k==='ok'?'ok':st.k==='wn'?'warn':st.k==='ex'?'bad':st.k==='ip'?'':'mute'}">${x.locked?'Locked':esc(st.label)}</span>${p.completedAt?`<span style="font-size:13px;color:var(--mute)">Completed ${fmtD(p.completedAt)} · valid until ${fmtD(p.expiresAt)}</span>`:''}</div>
-      <div class="bar" style="margin:12px 0"><i style="width:${st.pct}%"></i></div>
-      <ul class="secs">${m.sections.map((sx,i)=>`<li class="${secDone(i)?'done':secCur(i)?'cur':''}"><i>${secDone(i)?'✓':''}</i><span>Section ${i+1} · ${esc(sx.title)}</span></li>`).join('')}<li class="${completed(m)?'done':''}"><i>${completed(m)?'✓':''}</i><span>Final quiz</span></li></ul>
-      <div class="row" style="gap:8px">${canOpen?`<button class="btn ${st.k==='ok'?'sec':''}" data-open="${m.id}">${st.k==='na'?'Start module':st.k==='ip'?'Continue where you left off':st.k==='ex'||st.k==='wn'?'Renew — retake module':'Review module'}</button>`:`<span style="color:var(--mute);font-size:14px">Finish Module ${x.i} to unlock this one.</span>`}${completed(m)?`<button class="btn sec" data-cert="${m.id}">Certificate</button>`:''}</div>`;
-    document.querySelectorAll('#detail [data-open]').forEach(b=>b.onclick=()=>openModule(b.dataset.open));
-    document.querySelectorAll('#detail [data-cert]').forEach(b=>b.onclick=()=>certView(MODS.find(y=>y.id===b.dataset.cert)));
+  const cur=info.find(x=>x.st.k==='ip')||info.find(x=>x.st.k==='ex')||info.find(x=>x.st.k==='na'&&!x.locked)||info.find(x=>x.st.k==='wn')||null;
+  const first=esc(S.profile.name.split(' ')[0]);
+  $('#app').innerHTML=`<div class="banner"><div style="flex:1;min-width:220px"><h1>My Courses</h1><p>${pct===100?'Core curriculum complete, '+first+'.':'Welcome back, '+first+'.'} ${esc(S.profile.role==='admin'?'Office / Admin track':'DSP track')} · ${done} of ${mods.length} complete · about ${Math.round(mins/60*10)/10} hours${exp?` · <b>${exp} expired</b>`:''}${soon?` · <b>${soon} due for renewal</b>`:''}</p>
+    <div class="acts">${cur?`<button class="btn sec sm" data-open="${cur.m.id}">${cur.st.k==='ip'?'Continue training':cur.st.k==='ex'||cur.st.k==='wn'?'Renew now':'Start training'}</button>`:''}${pct===100?'<button class="btn ghost sm" id="hCert">Core certificate</button>':''}${isAdmin()?'<button class="btn ghost sm" id="hAdmin">Admin dashboard</button>':''}<button class="btn ghost sm" id="hRole">Switch track</button></div></div>
+    <div class="ring" style="--p:${pct}"><span>${pct}%</span></div></div>
+    <div class="tool"><div class="seg" role="tablist"><button role="tab" data-tab="enrolled" class="${S.tab==='enrolled'?'on':''}">Enrolled</button><button role="tab" data-tab="completed" class="${S.tab==='completed'?'on':''}">Completed</button><button role="tab" data-tab="records" class="${S.tab==='records'?'on':''}">Certificates</button></div>
+    <label class="search" style="margin:0;font-weight:400"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="hSearch" placeholder="Search courses" autocomplete="off"></label></div>
+    <div id="hBody"></div>
+    <nav class="tabbar"><button data-tab="enrolled" class="${S.tab==='enrolled'?'on':''}"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V5a2 2 0 0 1 2-2h14v14H6.5A2.5 2.5 0 0 0 4 19.5z"/></svg>Courses</button><button data-tab="completed" class="${S.tab==='completed'?'on':''}"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>Completed</button><button data-tab="records" class="${S.tab==='records'?'on':''}"><svg viewBox="0 0 24 24"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8.5 14.5 7 22l5-3 5 3-1.5-7.5"/></svg>Certificates</button>${isAdmin()?'<button id="tbAdmin"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Admin</button>':''}</nav>`;
+  const q=()=>($('#hSearch').value||'').trim().toLowerCase();
+  const card=x=>{ const {m,i,st,locked}=x; const p=S.progress[m.id]||{}; const kind=st.k==='ok'?'ok':st.k==='wn'?'warn':st.k==='ex'?'bad':'';
+    const statTxt=locked?'Locked · finish Module '+i:st.k==='ok'?'Completed · '+st.score+'%':st.k==='wn'?'Renew within '+st.days+' days':st.k==='ex'?'Expired · renew now':st.k==='ip'?'In progress ('+st.pct+'%)':'Not started';
+    const btn=locked?'':`<button class="btn sm ${st.k==='ok'?'sec':''}" data-open="${m.id}">${st.k==='na'?'Start':st.k==='ip'?'Continue':st.k==='ex'||st.k==='wn'?'Renew':'Review'}</button>`;
+    return `<div class="cc ${locked?'locked':''}"><div class="th ${locked?'locked':st.k==='ok'?'done':st.k==='wn'?'warn':st.k==='ex'?'bad':''}">${locked?'<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>':icon(i)}</div>
+      <div class="t"><h3>Module ${i+1} · ${esc(m.title)}</h3><div class="meta">${m.minutes} min · ${m.sections.length} sections · ${m.quiz.length}-question final${p.completedAt?' · valid until '+fmtD(p.expiresAt):''}</div>
+      <div class="stat ${kind}"><b>${statTxt}</b><div class="bar"><i style="width:${st.pct}%"></i></div></div></div>
+      <div class="act">${btn}${completed(m)?`<button class="lnk" data-cert="${m.id}">Certificate</button>`:''}</div></div>`; };
+  const draw=()=>{ const t=S.tab; const f=q(); let list=info.filter(x=>!f||x.m.title.toLowerCase().includes(f)||('module '+(x.i+1)).includes(f));
+    if(t==='enrolled') list=list.filter(x=>!(x.st.k==='ok'));
+    if(t==='completed') list=list.filter(x=>completed(x.m));
+    let html='';
+    if(t==='enrolled'&&cur&&!f) html+=`<div class="cont"><div class="th ${cur.st.k==='ex'?'bad':cur.st.k==='wn'?'warn':''}">${icon(cur.i)}</div><div class="t"><small>${cur.st.k==='ip'?'Continue training':cur.st.k==='ex'?'Expired — renew':cur.st.k==='wn'?'Due for renewal':'Up next'}</small><b>Module ${cur.i+1} · ${esc(cur.m.title)}</b><div class="bar"><i style="width:${cur.st.pct}%"></i></div></div><button class="btn" data-open="${cur.m.id}">${cur.st.k==='ip'?'Continue':cur.st.k==='ex'||cur.st.k==='wn'?'Renew':'Start'}</button></div>`;
+    if(t==='records'){ const certs=info.filter(x=>completed(x.m)).map(x=>x.m);
+      html+=`<div class="card" style="margin-bottom:14px"><h3 style="font-size:16px;margin-bottom:8px">Your certificates</h3><div id="certList" style="font-size:14.5px;overflow-x:auto"></div></div><div class="card"><h3 style="font-size:16px;margin-bottom:8px">Your credentials on file</h3><div id="credList" style="font-size:14.5px;overflow-x:auto"></div></div>`;
+      $('#hBody').innerHTML=html;
+      $('#certList').innerHTML=certs.length?'<table class="ros"><tr><th>Certificate</th><th>Completed</th><th>Score</th><th>Valid until</th><th></th></tr>'+(pct===100?`<tr><td><b>Core curriculum — all modules</b></td><td>${fmtD(Math.max(...certs.map(x=>tsMs(S.progress[x.id].completedAt))))}</td><td>—</td><td>${fmtD(Math.min(...certs.map(x=>tsMs(S.progress[x.id].expiresAt))))}</td><td><button class="btn sm" data-certall="1">View / save</button></td></tr>`:'')+certs.map(x=>{const p=S.progress[x.id]; const dl=Math.ceil((tsMs(p.expiresAt)-Date.now())/DAY); return `<tr><td>${esc(x.title)}</td><td>${fmtD(p.completedAt)}</td><td>${p.score}%</td><td>${fmtD(p.expiresAt)} ${dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':''}</td><td><button class="btn sm sec" data-cert="${x.id}">View / save</button></td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">Certificates appear here as you complete modules. Each one stays on your portal and can be saved as a PDF any time.</span>';
+      $('#credList').innerHTML=S.creds.length?'<table class="ros"><tr><th>Credential</th><th>Issued</th><th>Expires</th><th>Status</th></tr>'+S.creds.map(c=>{const dl=c.expiresAt?Math.ceil(((c.expiresAt.seconds?c.expiresAt.seconds*1000:c.expiresAt)-Date.now())/DAY):null; return `<tr><td>${esc(c.label)}</td><td>${fmtD(c.issuedAt)}</td><td>${fmtD(c.expiresAt)}</td><td>${dl===null?'<span class="pill mute">No expiry</span>':dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':'<span class="pill ok">Current</span>'}</td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">None recorded yet. Your administrator records CPR/First Aid, background check and health screening dates here.</span>';
+    } else { html+=`<div class="clist">${list.length?list.map(card).join(''):`<div class="empty">${t==='completed'?'No completed modules yet. Finish a module and it moves here with its certificate.':f?'No courses match “'+esc(f)+'”.':'All modules complete. Switch to Completed to review or print certificates.'}</div>`}</div>`; $('#hBody').innerHTML=html; }
+    document.querySelectorAll('#app [data-open]').forEach(b=>b.onclick=()=>openModule(b.dataset.open));
+    document.querySelectorAll('#app [data-cert]').forEach(b=>b.onclick=()=>certView(MODS.find(y=>y.id===b.dataset.cert)));
+    const ca=$('[data-certall]'); if(ca) ca.onclick=()=>certView();
   };
-  drawDetail();
-  document.querySelectorAll('[data-sel]').forEach(b=>b.onclick=()=>{ selIdx=+b.dataset.sel; document.querySelectorAll('[data-sel]').forEach(y=>y.classList.toggle('sel',+y.dataset.sel===selIdx)); history.replaceState(null,'','#sel='+info[selIdx].m.id); drawDetail(); if(window.innerWidth<=860) $('#detail').scrollIntoView({behavior:'smooth',block:'start'}); });
-  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openModule(b.dataset.open));
-  document.querySelectorAll('[data-cert]').forEach(b=>b.onclick=()=>certView(MODS.find(x=>x.id===b.dataset.cert)));
-  const certs=mods.filter(completed); $('#certList').innerHTML=certs.length?'<table class="ros"><tr><th>Certificate</th><th>Completed</th><th>Score</th><th>Valid until</th><th></th></tr>'+(pct===100?`<tr><td><b>Core curriculum — all modules</b></td><td>${fmtD(Math.max(...certs.map(x=>tsMs(S.progress[x.id].completedAt))))}</td><td>—</td><td>${fmtD(Math.min(...certs.map(x=>tsMs(S.progress[x.id].expiresAt))))}</td><td><button class="btn sm" data-certall="1">View / save</button></td></tr>`:'')+certs.map(x=>{const p=S.progress[x.id]; const dl=Math.ceil((tsMs(p.expiresAt)-Date.now())/DAY); return `<tr><td>${esc(x.title)}</td><td>${fmtD(p.completedAt)}</td><td>${p.score}%</td><td>${fmtD(p.expiresAt)} ${dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':''}</td><td><button class="btn sm sec" data-cert="${x.id}">View / save</button></td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">Certificates appear here as you complete modules. Each one stays on your portal and can be printed or saved as a PDF any time.</span>';
-  document.querySelectorAll('[data-cert]').forEach(b=>b.onclick=()=>certView(MODS.find(x=>x.id===b.dataset.cert)));
-  const ca=$('[data-certall]'); if(ca) ca.onclick=()=>certView();
+  draw();
+  $('#hSearch').oninput=draw;
+  document.querySelectorAll('#app [data-tab]').forEach(b=>b.onclick=()=>{ S.tab=b.dataset.tab; document.querySelectorAll('#app [data-tab]').forEach(y=>y.classList.toggle('on',y.dataset.tab===S.tab)); draw(); });
   const hc=$('#hCert'); if(hc) hc.onclick=()=>certView();
-  const ha=$('#hAdmin'); if(ha) ha.onclick=()=>adminView();
+  const ha=$('#hAdmin'); if(ha) ha.onclick=()=>adminView(); const ta=$('#tbAdmin'); if(ta) ta.onclick=()=>adminView();
   $('#hRole').onclick=async()=>{ const r=S.profile.role==='admin'?'dsp':'admin'; if(!confirm('Switch your training track to '+(r==='admin'?'Office / Admin':'DSP')+'? Your progress is kept.')) return; await updateDoc(doc(db,'users',S.user.uid),{role:r,updatedAt:serverTimestamp()}); S.profile.role=r; homeView(); };
-  $('#credList').innerHTML=S.creds.length?'<table class="ros"><tr><th>Credential</th><th>Issued</th><th>Expires</th><th>Status</th></tr>'+S.creds.map(c=>{const dl=c.expiresAt?Math.ceil(((c.expiresAt.seconds?c.expiresAt.seconds*1000:c.expiresAt)-Date.now())/DAY):null; return `<tr><td>${esc(c.label)}</td><td>${fmtD(c.issuedAt)}</td><td>${fmtD(c.expiresAt)}</td><td>${dl===null?'<span class="pill mute">No expiry</span>':dl<0?'<span class="pill bad">Expired</span>':dl<=30?'<span class="pill warn">'+dl+' days</span>':'<span class="pill ok">Current</span>'}</td></tr>`}).join('')+'</table>':'<span style="color:var(--mute)">None recorded yet. Your administrator records CPR/First Aid, background check and health screening dates here.</span>';
 }
 
 /* ---------- player ---------- */
@@ -359,15 +415,19 @@ function drawAdmin(){
   let expired=0,soon=0,complete=0; const rows=[];
   act.forEach(u=>{ const mods=MODS.filter(m=>m.roles.includes(u.role||'dsp')); const sts=mods.map(m=>modStatus(u.progress[m.id],m)); const done=sts.filter(s=>['ok','wn'].includes(s.k)).length; if(done===mods.length) complete++; expired+=sts.filter(s=>s.k==='ex').length; soon+=sts.filter(s=>s.k==='wn').length;
     u.creds.forEach(c=>{ if(c.expiresAt){ const dl=Math.ceil(((c.expiresAt.seconds?c.expiresAt.seconds*1000:c.expiresAt)-Date.now())/DAY); if(dl<0) expired++; else if(dl<=30) soon++; } }); rows.push({u,mods,sts,done}); });
+  const tot={ok:0,ip:0,wn:0,ex:0,na:0}; rows.forEach(r=>r.sts.forEach(s=>tot[s.k]++)); const slots=Object.values(tot).reduce((a,b)=>a+b,0)||1; const pc=k=>Math.round(1000*tot[k]/slots)/10;
   $('#app').innerHTML=`<div class="row" style="margin-bottom:14px"><button class="btn ghost sm" id="aBack">← My training</button><h1 style="font-size:22px">Training administration</h1><div style="flex:1"></div><button class="btn sec sm" id="aCsv">Export CSV</button><button class="btn sec sm" id="aReload">Refresh</button></div>
-  <div class="kpis"><div class="kpi"><div class="v">${act.length}</div><div class="l">Active staff</div></div><div class="kpi"><div class="v">${complete}</div><div class="l">Fully trained</div></div><div class="kpi ${soon?'warn':''}"><div class="v">${soon}</div><div class="l">Due within 30 days</div></div><div class="kpi ${expired?'bad':''}"><div class="v">${expired}</div><div class="l">Expired items</div></div><div class="kpi ${pend.length?'warn':''}"><div class="v">${pend.length}</div><div class="l">Awaiting approval</div></div></div>
+  <div class="charts">
+    <div class="chart"><div class="donut" style="--a:${pc('ok')};--b:${pc('ip')};--c:${pc('wn')};--d:${pc('ex')}"><span>${pc('ok')+pc('wn')>=100?'100':Math.round(pc('ok')+pc('wn'))}%</span></div><div><h3>Team progress</h3><div class="lg"><div><i style="background:var(--blue)"></i>Complete<b>${pc('ok')}%</b></div><div><i style="background:var(--sky)"></i>In progress<b>${pc('ip')}%</b></div><div><i style="background:var(--warn)"></i>Due within 30 days<b>${pc('wn')}%</b></div><div><i style="background:var(--bad)"></i>Expired<b>${pc('ex')}%</b></div><div><i style="background:#e6ebf3"></i>Not started<b>${pc('na')}%</b></div></div></div></div>
+    <div class="chart"><div class="gauge"><svg viewBox="0 0 120 66" aria-hidden="true"><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="#e6ebf3" stroke-width="13" stroke-linecap="round"/><path d="M10 60A50 50 0 0 1 110 60" fill="none" stroke="var(--blue)" stroke-width="13" stroke-linecap="round" stroke-dasharray="${(157.08*(act.length?complete/act.length:0)).toFixed(1)} 400"/></svg><span>${complete}/${act.length}</span></div><div><h3>Fully trained staff</h3><div class="lg"><div>Active staff<b>${act.length}</b></div><div>Items due within 30 days<b style="color:${soon?'var(--warn)':'inherit'}">${soon}</b></div><div>Expired items<b style="color:${expired?'var(--bad)':'inherit'}">${expired}</b></div><div>Awaiting approval<b style="color:${pend.length?'var(--blue)':'inherit'}">${pend.length}</b></div></div></div></div>
+  </div>
   ${pend.length?`<div class="card" style="margin-bottom:16px"><h3 style="font-size:16px;margin-bottom:8px">Awaiting approval</h3>${pend.map(u=>`<div class="row" style="padding:8px 0;border-top:1px solid var(--line)"><div style="flex:1"><b>${esc(u.name)}</b> · ${esc(u.email)} · ${esc(u.phone||'')} · <span class="pill">${u.role==='admin'?'Office/Admin':'DSP'}</span> · registered ${fmtD(u.createdAt)}</div><button class="btn sm" data-approve="${u.id}">Approve</button><button class="btn danger sm" data-deny="${u.id}">Remove</button></div>`).join('')}</div>`:''}
-  <div class="scroll"><table class="ros"><thead><tr><th>Staff</th><th>Track</th><th>Progress</th>${MODS.map((m,i)=>`<th class="m" title="${esc(m.title)}">${i+1}. ${esc(m.title)}</th>`).join('')}<th>Credentials</th><th></th></tr></thead><tbody>
+  <div class="scroll"><table class="ros"><thead><tr><th>Staff</th><th>Track</th><th>Progress</th>${MODS.map((m,i)=>`<th class="c" title="${esc(m.title)}">${i+1}</th>`).join('')}<th>Credentials</th><th></th></tr></thead><tbody>
   ${rows.map(({u,mods,sts,done})=>`<tr><td><b>${esc(u.name)}</b><br><span style="color:var(--mute);font-size:12px">${esc(u.email)}</span></td><td>${u.role==='admin'?'Office':'DSP'}${u.access==='admin'?' · <span class="pill">admin</span>':''}</td><td><div class="bar" style="width:90px"><i style="width:${Math.round(100*done/mods.length)}%"></i></div><span style="font-size:12px;color:var(--mute)">${done}/${mods.length}</span></td>
-  ${MODS.map(m=>{ if(!m.roles.includes(u.role||'dsp')) return '<td class="m"><span class="st na" title="Not in track">·</span></td>'; const s=modStatus(u.progress[m.id],m); const t={na:'—',ip:s.pct+'%',ok:'✓',wn:s.days+'d',ex:'!'}[s.k]; return `<td class="m"><span class="st ${s.k}" title="${esc(s.label)}${s.score!==undefined?' · score '+s.score+'%':''}">${t}</span></td>`; }).join('')}
+  ${MODS.map((m,i)=>{ if(!m.roles.includes(u.role||'dsp')) return '<td class="c"><i class="dot na" title="Not in this track" style="opacity:.4"></i></td>'; const s=modStatus(u.progress[m.id],m); return `<td class="c"><i class="dot ${s.k}" title="${i+1}. ${esc(m.title)} · ${esc(s.label)}${s.score!==undefined?' · score '+s.score+'%':''}"></i></td>`; }).join('')}
   <td>${u.creds.length?u.creds.map(c=>{const dl=c.expiresAt?Math.ceil(((c.expiresAt.seconds?c.expiresAt.seconds*1000:c.expiresAt)-Date.now())/DAY):null; return `<span class="pill ${dl===null?'mute':dl<0?'bad':dl<=30?'warn':'ok'}" title="${esc(c.label)} · exp ${fmtD(c.expiresAt)}">${esc(c.label.split(' ')[0])}</span>`}).join(' '):'<span style="color:var(--mute)">—</span>'}</td>
   <td><button class="btn ghost sm" data-edit="${u.id}">Manage</button></td></tr>`).join('')}</tbody></table></div>
-  <p style="font-size:12.5px;color:var(--mute);margin-top:10px">Legend: ✓ complete · <b>Nd</b> renew within N days · <b>!</b> expired · % in progress · — not started. Reminder emails go to compliance@havencresthome.com daily when anything is due within 30/14/7 days or expired.</p>`;
+  <p style="font-size:12.5px;color:var(--mute);margin-top:10px">Hover a dot for the module name and status. <i class="dot ok" style="vertical-align:middle"></i> complete · <i class="dot ip" style="vertical-align:middle"></i> in progress · <i class="dot wn" style="vertical-align:middle"></i> due within 30 days · <i class="dot ex" style="vertical-align:middle"></i> expired · <i class="dot na" style="vertical-align:middle"></i> not started. Reminder emails go to compliance@havencresthome.com daily when anything is due within 30/14/7 days or expired.</p>`;
   $('#aBack').onclick=homeView; $('#aReload').onclick=adminView;
   document.querySelectorAll('[data-approve]').forEach(b=>b.onclick=async()=>{ busy(true); await updateDoc(doc(db,'users',b.dataset.approve),{access:'active',approvedAt:serverTimestamp(),approvedBy:S.user.email}); busy(false); toast('Approved'); const u=us.find(x=>x.id===b.dataset.approve); u.access='active'; drawAdmin(); });
   document.querySelectorAll('[data-deny]').forEach(b=>b.onclick=async()=>{ const u=us.find(x=>x.id===b.dataset.deny); if(!confirm('Remove '+u.name+'\'s registration? They can register again later.')) return; busy(true); await updateDoc(doc(db,'users',u.id),{access:'disabled'}); busy(false); u.access='disabled'; drawAdmin(); });
