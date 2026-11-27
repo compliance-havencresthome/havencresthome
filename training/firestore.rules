@@ -37,7 +37,7 @@ service cloud.firestore {
     match /checks/{uid}/items/{cid} {
       allow read: if own(uid) || isAdmin();
       // Supervisors record skills, orientation, supervision and evaluations; staff may only acknowledge policies for themselves.
-      allow create: if isAdmin() || (own(uid) && isActive() && request.resource.data.type == 'policy');
+      allow create: if isAdmin() || (own(uid) && isActive() && request.resource.data.type in ['policy', 'doc']);
       allow update, delete: if isAdmin();
     }
 
