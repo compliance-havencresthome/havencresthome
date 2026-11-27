@@ -119,9 +119,37 @@ aside{display:none}@media(min-width:960px){aside{display:block;position:sticky;t
 .next div{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:14px}
 .toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:700;font-size:.9rem;opacity:0;transition:opacity .2s;z-index:40;pointer-events:none;max-width:90vw;text-align:center}
 .toast.on{opacity:1}
+
+/* staff gate */
+#gate{position:fixed;inset:0;z-index:50;background:var(--bg,#F5F8FD);display:grid;place-items:center;padding:16px}
+#gate .g{background:#fff;border:1px solid #D9E2F0;border-radius:18px;padding:28px;max-width:420px;width:100%;box-shadow:0 20px 50px rgba(13,15,20,.08)}
+#gate h1{font:800 1.4rem/1.2 Poppins,sans-serif;margin:0 0 6px;letter-spacing:-.02em}#gate p{margin:0 0 16px;color:#4D5666;font-size:.95rem}
+#gate label{display:block;font-weight:700;font-size:.85rem;margin:10px 0 4px}#gate input{width:100%;font:inherit;padding:10px 12px;border:1.5px solid #D9E2F0;border-radius:10px}
+#gate button{margin-top:14px;width:100%;font:800 1rem Poppins,sans-serif;padding:12px;border:0;border-radius:12px;background:#1A6FF0;color:#fff;cursor:pointer}
+#gate .err{color:#C0392B;font-size:.9rem;margin-top:10px}#gate .ft{font-size:.85rem;color:#4D5666;margin-top:14px}#gate .ft a{color:#1A6FF0}
+body.gated>:not(#gate){visibility:hidden}
 </style>
 </head>
-<body>
+<body class="gated">
+<div id="gate"><form class="g" id="gForm"><h1>Staff sign-in</h1><p>The intake form is for Haven Crest office staff. Sign in with your DSP Academy account.</p>
+<label for="gEmail">Email</label><input id="gEmail" type="email" autocomplete="username" required>
+<label for="gPass">Password</label><input id="gPass" type="password" autocomplete="current-password" required>
+<button type="submit" id="gBtn">Sign in</button><div class="err" id="gErr"></div>
+<div class="ft">No account yet? <a href="/training/#register">Register in the DSP Academy</a> and ask the office to approve you. Families and referral partners: <a href="/#contact">request a call</a> instead.</div></form></div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+const cfg=window.HCH_FIREBASE; const app=initializeApp(cfg); const auth=getAuth(app); const db=getFirestore(app);
+const gate=document.getElementById('gate'), err=document.getElementById('gErr'), form=document.getElementById('gForm');
+async function allow(u){ if(!u) return false; if(!u.emailVerified){ err.textContent='Verify your email first (check your inbox), then sign in again.'; return false; }
+  try{ const d=await getDoc(doc(db,'users',u.uid)); const a=d.exists()?d.data().access:''; if(a==='admin'||a==='active') return true; err.textContent=a==='pending'?'Your account is awaiting approval by the office.':'This account is not cleared for intake. Contact compliance@havencresthome.com.'; }catch(e){ err.textContent='Could not check your access: '+e.message; }
+  return false; }
+onAuthStateChanged(auth, async u=>{ if(await allow(u)){ gate.remove(); document.body.classList.remove('gated'); const b=document.createElement('a'); b.href='#'; b.textContent='Sign out'; b.style.cssText='position:fixed;top:10px;right:12px;font-size:.8rem;color:#4D5666;z-index:40'; b.onclick=e=>{e.preventDefault(); signOut(auth).then(()=>location.reload());}; document.body.appendChild(b); } else if(u){ await signOut(auth); } });
+form.onsubmit=async e=>{ e.preventDefault(); err.textContent=''; document.getElementById('gBtn').disabled=true; try{ await signInWithEmailAndPassword(auth,document.getElementById('gEmail').value.trim(),document.getElementById('gPass').value); }catch(x){ err.textContent=/invalid|wrong|not-found|credential/i.test(x.code||'')?'Email or password is incorrect.':x.message; } document.getElementById('gBtn').disabled=false; };
+</script>
+<script src="/training/firebase-config.js"></script>
+
 
 <header class="top">
   <div class="in">
