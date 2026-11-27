@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m08', order:8, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80, beforePersonalCare:true,
+id:'m08', order:9, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80, beforePersonalCare:true,
 title:'Infection Prevention and Standard Precautions in the Home',
 refs:['DHS 105.17(1n)(a)2.e; (1r); (3)(b)5','CDC Standard Precautions; CDC hand hygiene guidance','OSHA 29 CFR 1910.1030 (bloodborne pathogens)'],
 sections:[

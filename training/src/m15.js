@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m15', order:15, roles:['admin'], minutes:35, renewDays:365, pass:80,
+id:'m15', order:16, dueDays:182, roles:['admin'], minutes:35, renewDays:365, pass:80,
 title:'Office & Compliance Operations: Intake, Authorizations, Records and Audits',
 refs:['DHS P-01602 §VIII–IX (documentation, contract content, access)','DHS 105.17(1g)(c), (1w)','Inclusa SHC Scope §4.0, 7.x','Wis. Admin. Code DHS 12, 13'],
 sections:[

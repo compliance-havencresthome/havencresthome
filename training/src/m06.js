@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m06', order:6, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
+id:'m06', order:6, due:'first', roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
 title:'Observe, Document, Report: Visit Notes, Changes in Condition and Incidents',
 refs:['DHS 105.17(1g)(c), (1w)(d)2, (3)(b)2–3','DHS P-01602 §V.2, VIII','Inclusa SHC Scope §4.0, 7.3, 7.7'],
 sections:[

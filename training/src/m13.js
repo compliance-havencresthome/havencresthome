@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m13', order:13, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
+id:'m13', order:15, dueDays:60, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
 title:'Communication, Dementia and Disability Awareness, and Responding to Challenging Behaviors',
 refs:['DHS P-01602 §V.5 (target population), V.7 (working with members, cultural differences, behavioral support)','Inclusa SHC Scope §5.4, 5.7','DHS 105.17(1e)(b)3'],
 sections:[

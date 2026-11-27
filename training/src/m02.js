@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m02', order:2, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
+id:'m02', order:2, due:'first', roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
 title:'Member Rights, Dignity and Person-Centered Support',
 refs:['DHS 105.17(1w)(b)3 (client rights)','DHS P-01602 §V.7','42 CFR 441.301(c)(4) HCBS settings rule','Inclusa SHC Scope §2.3, 3.3'],
 sections:[

@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m14', order:14, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m14', order:13, dueDays:30, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Medication Boundaries, Wellness Observation and Pain Awareness',
 refs:['Wis. Admin. Code N 6 (delegation of nursing acts)','DHS 105.17(1n)(a)2.b (only an RN may train delegated acts)','Inclusa SHC Scope §2.3 (medication reminders)','DHS P-01602 §VII.3'],
 sections:[

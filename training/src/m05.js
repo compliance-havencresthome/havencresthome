@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m05', order:5, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
+id:'m05', order:5, due:'first', roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
 title:'Recognizing and Reporting Abuse, Neglect and Exploitation',
 refs:['Wis. Stat. 46.90 (elder adults at risk) and 55.043 (adults at risk)','Wis. Admin. Code DHS 13 (caregiver misconduct reporting)','Wis. Stat. 50.065 / DHS 12 (caregiver background checks)','DHS P-01602 §V.1; Inclusa SHC Scope §5.5, 7.7'],
 sections:[

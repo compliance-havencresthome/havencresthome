@@ -1,7 +1,7 @@
 // Haven Crest DSP Academy curriculum — generated 2026-11-26. Edit src/*.js and rebuild.
 window.HCH_MODULES=window.HCH_MODULES||[];var HCH_MODULES=window.HCH_MODULES;
 HCH_MODULES.push({
-id:'m01', order:1, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
+id:'m01', order:1, due:'first', roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
 title:'Welcome to Haven Crest: Who We Are and How We Work',
 refs:['DHS P-01602 (rev. 02/2026) §V.1–2','DHS 105.17(1n)(a)2.a, c','Inclusa SHC Scope of Service §5.4, 5.7'],
 sections:[
@@ -29,7 +29,7 @@ check:[{q:'A member who can do part of a task themselves should…',options:['Be
 
 {title:'Policies, expectations and the rules that protect members',slides:[
 {h:'Policies you are agreeing to today',body:`<p>Wisconsin requires every supportive home care worker to be trained on the agency's policies and expectations before serving members. The core ones:</p>
-<ul><li><b>Confidentiality / HIPAA</b> — member information stays inside the care team (Module 3).</li><li><b>Ethics</b> — respect for the member's property and the member's right to refuse care (Module 4).</li><li><b>Abuse, neglect and exploitation</b> — you recognize it and you report it (Module 5).</li><li><b>Fraud, waste and abuse</b> — you clock only real time and document only real tasks.</li><li><b>No influence on enrollment</b> — you never advise a member which MCO, program or provider to choose, and you never speak against another provider.</li><li><b>Restrictive measures</b> — no restraints, no locking someone in, no taking away a phone or food as a consequence. Ever.</li><li><b>Continuity of operations</b> — what we do when weather, illness or an outage disrupts service (Module 9).</li></ul>`,ref:'DHS P-01602 §V.1; Inclusa SHC Scope §2.2'},
+<ul><li><b>Confidentiality / HIPAA</b> — member information stays inside the care team (Module 3).</li><li><b>Ethics</b> — respect for the member's property and the member's right to refuse care (Module 4).</li><li><b>Abuse, neglect and exploitation</b> — you recognize it and you report it (Module 5).</li><li><b>Fraud, waste and abuse</b> — you clock only real time and document only real tasks.</li><li><b>No influence on enrollment</b> — you never advise a member which MCO, program or provider to choose, and you never speak against another provider.</li><li><b>Restrictive measures</b> — no restraints, no locking someone in, no taking away a phone or food as a consequence. Ever.</li><li><b>Continuity of operations</b> — what we do when weather, illness or an outage disrupts service (Module 8).</li></ul>`,ref:'DHS P-01602 §V.1; Inclusa SHC Scope §2.2'},
 {h:'Fraud, waste and abuse — the plain version',body:`<p>Medicaid pays Haven Crest for <b>authorized services actually delivered</b>. Anything else is fraud, and it is a crime for the person who does it, not only the company.</p>
 <div class="dont"><b>Never:</b> clock in before you arrive or after you leave · clock in from your car or your house · document a task you did not do · stay past the authorized time and bill it · let a family member "cover" your visit · accept cash, gifts or favors from a member in exchange for anything.</div>
 <div class="do"><b>Always:</b> clock in and out at the member's home through EVV · document what you did and did not do · report a visit that could not happen · report anyone you see doing the "never" list.</div>
@@ -74,8 +74,9 @@ quiz:[
 {q:'Which of these is a medical task that is outside supportive home care?',options:['Giving an insulin injection','Helping someone put on compression socks the plan lists','Preparing lunch','Reminding a member it\'s time for their pills'],a:0},
 {q:'Completing this Academy replaces member-specific orientation for each person you serve.',options:['False — member-specific training is still required before solo visits','True'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m02', order:2, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
+id:'m02', order:2, due:'first', roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
 title:'Member Rights, Dignity and Person-Centered Support',
 refs:['DHS 105.17(1w)(b)3 (client rights)','DHS P-01602 §V.7','42 CFR 441.301(c)(4) HCBS settings rule','Inclusa SHC Scope §2.3, 3.3'],
 sections:[
@@ -140,8 +141,9 @@ quiz:[
 {q:'Being colder or shorter with a member after they complained about you is…',options:['Retaliation — grounds for termination and possibly misconduct','A natural reaction that\'s acceptable short-term','Fine if the complaint was unfair','Not covered by any rule'],a:0},
 {q:'A member can do part of their dressing. The plan says "assist with dressing." You…',options:['Let them do what they can and assist the rest','Dress them completely to stay on schedule','Skip dressing','Ask the family to dress them'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m03', order:3, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m03', order:3, due:'first', roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Confidentiality and HIPAA in the Member\'s Home',
 refs:['45 CFR 164 (HIPAA Privacy & Security Rules)','DHS 105.17(1n)(a)2.g; (1w)(b)3.f','Wis. Stat. 146.82','DHS P-01602 §V.1'],
 sections:[
@@ -198,8 +200,9 @@ quiz:[
 {q:'A member\'s guardian with legal authority asks about care. Day-to-day information…',options:['May be shared as needed for decisions; bigger matters go through the office','Must be refused','Is shared only by the MCO','Requires a court order'],a:0},
 {q:'Paper with member information should…',options:['Be kept out of sight and returned or shredded — never taken home','Be kept in your car for convenience','Be left at the member\'s home for family','Be photographed for backup'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m04', order:4, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m04', order:4, due:'first', roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Professional Boundaries and Ethics in a Member\'s Home',
 refs:['DHS 105.17(1n)(a)2.g (ethics)','DHS P-01602 §V.1 (ethics: property, right to refuse)','Inclusa SHC Scope §2.2, 5.7'],
 sections:[
@@ -256,8 +259,9 @@ quiz:[
 {q:'Reporting your own mistake the same day is…',options:['Expected and protects you','Optional','Only required for big mistakes','A reason for discipline'],a:0},
 {q:'Using your personal phone during a visit is appropriate for…',options:['EVV, calling the office, or an emergency','Checking social media while the member naps','Texting friends when tasks are done','Taking photos of the home'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m05', order:5, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
+id:'m05', order:5, due:'first', roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
 title:'Recognizing and Reporting Abuse, Neglect and Exploitation',
 refs:['Wis. Stat. 46.90 (elder adults at risk) and 55.043 (adults at risk)','Wis. Admin. Code DHS 13 (caregiver misconduct reporting)','Wis. Stat. 50.065 / DHS 12 (caregiver background checks)','DHS P-01602 §V.1; Inclusa SHC Scope §5.5, 7.7'],
 sections:[
@@ -322,8 +326,9 @@ quiz:[
 {q:'A member asks you to promise not to tell anyone about abuse. You…',options:['Explain you must tell the office to keep them safe, reassure them, and report','Promise, to keep their trust','Tell them it\'s their decision','Report it next week'],a:0},
 {q:'Good-faith reporters of suspected abuse are…',options:['Protected from liability and from retaliation','Liable if the report is wrong','Required to have proof','Required to confront the abuser first'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m06', order:6, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
+id:'m06', order:6, due:'first', roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
 title:'Observe, Document, Report: Visit Notes, Changes in Condition and Incidents',
 refs:['DHS 105.17(1g)(c), (1w)(d)2, (3)(b)2–3','DHS P-01602 §V.2, VIII','Inclusa SHC Scope §4.0, 7.3, 7.7'],
 sections:[
@@ -398,8 +403,9 @@ quiz:[
 {q:'A member complains about a co-worker. You…',options:['Listen, thank them, and report it to the office the same day','Defend the co-worker','Tell the co-worker directly','Keep it to yourself'],a:0},
 {q:'"Drank 3 cups of water" is better than "drank well" because…',options:['Numbers are objective and comparable over time','It is shorter','It sounds medical','The MCO requires cups'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m07', order:7, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m07', order:7, due:'first', roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Electronic Visit Verification, Scheduling and Reliability',
 refs:['21st Century Cures Act §12006 (EVV)','Wisconsin DHS EVV program (Sandata)','DHS 105.17(1g)(cm)','DHS P-01602 §V.8; Inclusa SHC Scope §3.5, 7.2'],
 sections:[
@@ -457,8 +463,9 @@ quiz:[
 {q:'Staying past the authorized hours because the member asked is…',options:['Unpaid and a red flag — call the office first','Good customer service','Required','Fine if under an hour'],a:0},
 {q:'Which is a goal on the DSP reliability scorecard?',options:['Zero no-call/no-shows','Longest visits','Most members','Fewest notes'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m08', order:8, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80, beforePersonalCare:true,
+id:'m08', order:9, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80, beforePersonalCare:true,
 title:'Infection Prevention and Standard Precautions in the Home',
 refs:['DHS 105.17(1n)(a)2.e; (1r); (3)(b)5','CDC Standard Precautions; CDC hand hygiene guidance','OSHA 29 CFR 1910.1030 (bloodborne pathogens)'],
 sections:[
@@ -506,8 +513,9 @@ quiz:[
 {q:'A needle stick or blood splash to your eyes is…',options:['Reported to the office immediately after washing','Noted at the end of the week','Ignored if no symptoms','Reported only to the member'],a:0},
 {q:'Before member contact, new staff must have…',options:['A TB/communicable disease screening within 90 days of starting','A flu shot only','A dental exam','No screening'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m09', order:9, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
+id:'m09', order:8, due:'first', roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
 title:'Home Safety and Emergency Response',
 refs:['DHS 105.17(1n)(a)2.d, f','DHS P-01602 §V.1 (continuity of operations), V.3 (emergencies)','Inclusa SHC Scope §5.7, 7.7','HCH Emergency and Disaster Preparedness Plan'],
 sections:[
@@ -554,6 +562,7 @@ quiz:[
 {q:'A member with dementia is missing when you arrive on a winter day. After a brief search you…',options:['Call the office and 911','Wait an hour','Go to the next visit','Leave a note on the door'],a:0},
 {q:'If you feel unsafe in a home you…',options:['May leave, call the office from your car, and call 911 for the member if they are in danger','Must stay until the visit ends','Should confront the person','Should call the family'],a:0}]
 });
+
 HCH_MODULES.push({
 id:'m10', order:10, roles:['dsp','admin'], minutes:40, renewDays:365, pass:80, beforePersonalCare:true,
 title:'Personal Care Skills: Bathing, Grooming, Dressing, Toileting and Eating',
@@ -600,6 +609,7 @@ quiz:[
 {q:'A wet, gurgly voice after swallowing is a sign of…',options:['Swallowing difficulty — report it','A cold','Good hydration','Nothing'],a:0},
 {q:'The member should remain upright after a meal for…',options:['30 minutes','5 minutes','2 hours','No time needed'],a:0}]
 });
+
 HCH_MODULES.push({
 id:'m11', order:11, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80, beforePersonalCare:true,
 title:'Safe Mobility, Transfers, Fall Prevention and Adaptive Equipment',
@@ -653,8 +663,9 @@ quiz:[
 {q:'Bed rails may be used…',options:['To help the member reposition — never to keep them in bed','To prevent getting up at night','As a restraint when wandering','Always, for everyone'],a:0},
 {q:'A walker that is too short should be…',options:['Reported with specifics so the care team can address it','Fixed by you with a saw','Ignored','Replaced by you from a store'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m12', order:12, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:60,
+id:'m12', order:14, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:60,
 title:'Nutrition, Hydration, Meals and Household Services',
 refs:['DHS P-01602 §V.6 (homemaking and household services), §VI','Inclusa SHC Scope §5.3, 5.4 (household/chore training within 2 months)','DHS 105.17(1n)(a)2.d'],
 sections:[
@@ -705,8 +716,9 @@ quiz:[
 {q:'Before leaving, the member should have…',options:['Water, phone or call button in reach, needs met, next meal easy','The TV on','The doors unlocked','A list of your personal contact info'],a:0},
 {q:'Mixing bleach with ammonia-based cleaners is…',options:['Dangerous — never','A stronger disinfectant','Fine with the window open','Recommended for bathrooms'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m13', order:13, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
+id:'m13', order:15, dueDays:60, roles:['dsp','admin'], minutes:35, renewDays:365, pass:80,
 title:'Communication, Dementia and Disability Awareness, and Responding to Challenging Behaviors',
 refs:['DHS P-01602 §V.5 (target population), V.7 (working with members, cultural differences, behavioral support)','Inclusa SHC Scope §5.4, 5.7','DHS 105.17(1e)(b)3'],
 sections:[
@@ -767,8 +779,9 @@ quiz:[
 {q:'If a member has a behavior support plan…',options:['You are trained on it before the first visit and follow it exactly','You read it if problems arise','It is for the nurse only','You may adapt it freely'],a:0},
 {q:'ABC documentation of behavior means…',options:['What happened before, the behavior, and what happened after','Always Be Calm','Assess, Blame, Correct','Alert the Behavior Coordinator'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m14', order:14, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m14', order:13, dueDays:30, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Medication Boundaries, Wellness Observation and Pain Awareness',
 refs:['Wis. Admin. Code N 6 (delegation of nursing acts)','DHS 105.17(1n)(a)2.b (only an RN may train delegated acts)','Inclusa SHC Scope §2.3 (medication reminders)','DHS P-01602 §VII.3'],
 sections:[
@@ -825,8 +838,9 @@ quiz:[
 {q:'A member taking pills from an old, unlabeled bottle is…',options:['Reported the same day','Fine if they know what it is','Only reported monthly','Not your concern'],a:0},
 {q:'The best question to find pain is…',options:['"Does anything hurt today? Can you point to it?"','"You\'re fine, right?"','"Do you want a pill?"','"Why are you so grumpy?"'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m15', order:15, roles:['admin'], minutes:35, renewDays:365, pass:80,
+id:'m15', order:16, dueDays:182, roles:['admin'], minutes:35, renewDays:365, pass:80,
 title:'Office & Compliance Operations: Intake, Authorizations, Records and Audits',
 refs:['DHS P-01602 §VIII–IX (documentation, contract content, access)','DHS 105.17(1g)(c), (1w)','Inclusa SHC Scope §4.0, 7.x','Wis. Admin. Code DHS 12, 13'],
 sections:[
@@ -866,8 +880,9 @@ quiz:[
 {q:'Discontinuing a member\'s services requires notice to the MCO of…',options:['At least 30 days','24 hours','7 days','None'],a:0},
 {q:'The first thing auditors typically pull is…',options:['The EVV correction log with reasons','The marketing flyer','The office lease','Staff birthdays'],a:0}]
 });
+
 HCH_MODULES.push({
-id:'m16', order:16, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:30,
+id:'m16', order:12, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:30,
 title:'Fraud, Waste and Abuse, and Compliance Basics',
 refs:['My Choice Wisconsin provider requirements (FWA training within 30 days of hire and annually)','Community Care Provider Handbook §8–9 (annual compliance/FWA training, documented)','Wisconsin DHS Office of Inspector General','Federal False Claims Act; Anti-Kickback Statute; Wis. Stat. 49.49'],
 sections:[
@@ -910,3 +925,4 @@ quiz:[
 {q:'Haven Crest checks exclusion lists (OIG LEIE, SAM)…',options:['At hire and monthly','Never','Only for nurses','Once a decade'],a:0},
 {q:'This FWA training must be completed…',options:['Within 30 days of hire and every 12 months','Once, ever','Every 3 years','Only by office staff'],a:0}]
 });
+

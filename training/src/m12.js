@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m12', order:12, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:60,
+id:'m12', order:14, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:60,
 title:'Nutrition, Hydration, Meals and Household Services',
 refs:['DHS P-01602 §V.6 (homemaking and household services), §VI','Inclusa SHC Scope §5.3, 5.4 (household/chore training within 2 months)','DHS 105.17(1n)(a)2.d'],
 sections:[

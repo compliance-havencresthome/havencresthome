@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m09', order:9, roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
+id:'m09', order:8, due:'first', roles:['dsp','admin'], minutes:30, renewDays:365, pass:80,
 title:'Home Safety and Emergency Response',
 refs:['DHS 105.17(1n)(a)2.d, f','DHS P-01602 §V.1 (continuity of operations), V.3 (emergencies)','Inclusa SHC Scope §5.7, 7.7','HCH Emergency and Disaster Preparedness Plan'],
 sections:[

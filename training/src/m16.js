@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m16', order:16, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:30,
+id:'m16', order:12, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80, dueDays:30,
 title:'Fraud, Waste and Abuse, and Compliance Basics',
 refs:['My Choice Wisconsin provider requirements (FWA training within 30 days of hire and annually)','Community Care Provider Handbook §8–9 (annual compliance/FWA training, documented)','Wisconsin DHS Office of Inspector General','Federal False Claims Act; Anti-Kickback Statute; Wis. Stat. 49.49'],
 sections:[

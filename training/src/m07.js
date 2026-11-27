@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m07', order:7, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m07', order:7, due:'first', roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Electronic Visit Verification, Scheduling and Reliability',
 refs:['21st Century Cures Act §12006 (EVV)','Wisconsin DHS EVV program (Sandata)','DHS 105.17(1g)(cm)','DHS P-01602 §V.8; Inclusa SHC Scope §3.5, 7.2'],
 sections:[

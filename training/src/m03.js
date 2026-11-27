@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m03', order:3, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m03', order:3, due:'first', roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Confidentiality and HIPAA in the Member\'s Home',
 refs:['45 CFR 164 (HIPAA Privacy & Security Rules)','DHS 105.17(1n)(a)2.g; (1w)(b)3.f','Wis. Stat. 146.82','DHS P-01602 §V.1'],
 sections:[

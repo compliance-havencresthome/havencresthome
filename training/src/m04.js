@@ -1,5 +1,5 @@
 HCH_MODULES.push({
-id:'m04', order:4, roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
+id:'m04', order:4, due:'first', roles:['dsp','admin'], minutes:25, renewDays:365, pass:80,
 title:'Professional Boundaries and Ethics in a Member\'s Home',
 refs:['DHS 105.17(1n)(a)2.g (ethics)','DHS P-01602 §V.1 (ethics: property, right to refuse)','Inclusa SHC Scope §2.2, 5.7'],
 sections:[
